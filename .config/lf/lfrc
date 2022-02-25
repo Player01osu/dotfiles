@@ -1,3 +1,0 @@
-set scrolloff 14
-set hidden
-cmd open $nvim $fx
