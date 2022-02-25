@@ -1,4 +1,6 @@
 set icons
-set scrolloff 14
+set ignorecase true
+set preview true
+set scrolloff 25
 set hidden
 cmd open $nvim $fx
