@@ -1,4 +1,4 @@
-set icons
+#set icons
 set ignorecase true
 set preview true
 set scrolloff 25

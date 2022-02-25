@@ -71,7 +71,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 imap <C-P> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 " PLUGINS
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
