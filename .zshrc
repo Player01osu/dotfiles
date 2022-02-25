@@ -1,6 +1,6 @@
 # Lines configured by zsh-newuser-install
 ### EXPORT
-export LC_ALL
+#export LC_ALL
 export EDITOR="nvim"
 export SHELL="zsh"
 export PF_INFO="ascii title os kernel shell editor pkgs memory"
