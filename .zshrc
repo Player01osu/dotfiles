@@ -1,6 +1,5 @@
 # Lines configured by zsh-newuser-install
 ### EXPORT
-LC_ALL=C
 export LC_ALL
 export EDITOR="nvim"
 export SHELL="zsh"
