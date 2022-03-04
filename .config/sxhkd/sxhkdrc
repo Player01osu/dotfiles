@@ -1,9 +1,12 @@
 
 alt + t ; {h,j,d,p,s,n}
-	{alacritty -e btop,brave &,LIBVA_DRIVER_NAME=i915 discord --enable-gpu-rasterization &,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
+	{alacritty -e btop,firefox &,LIBVA_DRIVER_NAME=i915 discord --enable-gpu-rasterization &,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
 
-alt + r ; {p,s}
-    {~/bin/rpulse,~/.local/bin/rkd}
+alt + r ; {p,s,d}
+    {~/bin/rpulse,~/.local/bin/rkd,rdblk}
+
+super + alt + b
+    yuridl.sh
 
 super + alt + w
     togglewheel
@@ -25,7 +28,7 @@ super + ctrl + m
     xdotool click 1
 
 super + alt + t
-    alacritty --class todo -e nvim ~/todo.md
+    alacritty --class todo -e nvim ~/vimwiki/todo.wiki
 
 
 super + alt + a
@@ -40,7 +43,34 @@ super + alt + d
 super + alt + f
     xdotool mousemove 1830 870
 
+#super + alt + a
+#    xdotool mousemove 100 220
+#
+#super + alt + s
+#    xdotool mousemove 100 1070
+#
+#super + alt + d
+#    xdotool mousemove 2230 220
+#
+#super + alt + f
+#    xdotool mousemove 2230 1070
 
+# Relative mouse move
+super + alt + ctrl + h
+    xdotool mousemove_relative -- -15 0
+
+super + alt + ctrl + j
+    xdotool mousemove_relative -- 0 15
+
+super + alt + ctrl + k
+    xdotool mousemove_relative -- 0 -15
+
+super + alt + ctrl + l
+    xdotool mousemove_relative -- 15 0
+
+# mouse click key chord
+alt + u ; {m,n}
+    {xdotool click 1,xdotool click 3}
 
 XF86Sleep
     betterlockscreen -l blur

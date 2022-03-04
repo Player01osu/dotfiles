@@ -104,6 +104,7 @@ alias poweroff="loginctl poweroff"
 alias fortnite="osu"
 alias nvimconf="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"
+alias nano="nvim"
 alias dwm-conf="cd ~/gitclone/suckless/dwm-fork/ && nvim ~/gitclone/suckless/dwm-fork/config.def.h"
 alias osu-dir="cd ~/.local/share/osu-wine/OSU/"
 alias skool="cd ~/Documents/school/"
@@ -115,6 +116,7 @@ alias l="ls -Ao1v --color=auto"
 alias ls="ls -Av --color=auto"
 alias nsxiv="devour nsxiv"
 alias mupdf="devour mupdf"
+alias newsboat="newsboat -u ~/.config/newsboat/urls"
 #neofetch
 pfetch
 #acpi

@@ -2,6 +2,7 @@ syntax on
 
 set clipboard+=unnamedplus
 set noerrorbells
+set background=dark
 set tabstop=2 softtabstop=2
 set shiftwidth=2
 set smarttab
@@ -17,7 +18,7 @@ set undofile
 set incsearch
 set number relativenumber
 set termguicolors
-set scrolloff=11
+set scrolloff=13
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
@@ -26,6 +27,9 @@ set shortmess+=c
 set wildmode=longest,list,full
 
 " set colorcolumn=80
+"
+autocmd FileType md,vimwiki set tabstop=4 softtabstop=4 shiftwidth=4
+autocmd FileType md,vimwiki :CocDisable
 
 " highlight ColorColumn ctermbg=0 guibg=lightgrey
 highlight CocFloating ctermbg=0 guibg=Gray
@@ -34,9 +38,9 @@ highlight Pmenu ctermfg=0 guibg=Gray
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'markdown', 'vimwiki']
 let g:markdown_syntax_conceal = 0
-let g:markdown_minlines = 100
+let g:markdown_minlines = 98
 
     set nocompatible
     if has("autocmd")
@@ -60,10 +64,16 @@ map <C-T> :colorscheme default<CR>
 map <C-S> :colorscheme gruvbox<CR>
 map <C-L> :set wrap<CR>
 map <C-P> :set nowrap<CR>
-map <C-I> :noh<CR>
-map <C-_> :vimgrep 
+map <C-X> :noh<CR>
+map <C-_> :vimgrep
 map <C-W> :foldclose<CR>
 map <C-Q> :foldopen<CR>
+map <leader>i zzi
+map <leader>I zzI
+map <leader>a zza
+map <leader>A zzA
+
+autocmd BufWritePre * %s/\s\+$//e
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -230,7 +240,7 @@ EOF
 "      { name = 'path' },
 "      { name = 'buffer' },
 "    },
-"  
+"
 "
 "  mapping = {
 "    -- Add tab support
