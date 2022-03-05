@@ -3,7 +3,7 @@ alt + t ; {h,j,d,p,s,n}
 	{alacritty -e btop,firefox &,LIBVA_DRIVER_NAME=i915 discord --enable-gpu-rasterization &,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
 
 alt + r ; {p,s,d}
-    {~/bin/rpulse,~/.local/bin/rkd,rdblk}
+    {~/.local/bin/rpipe,~/.local/bin/rkd,rdblk}
 
 super + alt + b
     yuridl.sh
