@@ -1,13 +1,17 @@
 # Lines configured by zsh-newuser-install
 ### EXPORT
 #export LC_ALL
+export XINITRC="$HOME/.config/X11/.xinitrc"
+export VISUAL="nvim"
 export EDITOR="nvim"
 export SHELL="zsh"
+export ZDOTDIR="$HOME/.config/zsh"
 export PF_INFO="ascii title os kernel shell editor pkgs memory"
 export PF_COL1=5
 export PF_COL3=5
 export TERM="xterm-256color"                      # getting proper colors
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export XAUTHORITY="$HOME/.config/X11/.Xauthority"
 ##export EDITOR="vim -t -a ''"              # $EDITOR use Emacs in terminal
 ##export VISUAL="vim -c -a vim"           # $VISUAL use Emacs in GUI mode
 
@@ -31,7 +35,7 @@ export PATH=/opt/wine-osu/bin:~/.cargo/bin:$PATH
 
 #source ~/git/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-HISTFILE=~/.histfile
+HISTFILE=~/.cache/zsh/history
 HISTSIZE=500
 
 SAVEHIST=1000
@@ -49,6 +53,9 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
+# edit line in vim buffer
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
@@ -74,8 +81,6 @@ bindkey -s '^N' 'nvim\n'
 #RPROMPT='[%F{yellow}%?%f]'
 autoload -U colors && colors
 PS1="%B%{$fg[blue]%}[%{$fg[magenta]%}%n%{$fg[blue]%}@%{$fg[magenta]%}%M %{$fg[blue]%}%~%{$fg[blue]%}]%{$reset_color%}$%b "
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=054,underline"
 
 ### PATH
 if [ -d "$HOME/.bin" ] ;
@@ -117,6 +122,9 @@ alias ls="ls -Av --color=auto"
 alias nsxiv="devour nsxiv"
 alias mupdf="devour mupdf"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
+alias mocp="ncmpcpp"
+alias startx="startx $XINITRC"
+alias wiki="nvim ~/vimwiki/index.wiki"
 #neofetch
 pfetch
 #acpi
@@ -126,7 +134,5 @@ pfetch
 
 
 # Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
-

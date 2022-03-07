@@ -8,7 +8,7 @@ window:
   opacity: 0.95
   padding:
     x: 6
-    y: 10
+    y: 7
 
     dynamic_padding:  true
     decoration: none
@@ -16,17 +16,21 @@ window:
 font:
   normal:
     family: JetBrains Mono Nerd Font #Iosevka Nerd Font
+#
+#  bold:
+#    family: JetBrains Mono Nerd Font
+#
+#  italic:
+#    family: JetBrains Mono Nerd Font  #Iosevka Nerd Font
+#
+#  bold_italic:
+#    family: JetBrains Mono Nerd Font  #Iosevka Nerd Font
 
-  bold:
-    family: JetBrains Mono Nerd Font 
+  size: 11
 
-  italic:
-    family: JetBrains Mono Nerd Font  #Iosevka Nerd Font
-
-  bold_italic:
-    family: JetBrains Mono Nerd Font  #Iosevka Nerd Font
-
-  size: 10.5
+  offset:
+    x: -1
+    y: -2
 
 colors:
   # Default colors
@@ -85,7 +89,7 @@ cursor:
 #   unfocused_hollow: false
 
 live_config_reload: true
-                 
+
 key_bindings:
 
   - { key: Key0, mods: Control, action: ResetFontSize }
