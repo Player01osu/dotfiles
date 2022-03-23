@@ -4,6 +4,8 @@
 export XINITRC="$HOME/.config/X11/.xinitrc"
 export VISUAL="nvim"
 export EDITOR="nvim"
+export BRUHPC="bruh@192.168.1.82"
+export PLAYERPC="player01@192.168.1.66"
 export SHELL="zsh"
 export ZDOTDIR="$HOME/.config/zsh"
 export PF_INFO="ascii title os kernel shell editor pkgs memory"
@@ -44,7 +46,7 @@ unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/bruh/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -53,14 +55,11 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# edit line in vim buffer
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
 
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
+    lfub -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
         dir="$(cat "$tmp")"
         rm -f "$tmp"
@@ -71,7 +70,10 @@ bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^P' 'lazygit\n'
 
-bindkey -s '^N' 'nvim\n'
+bindkey -s '^N' 'nvim -c "Telescope oldfiles"\n'
+#bindkey -s '^N' 'nvim -c "Telescope find_files"\n'
+
+bindkey -s '^W' 'wiki\n'
 
 # Prompt ZSH
 #autoload -Uz promptinit
@@ -81,6 +83,8 @@ bindkey -s '^N' 'nvim\n'
 #RPROMPT='[%F{yellow}%?%f]'
 autoload -U colors && colors
 PS1="%B%{$fg[blue]%}[%{$fg[magenta]%}%n%{$fg[blue]%}@%{$fg[magenta]%}%M %{$fg[blue]%}%~%{$fg[blue]%}]%{$reset_color%}$%b "
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=054,underline"
 
 ### PATH
 if [ -d "$HOME/.bin" ] ;
@@ -117,16 +121,22 @@ alias xinitrc="nvim ~/.xinitrc"
 alias codef="cd ~/Documents/code"
 alias todo="nvim ~/todo.md"
 alias vi="nvim"
-alias l="ls -Ao1v --color=auto"
-alias ls="ls -Av --color=auto"
+#alias l="ls -Ao1vh --color=auto"
+alias l="exa -a1 --icons"
+alias ls="exa -a --icons"
+#alias ls="ls -Av --color=auto"
 alias nsxiv="devour nsxiv"
 alias mupdf="devour mupdf"
+alias zathura="devour zathura"
+alias invert="convert -channel RGB -negate"
+alias n="nsxiv . -t"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
 alias mocp="ncmpcpp"
+alias lf="lfub"
 alias startx="startx $XINITRC"
 alias wiki="nvim ~/vimwiki/index.wiki"
 #neofetch
-pfetch
+#pfetch
 #acpi
 
 
@@ -134,5 +144,4 @@ pfetch
 
 
 # Load zsh-syntax-highlighting; should be last.
-#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

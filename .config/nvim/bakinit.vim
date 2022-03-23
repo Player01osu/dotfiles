@@ -19,6 +19,8 @@ set incsearch
 set number relativenumber
 set termguicolors
 set scrolloff=13
+set sidescrolloff=10
+set splitbelow
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
@@ -42,6 +44,12 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'markdown', 'vim
 let g:markdown_syntax_conceal = 0
 let g:markdown_minlines = 98
 
+" Netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 20
+
     set nocompatible
     if has("autocmd")
       filetype plugin indent on
@@ -53,20 +61,17 @@ let g:markdown_minlines = 98
 "                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Key mappings
-map <C-B> :vs<CR>:Ntree<CR>
-map <C-N> :q!<CR>
+map <C-B> :Lexplore<CR>
 map <C-H> :Goyo<CR>
 map <C-K> :CocEnable<CR>
 map <C-J> :CocDisable<CR>
-map <C-G> :colorscheme codedark<CR>
+map <C-N> :sp<CR>:resize 8<CR>:term<CR>i
 map <C-C> :colorscheme material<CR>
 map <C-T> :colorscheme default<CR>
-map <C-S> :colorscheme gruvbox<CR>
 map <C-L> :set wrap<CR>
 map <C-P> :set nowrap<CR>
 map <C-X> :noh<CR>
-map <C-_> :vimgrep
-map <C-W> :foldclose<CR>
+map <C-S> :foldclose<CR>
 map <C-Q> :foldopen<CR>
 map <leader>i zzi
 map <leader>I zzI
@@ -113,22 +118,22 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " Pretty
 Plug 'ap/vim-css-color'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/goyo.vim'
-Plug 'tomasiser/vim-code-dark'
-Plug 'morhetz/gruvbox'
 Plug 'marko-cerovac/material.nvim'
 
 call plug#end()
+
+let g:material_terminal_italics = 1
+let g:material_style = "deep ocean"
+colorscheme material
 
 lua << END
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = 'material',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -154,8 +159,6 @@ require('lualine').setup {
   extensions = {}
 }
 END
-
-colorscheme material
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {

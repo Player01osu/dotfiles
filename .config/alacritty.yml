@@ -7,8 +7,8 @@ env:
 window:
   opacity: 0.95
   padding:
-    x: 6
-    y: 7
+    x: 1
+    y: 1
 
     dynamic_padding:  true
     decoration: none
@@ -26,16 +26,18 @@ font:
 #  bold_italic:
 #    family: JetBrains Mono Nerd Font  #Iosevka Nerd Font
 
-  size: 11
+  size: 12
 
   offset:
-    x: -1
-    y: -2
+    x: 0
+    y: -1
 
 colors:
   # Default colors
   primary:
-    background: '0x181a20'
+    #background: '0x181a20'
+    background: '0x0F111A'
+    #background: '0x06060a'
     foreground: '0xeeffff'
 
   # Colors the cursor will use if `custom_cursor_colors` is true

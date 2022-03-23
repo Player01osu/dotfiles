@@ -1,9 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/bruh/git/just-dotfiles
+- /home/bruh/.config/suckless/dwm-fork
 - /home/bruh/Documents/code/c/gpa-calc
 - /home/bruh/Documents/code/c/rpsv2
-- /home/bruh/.config/suckless/dwm-fork
 - /home/bruh/Documents/code/c/shaw256test
 - /home/bruh/Documents/code/c/guessing_game
 startuppopupversion: 5
