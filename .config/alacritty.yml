@@ -1,7 +1,6 @@
 #Alacritty:
 
 env:
-  #TERM: alacritty
   TERM: xterm-256color
 
 window:
@@ -12,7 +11,6 @@ window:
 
     dynamic_padding:  true
     decoration: none
-    #opacity: 0.7
 font:
   normal:
     family: JetBrains Mono Nerd Font #Iosevka Nerd Font
@@ -32,51 +30,99 @@ font:
     x: 0
     y: -1
 
+draw_bold_text_with_bright_colors: true
+
+################################################
+
+
+# Colors
 colors:
   # Default colors
   primary:
-    #background: '0x181a20'
-    background: '0x0F111A'
-    #background: '0x06060a'
-    foreground: '0xeeffff'
+    background:        '#090909'
+    foreground:        '#b2b2b2'
+    bright_foreground: '#eeeeee'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
+  # Cursor colors
   cursor:
-    text: '0x212121'
-    cursor: '0xeeffff'
+    text:   '#080808'
+    cursor: '#9e9e9e'
+
+  # Selection colors
+  selection:
+    text:       '#080808'
+    background: '#b2ceee'
 
   # Normal colors
   normal:
-    black:   '0x212121'
-    red:     '0xf07178'
-    green:   '0xc3e88d'
-    yellow:  '0xffcb6b'
-    blue:    '0x82aaff'
-    magenta: '0xc792ea'
-    cyan:    '0x89ddff'
-    white:   '0xeeffff'
+    black:   '#323437'
+    red:     '#ff5454'
+    green:   '#8cc85f'
+    yellow:  '#e3c78a'
+    blue:    '#80a0ff'
+    magenta: '#d183e8'
+    cyan:    '#89ddff'
+    white:   '#c6c6c6'
 
   # Bright colors
   bright:
-    black:   '0x4a4a4a'
-    red:     '0xf07178'
-    green:   '0xc3e88d'
-    yellow:  '0xffcb6b'
-    blue:    '0x82aaff'
-    magenta: '0xc792ea'
-    cyan:    '0x89ddff'
-    white:   '0xffffff'
+    black:   '#949494'
+    red:     '#ff5189'
+    green:   '#36c692'
+    yellow:  '#c2c292'
+    blue:    '#74b2ff'
+    magenta: '#ae81ff'
+    cyan:    '#89ddff'
+    white:   '#e4e4e4'
 
-  indexed_colors:
-    - { index: 16, color: '0xf78c6c' }
-    - { index: 17, color: '0xff5370' }
-    - { index: 18, color: '0x303030' }
-    - { index: 19, color: '0x353535' }
-    - { index: 20, color: '0xb2ccd6' }
-    - { index: 21, color: '0xeeffff' }
 
-      #background_opacity: 0.7
-#opacity: 0.7
+########################################
+
+
+  #colors:
+  #  # Default colors
+  #  primary:
+  #    #background: '0x10121B' # Material
+  #    background: '0x090909' # Moonfly
+  #    foreground: '0xeeffff'
+  #
+  #  # Colors the cursor will use if `custom_cursor_colors` is true
+  #  cursor:
+  #    text: '0x212121'
+  #    cursor: '0xeeffff'
+  #
+  #  # Normal colors
+  #  normal:
+  #    black:   '0x212121'
+  #    red:     '0xf07178'
+  #    green:   '0xc3e88d'
+  #    yellow:  '0xffcb6b'
+  #    blue:    '0x82aaff'
+  #    magenta: '0xc792ea'
+  #    cyan:    '0x89ddff'
+  #    white:   '0xeeffff'
+  #
+  #  # Bright colors
+  #  bright:
+  #    black:   '0x4a4a4a'
+  #    red:     '0xf07178'
+  #    green:   '0xc3e88d'
+  #    yellow:  '0xffcb6b'
+  #    blue:    '0x82aaff'
+  #    magenta: '0xc792ea'
+  #    cyan:    '0x89ddff'
+  #    white:   '0xffffff'
+  #
+  #  indexed_colors:
+  #    - { index: 16, color: '0xf78c6c' }
+  #    - { index: 17, color: '0xff5370' }
+  #    - { index: 18, color: '0x303030' }
+  #    - { index: 19, color: '0x353535' }
+  #    - { index: 20, color: '0xb2ccd6' }
+  #    - { index: 21, color: '0xeeffff' }
+
+
+#######################################################
 
 cursor:
   # Cursor style

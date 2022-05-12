@@ -74,10 +74,35 @@ _G.packer_plugins = {
     path = "/home/bruh/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["coc.nvim"] = {
+  ["bufferline.nvim"] = {
     loaded = true,
-    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/coc.nvim",
-    url = "https://github.com/neoclide/coc.nvim"
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -85,9 +110,24 @@ _G.packer_plugins = {
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["goyo.vim"] = {
-    loaded = true,
-    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/goyo.vim",
+    commands = { "Goyo" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/opt/goyo.vim",
     url = "https://github.com/junegunn/goyo.vim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -99,10 +139,35 @@ _G.packer_plugins = {
     path = "/home/bruh/.local/share/nvim/site/pack/packer/start/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
+  neoformat = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/neoformat",
+    url = "https://github.com/sbdchd/neoformat"
+  },
+  ["nlsp-settings.nvim"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",
+    url = "https://github.com/tamago324/nlsp-settings.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/bruh/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -130,8 +195,10 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["rust-tools.nvim"] = {
-    loaded = true,
-    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/opt/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
   tabular = {
@@ -145,9 +212,16 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-markdown"] = {
-    loaded = true,
-    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/vim-markdown",
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/opt/vim-markdown",
     url = "https://github.com/preservim/vim-markdown"
+  },
+  ["vim-moonfly-colors"] = {
+    loaded = true,
+    path = "/home/bruh/.local/share/nvim/site/pack/packer/start/vim-moonfly-colors",
+    url = "https://github.com/bluz71/vim-moonfly-colors"
   },
   vimwiki = {
     config = { "\27LJ\2\n4\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\0\0=\1\2\0K\0\1\0\23vimwiki_global_ext\6g\bvim\0" },
@@ -162,6 +236,41 @@ time([[Defining packer_plugins]], false)
 time([[Config for vimwiki]], true)
 try_loadstring("\27LJ\2\n4\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\0\0=\1\2\0K\0\1\0\23vimwiki_global_ext\6g\bvim\0", "config", "vimwiki")
 time([[Config for vimwiki]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+time([[Defining lazy-load commands]], false)
+
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType bash ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "bash" }, _G.packer_plugins)]]
+vim.cmd [[au FileType conf ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "conf" }, _G.packer_plugins)]]
+vim.cmd [[au FileType java ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "java" }, _G.packer_plugins)]]
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "lua" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust-tools.nvim', 'indent-blankline.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rs ++once lua require("packer.load")({'rust-tools.nvim'}, { ft = "rs" }, _G.packer_plugins)]]
+vim.cmd [[au FileType md ++once lua require("packer.load")({'vim-markdown', 'goyo.vim'}, { ft = "md" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-markdown', 'goyo.vim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType sh ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "sh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType vimwiki ++once lua require("packer.load")({'goyo.vim'}, { ft = "vimwiki" }, _G.packer_plugins)]]
+vim.cmd [[au FileType wiki ++once lua require("packer.load")({'goyo.vim'}, { ft = "wiki" }, _G.packer_plugins)]]
+vim.cmd [[au FileType json ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "json" }, _G.packer_plugins)]]
+vim.cmd [[au FileType zsh ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "zsh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType js ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cs ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "cs" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'indent-blankline.nvim'}, { ft = "html" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /home/bruh/.local/share/nvim/site/pack/packer/opt/vim-markdown/ftdetect/markdown.vim]], true)
+vim.cmd [[source /home/bruh/.local/share/nvim/site/pack/packer/opt/vim-markdown/ftdetect/markdown.vim]]
+time([[Sourcing ftdetect script at: /home/bruh/.local/share/nvim/site/pack/packer/opt/vim-markdown/ftdetect/markdown.vim]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

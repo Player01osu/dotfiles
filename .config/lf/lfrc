@@ -1,9 +1,11 @@
 #set icons
+set shell dash
 set ignorecase true
 set preview true
 set scrolloff 20
 set icons
 set hidden
+set mouse
 #cmd open $nvim $fx
 
 set cleaner '~/.config/lf/cleaner'
