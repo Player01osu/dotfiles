@@ -44,7 +44,6 @@ return packer.startup(function(use)
   use {
   "wbthomason/packer.nvim" -- Have packer manage itself
   }
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 
   -- markdown/vimwiki
   use {
@@ -83,6 +82,9 @@ return packer.startup(function(use)
   use{
     'hrsh7th/cmp-nvim-lsp',
   }
+
+  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+
   use{
     'simrat39/rust-tools.nvim',
     ft = { "rust", "rs" }
@@ -98,6 +100,8 @@ return packer.startup(function(use)
   -- Colorscheme
   use "marko-cerovac/material.nvim"
   use "bluz71/vim-moonfly-colors"
+  use "yonlu/omni.vim"
+  use "sainnhe/edge"
 
   -- Goyo
   use{

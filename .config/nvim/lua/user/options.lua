@@ -31,15 +31,19 @@ vim.g.markdown_minlines = 98
 vim.g.material_terminal_italics = 1
 vim.g.material_style = "deep ocean"
 vim.g.moonflyTransparent = 1
+vim.g.edge_style = 'neon'
+vim.g.edge_better_performance = 1
+vim.g.edge_transparent_background = 1
 
 vim.cmd([[
   set laststatus=3
-  colorscheme moonfly
   highlight CocFloating ctermbg=1 guibg=Black
   highlight CocErrorFloat ctermfg=1 guibg=Black
   highlight Pmenu ctermfg=1 guibg=Black
   highlight Todo ctermfg=0 guibg=None guifg=#de935f
   highlight WinSeperator guibg=None
+  colorscheme edge
+  let g:vimwiki_list = [{'path':'~/.local/share/wiki', 'path_html':'~/.local/share/wiki_html/'}]
   ]])
 -- autocmd
 vim.cmd([[
