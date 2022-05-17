@@ -60,6 +60,6 @@ vim.cmd([[
   "format on save
   autocmd BufWritePre * %s/\s\+$//e
   "autocmd BufWritePre * :Neoformat
-  autocmd BufWritePost todo.wiki !kill -46 "$(pidof "${STATUSBAR:-dwmblocks}")"
+  autocmd BufWritePost todo.wiki silent !kill -46 "$(pidof "${STATUSBAR:-dwmblocks}")"
   " command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 ]])
