@@ -34,6 +34,8 @@ vim.g.moonflyTransparent = 1
 vim.g.edge_style = 'neon'
 vim.g.edge_better_performance = 1
 vim.g.edge_transparent_background = 1
+vim.g.vimtex_view_method = 'zathura'
+
 
 vim.cmd([[
   set laststatus=3
@@ -43,14 +45,15 @@ vim.cmd([[
   highlight Todo ctermfg=0 guibg=None guifg=#de935f
   highlight WinSeperator guibg=None
   colorscheme edge
-  let g:vimwiki_list = [{'path':'~/.local/share/wiki', 'path_html':'~/.local/share/wiki_html/'}]
+  let g:vimwiki_list = [{'path':'~/Documents/wiki', 'path_html':'~/Documents/wiki_html/'}]
   ]])
 -- autocmd
 vim.cmd([[
   file
-  autocmd FileType md,vimwiki,wiki,markdown set tabstop=4 softtabstop=4 shiftwidth=4 nonumber norelativenumber nocursorline
-  autocmd FileType md,vimwiki,wiki,markdown map j gj
-  autocmd FileType md,vimwiki,wiki,markdown map k gk
+  autocmd FileType latex,tex,md,vimwiki,wiki,markdown set tabstop=4 softtabstop=4 shiftwidth=4 nonumber norelativenumber nocursorline
+  autocmd FileType latex,tex,md,vimwiki,wiki,markdown map j gj
+  autocmd FileType latex,tex,md,vimwiki,wiki,markdown map k gk
+  autocmd FileType latex,tex TSDisable highlight
   autocmd BufRead * autocmd FileType <buffer> ++once
   \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
 

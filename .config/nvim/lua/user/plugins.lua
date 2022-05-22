@@ -58,6 +58,10 @@ return packer.startup(function(use)
     ft = { "md", "markdown" }-- Markdown folding and indent
   }
   use "godlygeek/tabular"
+  use{
+    'lervag/vimtex',
+    ft = { "tex", "latex" }
+  }
 
   -- cmp plugins
   use{
