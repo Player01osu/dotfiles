@@ -32,6 +32,9 @@ keymap("n", "<leader>i", "zzi", opts)
 keymap("n", "<leader>I", "zzI", opts)
 keymap("n", "<leader>gg", ":LazyGit<CR>", opts)
 
+keymap("n", "<leader>h", ":bp<CR>", opts)
+keymap("n", "<leader>l", ":bn<CR>", opts)
+
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
