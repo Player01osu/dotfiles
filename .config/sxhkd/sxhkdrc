@@ -1,11 +1,9 @@
 
-#alt + t ; {h,j,d,p,s,n}
-#	{alacritty -e btop,firefox &,LIBVA_DRIVER_NAME=i915 discord --enable-gpu-rasterization &,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
+# start clients
 alt + t ; {h,j,d,p,s,n}
 	{alacritty -e btop,firefox &,ripcord &,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
-#alt + t ; {h,j,d,p,s,n}
-#  {alacritty -e btop,qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=4 --qt-flag enable-features=VaapiVideoDecoder --qt-flag enable-accelerated-video-decode --qt-flag use-gl=egl &,ripcord,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
-2
+
+# restart clients
 alt + r ; {p,s,d,m}
     {~/.local/bin/rpipe,~/.local/bin/rkd,rdblk,rpd}
 
