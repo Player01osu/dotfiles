@@ -45,6 +45,14 @@ return packer.startup(function(use)
   "wbthomason/packer.nvim" -- Have packer manage itself
   }
 
+  use {
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      },
+      tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+
   -- markdown/vimwiki
   use {
     'vimwiki/vimwiki', branch = "dev", --ft = { "wiki" },
