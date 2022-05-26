@@ -16,8 +16,11 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
+#nsrc () {
+#	nvim src/main* $(/usr/bin/ls -X src | tr '\n' ' ' | sed -e 's/ / src\//g' | sed -e 's/^/src\//' | sed -e 's/ src\/$//')
+#}
 nsrc () {
-	nvim src/main* $(/usr/bin/ls -X src | tr '\n' ' ' | sed -e 's/ / src\//g' | sed -e 's/^/src\//' | sed -e 's/ src\/$//')
+	nvim src/main* || nvim src/
 }
 
 c () {
@@ -86,6 +89,8 @@ alias wiki="nvim ~/Documents/wiki/index.wiki"
 alias svim="sudoedit"
 alias gbookmark="nvim ~/.local/share/bookmarks/bookmarks"
 alias bc="bc --mathlib"
+alias uncrustify="uncrustify -c ~/.config/uncrustify/uncrustify.cfg"
+alias rs="rsync -urvP"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

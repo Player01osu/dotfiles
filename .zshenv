@@ -14,6 +14,7 @@ export PF_COL3=5
 export READER="zathura"
 export SHELL="zsh"
 export TERM="xterm-256color"                      # getting proper colors
+export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify/uncrustify.cfg"
 export VISUAL="nvim"
 export WINEPREFIX="$HOME/.wine_osu" # This is the path to a hidden folder in your home folder.
 export WINEARCH=win32 # Only needed when executing the first command with that WINEPREFIX
