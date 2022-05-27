@@ -206,5 +206,3 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
-. "$HOME/.local/share/Cargo/env"
-. "/home/bruh/.local/share/Cargo/env"
