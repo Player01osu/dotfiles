@@ -20,7 +20,7 @@ _comp_options+=(globdots)		# Include hidden files.
 #	nvim src/main* $(/usr/bin/ls -X src | tr '\n' ' ' | sed -e 's/ / src\//g' | sed -e 's/^/src\//' | sed -e 's/ src\/$//')
 #}
 nsrc () {
-	nvim src/main* || nvim src/
+	nvim src/main* 2>/dev/null || nvim src/bin/main* 2>/dev/null || nvim src/
 }
 
 c () {
