@@ -3,6 +3,7 @@
 ### EXPORT
 #export LC_ALL
 
+export CARGO_HOME="$HOME/.local/share/Cargo"
 export EDITOR="nvim"
 export GNUPGHOME="$HOME/.local/share/gnupg"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..|lfcd|lfub|lf|l|exa|lazygit|n|nsxiv|mocp|doas|config|wiki|startx)"
@@ -11,6 +12,7 @@ export PASSWORD_STORE_DIR="$HOME/.local/share/pass"
 export PF_INFO="ascii title os kernel shell editor pkgs memory"
 export PF_COL1=5
 export PF_COL3=5
+export RUSTUP_HOME="$HOME/.local/share/Rustup"
 export READER="zathura"
 export SHELL="zsh"
 export TERM="xterm-256color"                      # getting proper colors
@@ -204,3 +206,5 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
+. "$HOME/.local/share/Cargo/env"
+. "/home/bruh/.local/share/Cargo/env"
