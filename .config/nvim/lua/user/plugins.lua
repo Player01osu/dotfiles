@@ -114,6 +114,7 @@ return packer.startup(function(use)
   use "bluz71/vim-moonfly-colors"
   use "yonlu/omni.vim"
   use "sainnhe/edge"
+  use "xiyaowong/nvim-transparent"
 
   -- Goyo
   use{
