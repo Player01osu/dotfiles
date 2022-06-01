@@ -22,6 +22,7 @@ set.tabstop = 8
 set.termguicolors = true
 set.wrap = false
 
+
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_browse_split = 4
@@ -46,6 +47,7 @@ vim.cmd([[
   highlight WinSeperator guibg=None
   colorscheme edge
   let g:vimwiki_list = [{'path':'~/Documents/wiki', 'path_html':'~/Documents/wiki_html/'}]
+  set shell=/bin/dash
   ]])
 -- autocmd
 vim.cmd([[
@@ -58,7 +60,7 @@ vim.cmd([[
   \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
 
   " Close Netrw if it's the only buffer open
-  autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
+  "autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "NvimTree" || &buftype == 'quickfix' |bd|endif
 
   "format on save
   autocmd BufWritePre * %s/\s\+$//e
