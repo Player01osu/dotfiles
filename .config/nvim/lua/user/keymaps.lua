@@ -12,17 +12,18 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Normal --
 
-keymap("n", "<C-B>", ":Lexplore<CR>", opts)
-keymap("n", "<C-H>", ":Goyo<CR>", opts)
+--keymap("n", "<C-B>", ":Lexplore<CR>", opts)
 --keymap("n", "<C-K>", ":CocEnable<CR>", opts)
 --keymap("n", "<C-J>", ":CocDisable<CR>", opts)
 --keymap("n", "<C-N>", ":sp<CR>:resize 8<CR>:term<CR>i", opts)
+keymap("n", "<C-B>", ":Goyo<CR>", opts)
 keymap("n", "<C-N>", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<C-L>", ":set wrap<CR>", opts)
 keymap("n", "<C-P>", ":set nowrap<CR>", opts)
 keymap("n", "<C-X>", ":noh<CR>", opts)
 keymap("n", "<C-S>", ":foldclose<CR>", opts)
 keymap("n", "<C-Q>", ":foldopen<CR>", opts)
+keymap("n", "<C-H>", ":bd<CR>", opts)
 keymap("n", "<leader>s", ":Neoformat<CR> :w<CR>", opts)
 keymap("n", "<leader>p", ":LspStop<CR>", opts)
 keymap("n", "<leader>o", ":LspStart<CR>", opts)
