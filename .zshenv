@@ -1,29 +1,34 @@
-
 # Lines configured by zsh-newuser-install
 ### EXPORT
 #export LC_ALL
+#export MOZ_ENABLE_WAYLAND=1
 
-export CARGO_HOME="$HOME/.local/share/Cargo"
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+export CARGO_HOME="$XDG_DATA_HOME"/Cargo
 export EDITOR="nvim"
-export GNUPGHOME="$HOME/.local/share/gnupg"
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..|lfcd|lfub|lf|l|exa|lazygit|n|nsxiv|mocp|doas|config|wiki|startx)"
 export MOZ_USE_XINPUT2=1
-export PASSWORD_STORE_DIR="$HOME/.local/share/pass"
+export PASSWORD_STORE_DIR="XDG_DATA_HOME"/pass
 export PF_INFO="ascii title os kernel shell editor pkgs memory"
 export PF_COL1=5
 export PF_COL3=5
-export RUSTUP_HOME="$HOME/.local/share/Rustup"
+export RUSTUP_HOME="$XDG_DATA_HOME"/Rustup
 export READER="zathura"
 export SHELL="zsh"
 export TERM="xterm-256color"                      # getting proper colors
-export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify/uncrustify.cfg"
+export UNCRUSTIFY_CONFIG="$HOME"/.config/uncrustify/uncrustify.cfg
 export VISUAL="nvim"
-export WINEPREFIX="$HOME/.wine_osu" # This is the path to a hidden folder in your home folder.
 export WINEARCH=win32 # Only needed when executing the first command with that WINEPREFIX
-export XAUTHORITY="$HOME/.config/X11/.Xauthority"
+export XAUTHORITY="$HOME"/.config/X11/.Xauthority
+export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
-export XINITRC="$HOME/.config/X11/.xinitrc"
-export ZDOTDIR="$HOME/.config/zsh"
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_STATE_HOME="$HOME"/.local/state
+export XINITRC="$HOME"/.config/X11/.xinitrc
+export ZDOTDIR="$HOME"/.config/zsh
+export _Z_DATA="$XDG_DATA_HOME"/z
 
 # Arch Linux/wine-osu users should uncomment next line
 # to update PATH to make sure we're using the right Wine binary
