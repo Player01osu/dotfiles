@@ -1,4 +1,3 @@
-export MOZ_ENABLE_WAYLAND=1
 
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=500
@@ -13,7 +12,7 @@ zstyle :compinstall filename '/home/bruh/.zshrc'
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)		# Include hidden files.
 
 #nsrc () {
@@ -75,8 +74,8 @@ alias xinitrc="nvim ~/.xinitrc"
 alias codef="cd ~/Documents/code"
 alias todo="nvim ~/Documents/wiki/todo.wiki"
 alias vi="nvim"
-alias l="exa -a1 --icons"
-alias ls="exa -a --icons"
+alias l="exa -a1 --icons --sort=type"
+alias ls="exa -a --icons --sort=type"
 alias nsxiv="devour nsxiv"
 alias mupdf="devour mupdf"
 alias zathura="devour zathura"
@@ -91,6 +90,7 @@ alias gbookmark="nvim ~/.local/share/bookmarks/bookmarks"
 alias bc="bc --mathlib"
 alias uncrustify="uncrustify -c ~/.config/uncrustify/uncrustify.cfg"
 alias rs="rsync -urvP"
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias yta="yt-dlp -x --audio-format mp3"
 
 # Load zsh-syntax-highlighting; should be last.
