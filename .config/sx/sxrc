@@ -1,3 +1,5 @@
+#!/bin/sh
+
 ~/.local/bin/autostartsh
 
 #exec openbox
