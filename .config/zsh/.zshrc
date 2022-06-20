@@ -73,6 +73,9 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
+source $HOME/.local/bin/proj-jump.sh
+
 bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^P' 'lazygit\n'
@@ -81,13 +84,15 @@ bindkey -s '^N' 'nvim -c "Telescope oldfiles"\n'
 
 bindkey -s '^W' 'wiki\n'
 
+bindkey -s '^k' 'pulsemixer\n'
+
 # Prompt ZSH
 autoload -U colors && colors
 PS1="%B%{$fg[cyan]%}%~%{$fg[magenta]%} ❯ %{$reset_color%}%b"
 PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
 
 alias bluetooth="bluetoothctl"
-alias getweather="curl wttr.in/west+bloomfield+township/\?m && cal && date"
+alias getweather="curl wttr.in/west+bloomfield+township\?m && cal && date"
 alias cbonsair="cbonsai --seed 119"
 alias offon="doas loginctl reboot"
 alias offnow="doas loginctl poweroff"
@@ -125,8 +130,11 @@ alias gbookmark="nvim ~/.local/share/bookmarks/bookmarks"
 alias bc="bc --mathlib"
 alias uncrustify="uncrustify -c ~/.config/uncrustify/uncrustify.cfg"
 alias rs="rsync -urvP"
-alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias yta="yt-dlp -x --audio-format mp3"
+alias pm="pulsemixer"
+alias src="source ~/.config/zsh/.zshrc"
+alias xmon="xrandr --output HDMI-A-0 --primary --left-of eDP"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
