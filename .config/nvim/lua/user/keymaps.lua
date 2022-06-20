@@ -9,13 +9,12 @@ local keymap = vim.api.nvim_set_keymap
 -- term_mode = "t",
 -- command_mode = "c",
 
+-- Leader Key
+vim.g.mapleader = " "
 
 -- Normal --
-
---keymap("n", "<C-B>", ":Lexplore<CR>", opts)
 --keymap("n", "<C-K>", ":CocEnable<CR>", opts)
 --keymap("n", "<C-J>", ":CocDisable<CR>", opts)
---keymap("n", "<C-N>", ":sp<CR>:resize 8<CR>:term<CR>i", opts)
 keymap("n", "<C-B>", ":Goyo<CR>", opts)
 keymap("n", "<C-N>", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<C-L>", ":set wrap<CR>", opts)
@@ -33,6 +32,8 @@ keymap("n", "<leader>A", "zzA", opts)
 keymap("n", "<leader>i", "zzi", opts)
 keymap("n", "<leader>I", "zzI", opts)
 keymap("n", "<leader>gg", ":LazyGit<CR>", opts)
+keymap("n", "<leader>H", ":set signcolumn=yes:9<CR>", opts)
+keymap("n", "<leader>J", ":set signcolumn=yes:2<CR>", opts)
 
 keymap("n", "<leader>h", ":bp<CR>", opts)
 keymap("n", "<leader>l", ":bn<CR>", opts)
