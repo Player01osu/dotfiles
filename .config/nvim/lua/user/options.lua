@@ -7,9 +7,11 @@ set.confirm = true
 set.cursorline = true
 set.completeopt = { "menuone", "noselect", "noinsert" }
 set.expandtab = false
+set.hidden = true
+set.signcolumn = "yes:2"
 set.incsearch = true
 set.laststatus = 3
-set.mouse = "a"
+--set.mouse = "a"
 set.nu = true
 set.number = true
 set.relativenumber = true
@@ -52,7 +54,7 @@ vim.cmd([[
 -- autocmd
 vim.cmd([[
   file
-  autocmd FileType latex,tex,md,vimwiki,wiki,markdown set tabstop=4 softtabstop=4 shiftwidth=4 nonumber norelativenumber nocursorline
+  autocmd FileType latex,tex,md,vimwiki,wiki,markdown set tabstop=4 softtabstop=4 shiftwidth=4 nonumber norelativenumber nocursorline signcolumn=yes:1
   autocmd FileType latex,tex,md,vimwiki,wiki,markdown map j gj
   autocmd FileType latex,tex,md,vimwiki,wiki,markdown map k gk
   autocmd FileType latex,tex TSDisable highlight

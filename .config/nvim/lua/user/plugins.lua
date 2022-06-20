@@ -115,6 +115,7 @@ return packer.startup(function(use)
   use "yonlu/omni.vim"
   use "sainnhe/edge"
   use "xiyaowong/nvim-transparent"
+  use "lukas-reineke/onedark.nvim"
 
   -- Goyo
   use{
@@ -134,6 +135,10 @@ return packer.startup(function(use)
   use {
     "lukas-reineke/indent-blankline.nvim",
     ft = { "lua", "rust", "c", "cpp", "cs", "js", "json", "html", "sh", "zsh", "bash", "conf", "java" }
+  }
+
+  use {
+	"tpope/vim-fugitive"
   }
 
   -- LSP
@@ -159,6 +164,8 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+
+  use 'lewis6991/impatient.nvim'
 
   -- Coc
   -- use {
