@@ -172,8 +172,6 @@ return packer.startup(function(use)
   --   "neoclide/coc.nvim", branch = "release",
   --   ft = { "lua", "rust", "c", "cpp", "cs", "js", "json", "html", "sh", "zsh", "bash", "conf", "java" }
   -- }
-  --use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  --use "dense-analysis/ale"
 
 
   -- Put this at the end after all plugins
