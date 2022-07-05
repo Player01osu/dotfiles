@@ -91,6 +91,7 @@ alias gbookmark="nvim ~/.local/share/bookmarks/bookmarks"
 alias bc="bc --mathlib"
 alias uncrustify="uncrustify -c ~/.config/uncrustify/uncrustify.cfg"
 alias rs="rsync -urvP"
+alias yta="yt-dlp -x --audio-format mp3"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
