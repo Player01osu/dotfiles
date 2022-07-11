@@ -29,14 +29,9 @@ font:
 
 draw_bold_text_with_bright_colors: true
 
-################################################
-
-
 # Colors
 colors:
 
-
-#=====================================================
 
 
   Material: &Material
@@ -82,9 +77,6 @@ colors:
       - { index: 21, color: '0xeeffff' }
 
 
-#=====================================================
-
-
   moonfly:  &moonfly
   # Default colors
   primary:
@@ -125,8 +117,6 @@ colors:
     white:   '#e4e4e4'
 
 
-#=====================================================
-
 
   edge_dark_neon:  &edge_dark_neon
     # Colors
@@ -155,7 +145,6 @@ colors:
       white: "0xc5cdd9"
 
 
-#=====================================================
 
 
     catppuccin_mocha: &catppuccin_mocha
