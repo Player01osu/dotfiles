@@ -134,7 +134,7 @@ alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias yta="yt-dlp -x --audio-format mp3"
 alias pm="pulsemixer"
 alias src="source ~/.config/zsh/.zshrc"
-alias xmon="xrandr --output HDMI-A-0 --primary --left-of eDP"
+alias xmon="xrandr --output HDMI-A-0 --primary --left-of eDP && sleep 1 && hsetroot -cover ~/Pictures/wallpapers/wp.jpg && krepeat"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
