@@ -12,7 +12,7 @@ configs.setup {
   },
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = { "" }, -- list of language that will be disabled
+    disable = { "tex", "latex" }, -- broken on tex files for some reason
     additional_vim_regex_highlighting = false,
   },
   indent = { enable = true, disable = { "yaml" } },

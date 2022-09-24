@@ -1,7 +1,7 @@
 
 # start clients
 alt + t ; {h,j,d,p,s,n}
-	{alacritty -e btop,firefox &,ripcord &,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
+	{alacritty -e btop,firefox-developer-edition &,ripcord &,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
 
 # restart clients
 alt + r ; {p,s,d,m}
