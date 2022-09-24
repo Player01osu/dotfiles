@@ -1,4 +1,3 @@
-
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=500
 
@@ -15,9 +14,6 @@ zmodload zsh/complist
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)		# Include hidden files.
 
-#nsrc () {
-#	nvim src/main* $(/usr/bin/ls -X src | tr '\n' ' ' | sed -e 's/ / src\//g' | sed -e 's/^/src\//' | sed -e 's/ src\/$//')
-#}
 nsrc () {
 	nvim src/main* 2>/dev/null || nvim src/bin/main* 2>/dev/null || nvim src/
 }
@@ -53,11 +49,11 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[4 q"
+    echo -ne "\e[2 q"
 }
 zle -N zle-line-init
-echo -ne '\e[4 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[4 q' ;} # Use beam shape cursor for each new prompt.
+echo -ne '\e[2 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[2 q' ;} # Use beam shape cursor for each new prompt.
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -80,7 +76,7 @@ bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^P' 'lazygit\n'
 
-bindkey -s '^N' 'nvim -c "Telescope oldfiles"\n'
+bindkey -s '^N' 'nvim -c ":Ex"\n'
 
 bindkey -s '^W' 'wiki\n'
 
@@ -135,7 +131,13 @@ alias yta="yt-dlp -x --audio-format mp3"
 alias pm="pulsemixer"
 alias src="source ~/.config/zsh/.zshrc"
 alias xmon="xrandr --output HDMI-A-0 --primary --left-of eDP && sleep 1 && hsetroot -cover ~/Pictures/wallpapers/wp.jpg && krepeat"
+alias xmonsame="xrandr --auto && xrandr --output HDMI-A-0 --same-as eDP && sleep 1 && hsetroot -cover ~/Pictures/wallpapers/wp.jpg && krepeat"
+alias hsetwall="hsetroot -cover ~/Pictures/wallpapers/wp.jpg"
+alias mongod="doas -u mongodb mongod --config /etc/mongodb.conf"
+alias Ex="nvim -c ':Ex'"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 . /usr/share/z/z.sh
+
+source /home/bruh/.config/broot/launcher/bash/br
