@@ -9,7 +9,7 @@ require "user.lualine"
 require "user.mason"
 require "user.options"
 require "user.plugins"
-require "user.telescope"
+--require "user.telescope"
 require "user.treesitter"
 
 vim.cmd([[

@@ -43,7 +43,7 @@ function zle-keymap-select {
        [[ ${KEYMAP} == viins ]] ||
        [[ ${KEYMAP} = '' ]] ||
        [[ $1 = 'beam' ]]; then
-    echo -ne '\e[4 q'
+    echo -ne '\e[2 q'
   fi
 }
 zle -N zle-keymap-select
@@ -104,7 +104,7 @@ alias vim="nvim"
 alias nano="nvim"
 alias dwm-conf="cd ~/gitclone/suckless/dwm && nvim ~/gitclone/suckless/dwm/config.h"
 alias osu-dir="cd ~/.local/share/osu-wine/OSU/"
-alias skool="cd ~/Documents/vimwiki/school/"
+alias skool="cd ~/Documents/wiki/school/"
 alias xinitrc="nvim ~/.xinitrc"
 alias codef="cd ~/Documents/code"
 alias todo="nvim ~/Documents/wiki/todo.wiki"
