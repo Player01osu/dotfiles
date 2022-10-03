@@ -90,12 +90,6 @@ return packer.startup(function(use)
 	--use "marko-cerovac/material.nvim"
 	--use "yonlu/omni.vim"
 
-	-- Tabline --
-	--use {
-	--	'akinsho/bufferline.nvim',
-	--	requires = 'kyazdani42/nvim-web-devicons'
-	--}
-
 	-- Indent Blankline --
 	use {
 		"lukas-reineke/indent-blankline.nvim",
@@ -152,11 +146,6 @@ return packer.startup(function(use)
 		'simrat39/rust-tools.nvim',
 	}
 
-	--ft = { "rust", "rs" }
-	use {
-		'mfussenegger/nvim-dap'
-	}
-
 	-- Snippets --
 	use {
 		"L3MON4D3/LuaSnip" --snippet engine
@@ -180,10 +169,6 @@ return packer.startup(function(use)
 
 	-- Git --
 	use {
-		"kdheepak/lazygit.nvim"
-	}
-
-	use {
 		"tpope/vim-fugitive"
 	}
 
@@ -204,13 +189,6 @@ return packer.startup(function(use)
 	use {
 		'lewis6991/impatient.nvim'
 	}
-
-	-- Goyo --
-	--use{
-	--'junegunn/goyo.vim',
-	--  ft = { "vimwiki", "wiki", "md", "markdown" },
-	--  cmd = 'Goyo'
-	--}
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
