@@ -23,9 +23,9 @@ keymap("n", "<C-X>", ":noh<CR>", opts)
 
 vim.keymap.set(
 	'n',
-	'<leader>cmd',
+	'<leader>cj',
 	function()
-		if cmd_bid == nil or not vim.fn.bufexists(cmd_bid) then
+		if cmd_bid == nil or vim.fn.bufexists(cmd_bid) == 0 then
 			vim.cmd("term zsh")
 			vim.cmd("startinsert")
 			cmd_bid = vim.fn.bufnr()
