@@ -96,7 +96,8 @@ vim.cmd([[
 ]])
 
 -- Vimscript --
-vim.api.nvim_command("colorscheme edge")
+--vim.api.nvim_command("colorscheme edge")
+
 vim.cmd([[
   highlight CocErrorFloat ctermfg=1 guibg=Black
   highlight CocFloating ctermbg=1 guibg=Black
