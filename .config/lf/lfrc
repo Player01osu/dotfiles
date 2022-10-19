@@ -11,11 +11,15 @@ set mouse
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
 
+cmd cwp &{{
+	cwp $fx
+}}
+
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
 	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
-  text/*|application/json|inode/x-empty|application/wiki) $EDITOR $fx;;
+  text/*|application/json|inode/x-empty|application/wiki) $EDITOR "$fx";;
   *wiki) $EDITOR '$fx';;
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
