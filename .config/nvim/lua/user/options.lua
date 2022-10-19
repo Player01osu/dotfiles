@@ -23,6 +23,7 @@ set.nu             = true
 set.number         = true
 set.relativenumber = true
 set.shiftwidth     = 8
+set.showtabline    = 0
 set.signcolumn     = "yes:2"
 set.smartcase      = true
 set.splitbelow     = false
