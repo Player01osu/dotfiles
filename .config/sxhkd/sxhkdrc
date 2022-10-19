@@ -7,6 +7,10 @@ alt + t ; {h,j,d,p,s,n}
 alt + r ; {p,s,d,m}
     {~/.local/bin/rpipe,~/.local/bin/rkd,rdblk,rpd}
 
+# run scripts
+alt + s ; {l}
+	{browser_link_copy}
+
 # mpd control
 XF86AudioPlay
     playerctl --player=mpd play-pause
