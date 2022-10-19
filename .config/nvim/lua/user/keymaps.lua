@@ -72,7 +72,7 @@ keymap("n", "<leader>A", "zzA", opts)
 keymap("n", "<leader>I", "zzI", opts)
 keymap("n", "<leader>a", "zza", opts)
 keymap("n", "<leader>i", "zzi", opts)
-keymap("n", "<leader>gg", ":LazyGit<CR>", opts)
+keymap("n", "<leader>gg", ":tab G<CR>", opts)
 keymap("n", "<leader>H", ":set signcolumn=yes:9<CR>", opts)
 keymap("n", "<leader>J", ":set signcolumn=yes:2<CR>", opts)
 
