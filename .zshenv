@@ -10,6 +10,7 @@ export XDG_STATE_HOME="$HOME"/.local/state
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export CARGO_HOME="$XDG_DATA_HOME"/Cargo
 export DATABASE_URL="postgres://localhost:5432/forumDatabase"
+export DISPLAY=:1.0
 export EDITOR="nvim"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
