@@ -122,6 +122,15 @@ vim.keymap.set(
 
 vim.keymap.set(
 	'n',
+	'<leader>fr',
+	function()
+		require('telescope.builtin').lsp_references()
+	end,
+	opts
+)
+
+vim.keymap.set(
+	'n',
 	'<leader>fg',
 	function()
 		require('telescope.builtin').live_grep()
@@ -192,6 +201,7 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 keymap("v", "<C-J>", "<Esc>", opts)
 
 keymap("v", "<leader>y", "\"+y", opts)
+keymap("v", "<leader>Y", "\"+Y", opts)
 
 keymap("v", "<leader>d", "\"+d", opts)
 
