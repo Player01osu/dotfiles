@@ -16,6 +16,7 @@ font:
     family: JetBrains Mono Nerd Font #Iosevka Nerd Font
     #family: Fira Code Retina
 
+      #size: 10
   size: 10
 
   offset:
@@ -246,7 +247,7 @@ cursor:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    shape: Underline
+    shape: Block
 #   unfocused_hollow: false
 
 live_config_reload: true
