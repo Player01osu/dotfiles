@@ -1,23 +1,24 @@
 local fn = vim.fn
+local prog_lang = { "lua", "rust", "c", "cpp", "cs", "js", "json", "html", "sh", "zsh", "bash", "conf", "java" }
 
 -- Automatically install packer
- local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
- if fn.empty(fn.glob(install_path)) > 0 then
-   PACKER_BOOTSTRAP = fn.system {
-     "git",
-     "clone",
-     "--depth",
-     "1",
-     "https://github.com/wbthomason/packer.nvim",
-     install_path,
-   }
-   print "Installing packer close and reopen Neovim..."
-   vim.cmd [[packadd packer.nvim]]
- end
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	PACKER_BOOTSTRAP = fn.system {
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	}
+	print "Installing packer close and reopen Neovim..."
+	vim.cmd [[packadd packer.nvim]]
+end
 
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
- vim.cmd [[
+vim.cmd [[
    augroup packer_user_config
      autocmd!
      autocmd BufWritePost plugins.lua source <afile> | PackerSync
@@ -27,155 +28,217 @@ local fn = vim.fn
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-  return
+	return
 end
 
 -- Have packer use a popup window
 packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
+	display = {
+		open_fn = function()
+			return require("packer.util").float { border = "rounded" }
+		end,
+	},
 }
 -- Install your plugins here
 return packer.startup(function(use)
 
-  use {
-  "wbthomason/packer.nvim" -- Have packer manage itself
-  }
+	-- Plugin manager --
+	use {
+		"wbthomason/packer.nvim"
+	}
 
-  use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons', -- optional, for file icon
-      },
-      tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  }
+	-- Markdown --
+	use {
+		'vimwiki/vimwiki', branch = "dev", --ft = { "wiki" },
+		config = function()
+			vim.g["vimwiki_global_ext"] = 0
+		end
+	}
 
-  -- markdown/vimwiki
-  use {
-    'vimwiki/vimwiki', branch = "dev", --ft = { "wiki" },
-    config = function()
-      vim.g["vimwiki_global_ext"] = 0
-    end
-  }
+	use {
+		'preservim/vim-markdown',
+		ft = { "md", "markdown" } -- Markdown folding and indent
+	}
 
-  use{
-    'preservim/vim-markdown',
-    ft = { "md", "markdown" }-- Markdown folding and indent
-  }
-  use "godlygeek/tabular"
-  use{
-    'lervag/vimtex',
-    ft = { "tex", "latex" }
-  }
+	use {
+		"godlygeek/tabular"
+	}
 
-  -- cmp plugins
-  use{
-    'hrsh7th/nvim-cmp', -- The completion plugin
-  }
-  use{
-    'hrsh7th/cmp-buffer', -- buffer completions
-  }
+	use {
+		"nvim-neorg/neorg",
+		run = ":Neorg sync-parsers", -- This is the important bit!
+		config = function()
+			require('neorg').setup {
+				load = {
+					["core.defaults"] = {},
+					["core.norg.completion"] = {
+					   config = {
+						engine = "nvim-cmp"
+					   }
+					},
+					["core.norg.dirman"] = {
+						config = {
+							workspaces = {
+								home = "~/Documents/org",
+							}
+						}
+					}
+				}
+			}
 
+		end,
+		requires = "nvim-lua/plenary.nvim"
+	}
 
-  use{
-    'hrsh7th/cmp-path', -- path completions
-  }
+	use {
+		'lervag/vimtex',
+		ft = { "tex", "latex" }
+	}
 
-  use{
-    'hrsh7th/cmp-cmdline', -- cmdline completions
-  }
+	-- Formatter --
+	use {
+		"sbdchd/neoformat"
+	}
 
-  use{
-    'saadparwaiz1/cmp_luasnip', -- snippet completions
-  }
-  use{
-    'hrsh7th/cmp-nvim-lsp',
-  }
+	-- Lualine --
+	use {
+		"nvim-lualine/lualine.nvim"
+	}
 
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+	-- Colorscheme --
+	use {
+		"catppuccin/nvim",
+		as = "catppuccin",
+		config = function()
+			vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+			local colors = require("catppuccin.palettes").get_palette()
+			colors.none = "NONE"
+			require("catppuccin").setup {
+				custom_highlights = {
+					Comment = { fg = colors.overlay1 },
+					LineNr = { fg = colors.overlay1 },
+					CursorLine = { bg = colors.none },
+					CursorLineNr = { fg = colors.lavender },
+					DiagnosticVirtualTextError = { bg = colors.none },
+					DiagnosticVirtualTextWarn = { bg = colors.none },
+					DiagnosticVirtualTextInfo = { bg = colors.none },
+					DiagnosticVirtualTextHint = { bg = colors.none },
+				}
+			}
+			vim.api.nvim_command "colorscheme catppuccin"
+		end
+	}
 
-  use{
-    'simrat39/rust-tools.nvim',
-    ft = { "rust", "rs" }
-  }
+	use {
+		"sainnhe/edge"
+	}
 
-  -- formatter
-  use "sbdchd/neoformat"
+	--use "bluz71/vim-moonfly-colors"
+	--use "lukas-reineke/onedark.nvim"
+	--use "marko-cerovac/material.nvim"
+	--use "yonlu/omni.vim"
 
-  -- lua line
-  use "kyazdani42/nvim-web-devicons"
-  use "nvim-lualine/lualine.nvim"
+	-- Indent Blankline --
+	use {
+		"lukas-reineke/indent-blankline.nvim",
+		ft = prog_lang
+	}
 
-  -- Colorscheme
-  use "marko-cerovac/material.nvim"
-  use "bluz71/vim-moonfly-colors"
-  use "yonlu/omni.vim"
-  use "sainnhe/edge"
-  use "xiyaowong/nvim-transparent"
-  use "lukas-reineke/onedark.nvim"
+	-- LSP --
+	use {
+		'neovim/nvim-lspconfig' -- enable LSP
+	}
 
-  -- Goyo
-  use{
-  'junegunn/goyo.vim',
-    ft = { "vimwiki", "wiki", "md", "markdown" },
-    cmd = 'Goyo'
-  }
+	use {
+		"williamboman/mason.nvim"
+	}
 
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+	use {
+		"williamboman/mason-lspconfig.nvim"
+	}
 
-  -- tabline
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+	use {
+		'tamago324/nlsp-settings.nvim' -- language server settings defined in json for
+	}
 
-  -- indent blankline
-  use {
-    "lukas-reineke/indent-blankline.nvim",
-    ft = { "lua", "rust", "c", "cpp", "cs", "js", "json", "html", "sh", "zsh", "bash", "conf", "java" }
-  }
+	-- Completion plugins --
+	use {
+		'hrsh7th/nvim-cmp', -- The completion plugin
+	}
 
-  use {
-	"tpope/vim-fugitive"
-  }
+	use {
+		'hrsh7th/cmp-buffer', -- buffer completions
+	}
 
-  -- LSP
-  use{
-    'neovim/nvim-lspconfig' -- enable LSP
-  }
-  use{
-    'williamboman/nvim-lsp-installer' -- simple to use language server installer
-  }
-  use{
-    'tamago324/nlsp-settings.nvim' -- language server settings defined in json for
-  }
-  -- Telescope
-  use{
-    'nvim-telescope/telescope.nvim'
-  }
-  use "nvim-lua/popup.nvim"
-  use "nvim-lua/plenary.nvim"
+	use {
+		'hrsh7th/cmp-path', -- path completions
+	}
 
-  use "kdheepak/lazygit.nvim"
-  -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
+	use {
+		'hrsh7th/cmp-cmdline', -- cmdline completions
+	}
 
-  use 'lewis6991/impatient.nvim'
+	use {
+		'saadparwaiz1/cmp_luasnip', -- snippet completions
+	}
 
-  -- Coc
-  -- use {
-  --   "neoclide/coc.nvim", branch = "release",
-  --   ft = { "lua", "rust", "c", "cpp", "cs", "js", "json", "html", "sh", "zsh", "bash", "conf", "java" }
-  -- }
+	use {
+		'hrsh7th/cmp-nvim-lsp',
+	}
 
+	use {
+		"windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+	}
 
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+	use {
+		'simrat39/rust-tools.nvim',
+	}
+
+	-- Snippets --
+	use {
+		"L3MON4D3/LuaSnip" --snippet engine
+	}
+	use {
+		"rafamadriz/friendly-snippets" -- a bunch of snippets to use
+	}
+
+	-- Telescope --
+	use {
+		'nvim-telescope/telescope.nvim'
+	}
+
+	use {
+		"nvim-lua/popup.nvim"
+	}
+
+	use {
+		"nvim-lua/plenary.nvim"
+	}
+
+	-- Git --
+	use {
+		"tpope/vim-fugitive"
+	}
+
+	use {
+		"kyazdani42/nvim-web-devicons"
+	}
+
+	-- Treesitter --
+	use {
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	}
+
+	use {
+		"nvim-treesitter/playground"
+	}
+
+	use {
+		'lewis6991/impatient.nvim'
+	}
+
+	if PACKER_BOOTSTRAP then
+		require("packer").sync()
+	end
 end)

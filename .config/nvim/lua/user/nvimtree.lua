@@ -1,8 +1,8 @@
 require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
-  disable_netrw = true,
+  disable_netrw = false,
   hijack_cursor = true,
-  hijack_netrw = true,
+  hijack_netrw = false,
   hijack_unnamed_buffer_when_opening = false,
   ignore_buffer_on_setup = false,
   open_on_setup = false,
@@ -18,7 +18,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     side = "left",
     preserve_window_proportions = false,
     number = false,
-    relativenumber = false,
+    relativenumber = true,
     signcolumn = "yes",
     mappings = {
       custom_only = false,
@@ -78,12 +78,12 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   actions = {
     use_system_clipboard = true,
     change_dir = {
-      enable = true,
+      enable = false,
       global = false,
       restrict_above_cwd = false,
     },
     open_file = {
-      quit_on_open = false,
+      quit_on_open = true,
       resize_window = true,
       window_picker = {
         enable = true,

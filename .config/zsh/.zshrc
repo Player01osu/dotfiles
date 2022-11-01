@@ -29,6 +29,37 @@ c () {
 	fi
 }
 
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[2 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[2 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[2 q"
+}
+zle -N zle-line-init
+echo -ne '\e[2 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[2 q' ;} # Use beam shape cursor for each new prompt.
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"
@@ -46,7 +77,7 @@ bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^P' 'lazygit\n'
 
-bindkey -s '^N' 'nvim -c "Telescope oldfiles"\n'
+bindkey -s '^N' 'nvim -c ":Ex"\n'
 
 bindkey -s '^W' 'wiki\n'
 
@@ -57,8 +88,10 @@ autoload -U colors && colors
 PS1="%B%{$fg[cyan]%}%~%{$fg[magenta]%} ❯ %{$reset_color%}%b"
 PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
 
+alias Ex="nvim -c ':Ex'"
+alias bc="bc --mathlib"
+alias block="betterlockscreen -l blur"
 alias bluetooth="bluetoothctl"
-alias getweather="curl wttr.in/west+bloomfield+township\?m && cal && date"
 alias cbonsair="cbonsai --seed 119"
 alias offon="doas loginctl reboot"
 alias offnow="doas loginctl poweroff"
@@ -89,6 +122,17 @@ alias nshuf="/usr/bin/ls {*jpg,*png,*jpeg,*gif} | shuf | nsxiv -iat"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
 alias mocp="ncmpcpp"
 alias lf="lfub"
+alias nsxiv="devour nsxiv"
+alias nvimconf="nvim ~/.config/nvim/init.vim"
+alias offnow="doas loginctl poweroff"
+alias offon="doas loginctl reboot"
+alias osu-dir="cd ~/.local/share/osu-wine/OSU/"
+alias pm="pulsemixer"
+alias poweroff="doas loginctl poweroff"
+alias reboot="doas loginctl reboot"
+alias rs="rsync -urvP"
+alias skool="cd ~/Documents/wiki/school/"
+alias src="source ~/.config/zsh/.zshrc"
 alias startx="startx $XINITRC"
 alias wiki="nvim ~/Documents/wiki/index.wiki"
 alias svim="sudoedit"
@@ -96,11 +140,12 @@ alias gbookmark="nvim ~/.local/share/bookmarks/bookmarks"
 alias bc="bc --mathlib"
 alias uncrustify="uncrustify -c ~/.config/uncrustify/uncrustify.cfg"
 alias rs="rsync -urvP"
+alias vim="nvim"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
+alias wiki="nvim ~/Documents/wiki/index.wiki"
 alias yta="yt-dlp -x --audio-format mp3"
 alias pm="pulsemixer"
 alias src="source ~/.config/zsh/.zshrc"
-alias xmon="xrandr --output HDMI-A-0 --primary --left-of eDP"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
