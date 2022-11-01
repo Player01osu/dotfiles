@@ -1,4 +1,5 @@
 local fn = vim.fn
+local prog_lang = { "lua", "rust", "c", "cpp", "cs", "js", "json", "html", "sh", "zsh", "bash", "conf", "java" }
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -64,6 +65,32 @@ return packer.startup(function(use)
 	}
 
 	use {
+		"nvim-neorg/neorg",
+		run = ":Neorg sync-parsers", -- This is the important bit!
+		config = function()
+			require('neorg').setup {
+				load = {
+					["core.defaults"] = {},
+					["core.norg.completion"] = {
+					   config = {
+						engine = "nvim-cmp"
+					   }
+					},
+					["core.norg.dirman"] = {
+						config = {
+							workspaces = {
+								home = "~/Documents/org",
+							}
+						}
+					}
+				}
+			}
+
+		end,
+		requires = "nvim-lua/plenary.nvim"
+	}
+
+	use {
 		'lervag/vimtex',
 		ft = { "tex", "latex" }
 	}
@@ -114,7 +141,7 @@ return packer.startup(function(use)
 	-- Indent Blankline --
 	use {
 		"lukas-reineke/indent-blankline.nvim",
-		ft = { "lua", "rust", "c", "cpp", "cs", "js", "json", "html", "sh", "zsh", "bash", "conf", "java" }
+		ft = prog_lang
 	}
 
 	-- LSP --
