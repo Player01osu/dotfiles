@@ -10,12 +10,14 @@ export XDG_STATE_HOME="$HOME"/.local/state
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export CARGO_HOME="$XDG_DATA_HOME"/Cargo
 export DATABASE_URL="postgres://localhost:5432/forumDatabase"
-export DISPLAY=:1.0
+#export DISPLAY=:1.0
 export EDITOR="nvim"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..|lfcd|lfub|lf|l|exa|lazygit|n|nsxiv|mocp|doas|config|wiki|startx|sx|Ex|paru|ping|cargo|trunk|zpdf|br)"
 export MOZ_USE_XINPUT2=1
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_DBUS_REMOTE=1
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export PF_INFO="ascii title os kernel shell editor pkgs memory"
 export PF_COL1=5
@@ -33,7 +35,6 @@ export XINITRC="$HOME"/.config/X11/.xinitrc
 export ZDOTDIR="$HOME"/.config/zsh
 export _Z_DATA="$XDG_DATA_HOME"/z
 
-export MASTER_KEY="þá9sMá«ùË{n_Ep¯ëxMëFq3+[Kfëxû0In'7QúºÐ2"
 
 # Arch Linux/wine-osu users should uncomment next line
 # to update PATH to make sure we're using the right Wine binary
@@ -49,6 +50,10 @@ fi
 
 if [ -d "$HOME/.local/bin/bar" ] ;
   then PATH="$HOME/.local/bin/bar:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin/waybar" ] ;
+  then PATH="$HOME/.local/bin/waybar:$PATH"
 fi
 
 if [ -d "$HOME/Applications" ] ;
