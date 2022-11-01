@@ -58,6 +58,22 @@ vim.keymap.set(
 	end
 )
 
+vim.keymap.set(
+	'n',
+	'<leader>sr',
+	function()
+		local run = vim.g.run
+
+		if vim.g.run == nil then
+			run = ""
+		end
+
+		local run_new = vim.fn.input("Set run var: ", run, "file")
+
+		vim.g.run = run_new
+	end
+)
+
 keymap("n", "<leader>ya", ":%y+<CR>", opts)
 keymap("n", "<leader>y", "\"+y", opts)
 keymap("n", "<leader>Y", "\"+Y", opts)
