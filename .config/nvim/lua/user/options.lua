@@ -9,8 +9,8 @@ set.expandtab     = false
 set.hidden        = true
 set.incsearch     = true
 set.mouse         = "nv"
-set.scrolloff     = 10
-set.sidescrolloff = 10
+set.scrolloff     = 6
+set.sidescrolloff = 12
 
 -- Appearance --
 set.background     = "dark"
@@ -47,7 +47,7 @@ set.updatetime = 60
 --vim.g.moonflyTransparent        = 1
 --]]
 
--- Variables --
+-- Globals --
 vim.g.edge_better_performance     = 1
 vim.g.edge_style                  = 'neon'
 vim.g.edge_transparent_background = 1
@@ -58,6 +58,9 @@ vim.g.netrw_menu                  = 0
 vim.g.netrw_keepdir               = 0
 vim.g.netrw_localcopydircmd       = 'cp -r'
 vim.g.vimtex_view_method          = 'zathura'
+
+-- File Specific --
+
 
 -- Autocommands --
 local on_text_file = function()
@@ -72,19 +75,10 @@ local on_text_file = function()
 	vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 end
 
---local on_rust_file = function()
---	require('rust-tools').setup({})
---end
-
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern  = { "*.latex", "*.tex", "*.txt", "*.md", "*.markdown", "*.wiki" },
 	callback = function() on_text_file() end,
 })
-
---vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
---	pattern = { "*.rs", "*.rust", "Cargo.toml" },
---	callback = function() on_rust_file() end,
---})
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*" },
@@ -94,11 +88,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 vim.cmd([[
   file
   autocmd BufWritePost todo.wiki silent !kill -46 $(pidof ${STATUSBAR:-dwmblocks})
+  autocmd BufWritePost todo.wiki silent !pkill -SIGRTMIN+8 waybar
 ]])
 
 -- Vimscript --
---vim.api.nvim_command("colorscheme edge")
-
 vim.cmd([[
   highlight CocErrorFloat ctermfg=1 guibg=Black
   highlight CocFloating ctermbg=1 guibg=Black

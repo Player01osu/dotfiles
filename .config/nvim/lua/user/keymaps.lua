@@ -33,8 +33,7 @@ vim.keymap.set(
 			vim.g.cid = cmd_bid
 			return
 		end
-		local bid = "b " .. cmd_bid
-		vim.cmd(bid)
+		vim.cmd("b " .. cmd_bid)
 		vim.cmd("startinsert")
 	end,
 	opts
@@ -46,7 +45,7 @@ keymap("n", "<leader>lo", ":LspStop<CR>", opts)
 keymap("n", "<leader>con", ":e ~/.config/nvim/init.lua<CR>", opts)
 keymap("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>", opts)
 
-keymap("n", "<leader>s", ":Neoformat<CR> :w<CR>", opts)
+keymap("n", "<leader>sf", ":Neoformat<CR> :w<CR>", opts)
 vim.keymap.set(
 	'n',
 	'<leader>ef',
@@ -218,10 +217,11 @@ keymap("v", "<C-J>", "<Esc>", opts)
 
 keymap("v", "<leader>y", "\"+y", opts)
 keymap("v", "<leader>Y", "\"+Y", opts)
-
 keymap("v", "<leader>d", "\"+d", opts)
-
 keymap("v", "<leader>p", "\"+p", opts)
+
+keymap("v", "<leader>kal", "!kalker<cr>", opts)
+keymap("v", "<leader>wcc", "!wc -w<cr>", opts)
 
 -- term mode
 keymap("t", "<C-J>", "<C-\\><C-N>", opts)

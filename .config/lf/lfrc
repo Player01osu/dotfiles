@@ -15,6 +15,10 @@ cmd cwp &{{
 	cwp $fx
 }}
 
+cmd cwpw &{{
+	cwpw $fx
+}}
+
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
