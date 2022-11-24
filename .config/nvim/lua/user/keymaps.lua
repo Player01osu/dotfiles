@@ -220,8 +220,12 @@ keymap("v", "<leader>Y", "\"+Y", opts)
 keymap("v", "<leader>d", "\"+d", opts)
 keymap("v", "<leader>p", "\"+p", opts)
 
-keymap("v", "<leader>kal", "!kalker<cr>", opts)
-keymap("v", "<leader>wcc", "!wc -w<cr>", opts)
+keymap("v", "<leader>kal", "!kalker<CR>", opts)
+keymap("v", "<leader>lal", "!sbcl --noinform<CR>", opts)
+keymap("v", "<leader>Kal", "<Esc>`>a<CR><Esc>`<i<CR><Esc>!!kalker<CR>kJJ", opts)
+--keymap("v", "<leader>kal", "!kalker<cr>", opts)
+keymap("v", "<leader>wcw", "!wc -w<cr>", opts)
+keymap("v", "<leader>wcc", "!wc -m<cr>", opts)
 
 -- term mode
 keymap("t", "<C-J>", "<C-\\><C-N>", opts)
