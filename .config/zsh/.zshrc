@@ -55,9 +55,6 @@ zle -N zle-line-init
 echo -ne '\e[2 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[2 q' ;} # Use beam shape cursor for each new prompt.
 
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
 
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
@@ -70,11 +67,18 @@ lfcd () {
     fi
 }
 
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+
 source $HOME/.local/bin/proj-jump.sh
+
+bindkey '^e' edit-command-line
 
 bindkey -s '^o' 'lfcd\n'
 
-bindkey -s '^P' 'lazygit\n'
+bindkey -s '^P' 'nvim /tmp/tmp.kalk\n'
+
+bindkey -s '^Y' 'nvim /tmp/tmp.sbcli\n'
 
 bindkey -s '^N' 'nvim -c ":Ex"\n'
 
@@ -88,6 +92,7 @@ PS1="%B%{$fg[cyan]%}%~%{$fg[magenta]%} ❯ %{$reset_color%}%b"
 PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
 
 alias Ex="nvim -c ':Ex'"
+alias animemnt="sshfs player01@192.168.1.87:Videos/not-anime ~/Videos/remote -C"
 alias bc="bc --mathlib"
 alias block="betterlockscreen -l blur"
 alias bluetooth="bluetoothctl"
@@ -110,6 +115,7 @@ alias mupdf="devour mupdf"
 alias n="nsxiv . -t"
 alias nano="nvim"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
+alias norg="nvim ~/Documents/org/index.norg"
 alias nshuf="fd --max-depth=1 --type=file --extension=webp --extension=jpg --extension=png --extension=jpeg --extension=gif | shuf | nsxiv -iat"
 alias nshufa="fd --type=file --extension=webp --extension=jpg --extension=png --extension=jpeg --extension=gif | shuf | nsxiv -iat"
 alias nsxiv="devour nsxiv"
@@ -121,6 +127,7 @@ alias pm="pulsemixer"
 alias poweroff="doas loginctl poweroff"
 alias reboot="doas loginctl reboot"
 alias rs="rsync -urvP"
+alias sbcl="rlwrap sbcl --noinform --userinit $XDG_CONFIG_HOME/sbcl/sbclrc"
 alias skool="cd ~/Documents/wiki/school/"
 alias src="source ~/.config/zsh/.zshrc"
 alias startx="startx $XINITRC"
@@ -129,13 +136,16 @@ alias svim="sudoedit"
 alias todo="nvim ~/Documents/wiki/todo.wiki"
 alias uncrustify="uncrustify -c ~/.config/uncrustify/uncrustify.cfg"
 alias vi="nvim"
-alias animemnt="sshfs player01@192.168.1.82:Videos/not-anime ~/Videos/remote -C"
 alias vim="nvim"
+alias weather="curl wttr.in/West+Bloomfield+Township\?m\&format=2"
+alias weather_report="curl wttr.in/West+Bloomfield+Township\?m"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias wiki="nvim ~/Documents/wiki/index.wiki"
 alias xinitrc="nvim ~/.xinitrc"
 alias xmon="xrandr --output HDMI-A-0 --primary --left-of eDP && sleep 1 && hsetroot -cover ~/Pictures/wallpapers/wp.jpg && krepeat"
 alias xmonsame="xrandr --auto && xrandr --output HDMI-A-0 --same-as eDP && sleep 1 && hsetroot -cover ~/Pictures/wallpapers/wp.jpg && krepeat"
+alias yt_mpv_360='mpv --ytdl-format=18 $1'
+alias yt_mpv_720='mpv --ytdl-format=22 $1'
 alias yta="yt-dlp -x --audio-format mp3"
 alias zathura="devour zathura"
 

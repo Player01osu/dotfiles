@@ -8,6 +8,20 @@ export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_STATE_HOME="$HOME"/.local/state
 
 export ANDROID_HOME="$XDG_DATA_HOME"/android
+export ANDROID_USER_HOME=$ANDROID_HOME
+export ANDROID_EMULATOR_HOME=$ANDROID_HOME
+export ANDROID_SERIAL=$ANDROID_HOME
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export ANDROID_AVD_HOME=$ANDROID_HOME
+
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export STUDIO_JDK=$XDG_CONFIG_HOME/java
+export JDK_HOME=$STUDIO_JDK
+export JAVA_HOME=$STUDIO_JDK
+
 export CARGO_HOME="$XDG_DATA_HOME"/Cargo
 export DATABASE_URL="postgres://localhost:5432/forumDatabase"
 #export DISPLAY=:1.0
@@ -25,6 +39,7 @@ export PF_COL3=5
 export PGDATA=/var/lib/postgres/data/
 export RUSTUP_HOME="$XDG_DATA_HOME"/Rustup
 export READER="zathura"
+export RLWRAP_HOME="$XDG_DATA_HOME"/rlwrap
 export SHELL="zsh"
 #export TERM="screen-256color"                      # getting proper colors
 export UNCRUSTIFY_CONFIG="$HOME"/.config/uncrustify/uncrustify.cfg
@@ -35,10 +50,13 @@ export XINITRC="$HOME"/.config/X11/.xinitrc
 export ZDOTDIR="$HOME"/.config/zsh
 export _Z_DATA="$XDG_DATA_HOME"/z
 
+export GTK_IM_MODULE='fcitx'
+export QT_IM_MODULE='fcitx'
+export SDL_IM_MODULE='fcitx'
+export XMODIFIERS='@im=fcitx'
 
-# Arch Linux/wine-osu users should uncomment next line
-# to update PATH to make sure we're using the right Wine binary
 export PATH=/opt/wine-osu/bin:$CARGO_HOME/bin:$PATH
+
 ### PATH
 if [ -d "$HOME/.bin" ] ;
   then PATH="$HOME/.bin:$PATH"
@@ -59,6 +77,8 @@ fi
 if [ -d "$HOME/Applications" ] ;
   then PATH="$HOME/Applications:$PATH"
 fi
+
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 #
 export LF_ICONS="\
 di=:\

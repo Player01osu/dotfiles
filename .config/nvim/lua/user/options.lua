@@ -61,18 +61,21 @@ vim.g.vimtex_view_method          = 'zathura'
 
 -- File Specific --
 
-
 -- Autocommands --
 local on_text_file = function()
-	vim.opt.cursorline     = false
-	vim.opt.number         = false
-	vim.opt.relativenumber = false
-	vim.opt.shiftwidth     = 4
-	vim.opt.signcolumn     = "yes:1"
-	vim.opt.softtabstop    = 4
-	vim.opt.tabstop        = 4
-	vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
-	vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
+	local opts = { noremap = true, silent = true }
+	local bkeymap = vim.api.nvim_buf_set_keymap
+
+	vim.opt_local.cursorline     = false
+	vim.opt_local.number         = false
+	vim.opt_local.relativenumber = false
+	vim.opt_local.shiftwidth     = 4
+	vim.opt_local.signcolumn     = "yes:1"
+	vim.opt_local.softtabstop    = 4
+	vim.opt_local.tabstop        = 4
+
+	bkeymap(0, 'n', 'j', 'gj', opts)
+	bkeymap(0, 'n', 'k', 'gk', opts)
 end
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {

@@ -1,15 +1,15 @@
 
 # start clients
 alt + t ; {h,j,d,p,s,n}
-	{alacritty -e btop,firefox-developer-edition &,ripcord &,alacritty -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
+	{alacritty -o font.size=7.5 --class btop -e btop,firefox-developer-edition &,ripcord &,alacritty --class pulsemixer -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
 
 # restart clients
 alt + r ; {p,s,d,m}
     {~/.local/bin/rpipe,~/.local/bin/rkd,rdblk,rpd}
 
 # run scripts
-alt + s ; {l}
-	{browser_link_copy}
+alt + s ; {l,j}
+	{browser_link_copy,lecopy}
 
 # mpd control
 XF86AudioPlay

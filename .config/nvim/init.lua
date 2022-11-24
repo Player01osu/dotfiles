@@ -14,6 +14,8 @@ require "user.plugins"
 require "user.treesitter"
 require "user.vimwiki"
 
+require "user.jumper"
+
 vim.cmd([[
   if exists("g:neovide")
     lua require "user.neovide"
