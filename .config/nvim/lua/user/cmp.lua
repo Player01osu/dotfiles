@@ -106,7 +106,7 @@ cmp.setup {
   },
 }
 
-cmp.setup.filetype({ 'markdown', 'help', 'vimwiki', 'wiki', 'md', 'txt' }, {
+cmp.setup.filetype({ 'markdown', 'help', 'vimwiki', 'wiki', 'md', 'txt', 'kalker', 'CommonLispInterpretter' }, {
     completion = {
       autocomplete = false
     },

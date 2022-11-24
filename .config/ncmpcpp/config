@@ -3,6 +3,7 @@
 ncmpcpp_directory = ~/.config/ncmpcpp
 lyrics_directory  = ~/.config/ncmpcpp/lyrics
 mpd_music_dir     = ~/Music
+#execute_on_song_change = songinfo
 
 # GENERAL
 # ---
@@ -14,7 +15,7 @@ centered_cursor                  = "yes"
 ignore_leading_the               = "yes"
 allow_for_physical_item_deletion = "no"
 connected_message_on_startup = "yes"
-cyclic_scrolling = "yes"
+cyclic_scrolling = "no"
 mouse_support = "yes"
 mouse_list_scroll_whole_page = "yes"
 lines_scrolled = "1"
