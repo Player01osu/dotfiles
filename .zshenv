@@ -23,7 +23,8 @@ export JDK_HOME=$STUDIO_JDK
 export JAVA_HOME=$STUDIO_JDK
 
 export CARGO_HOME="$XDG_DATA_HOME"/Cargo
-export DATABASE_URL="postgres://localhost:5432/forumDatabase"
+#export DATABASE_URL="postgres://localhost:5432/forumDatabase"
+export DATABASE_URL="postgres://localhost:5432/wordtugDatabase"
 #export DISPLAY=:1.0
 export EDITOR="nvim"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
