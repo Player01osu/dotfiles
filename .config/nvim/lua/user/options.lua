@@ -57,7 +57,9 @@ vim.g.netrw_browse_split          = 0
 vim.g.netrw_menu                  = 0
 vim.g.netrw_keepdir               = 0
 vim.g.netrw_localcopydircmd       = 'cp -r'
+vim.g.netrw_list_hide             = '^\\.\\.\\=/\\=$'
 vim.g.vimtex_view_method          = 'zathura'
+vim.g.vim_markdown_folding_disabled = 1
 
 -- File Specific --
 

@@ -17,7 +17,16 @@ keymap("n", "<C-H>", ":bd<CR>", opts)
 keymap("n", "<C-L>", ":set wrap<CR>", opts)
 keymap("n", "<C-P>", ":set nowrap<CR>", opts)
 
-keymap("n", "<C-N>", ":Ex<CR>", opts)
+vim.keymap.set(
+	"n",
+	"<C-N>",
+	function()
+		local cur_dir = vim.fn.expand('%:p:h') .. '/'
+
+		vim.cmd("e " .. cur_dir)
+	end,
+	opts
+)
 
 keymap("n", "<C-X>", ":noh<CR>", opts)
 
@@ -54,7 +63,8 @@ vim.keymap.set(
 		local fname = vim.fn.input("File: ", cur_dir, "file")
 
 		vim.cmd("e " .. fname)
-	end
+	end,
+	opts
 )
 
 vim.keymap.set(
@@ -70,7 +80,8 @@ vim.keymap.set(
 		local run_new = vim.fn.input("Set run var: ", run, "file")
 
 		vim.g.run = run_new
-	end
+	end,
+	opts
 )
 
 keymap("n", "<leader>ya", ":%y+<CR>", opts)
@@ -91,8 +102,18 @@ keymap("n", "<leader>gg", ":tab G<CR>", opts)
 keymap("n", "<leader>H", ":set signcolumn=yes:9<CR>", opts)
 keymap("n", "<leader>J", ":set signcolumn=yes:2<CR>", opts)
 
+vim.keymap.set("n", "<leader>l", function()
+	vim.opt_local.wrap = false
+end, opts)
+
+vim.keymap.set("n", "<leader>h", function()
+	vim.opt_local.wrap = true
+end, opts)
+
+--[[ Traverse buffers
 keymap("n", "<leader>h", ":bp<CR>", opts)
 keymap("n", "<leader>l", ":bn<CR>", opts)
+--]]
 
 vim.keymap.set(
 	'n',
@@ -101,7 +122,8 @@ vim.keymap.set(
 		local fname = vim.fn.input("File: ", "~/Documents/dump/", "file")
 		vim.cmd("w " .. fname)
 		vim.cmd("e " .. fname)
-	end
+	end,
+	opts
 )
 vim.keymap.set(
 	'n',
