@@ -80,7 +80,7 @@ bindkey -s '^P' 'nvim /tmp/tmp.kalk\n'
 
 bindkey -s '^Y' 'nvim /tmp/tmp.sbcli\n'
 
-bindkey -s '^N' 'nvim -c ":Ex"\n'
+bindkey -s '^N' 'nvim .\n'
 
 bindkey -s '^W' 'wiki\n'
 
