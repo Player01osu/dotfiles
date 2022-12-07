@@ -16,6 +16,8 @@ vim.g.mapleader = " "
 keymap("n", "<C-H>", ":bd<CR>", opts)
 keymap("n", "<C-L>", ":set wrap<CR>", opts)
 keymap("n", "<C-P>", ":set nowrap<CR>", opts)
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
 
 vim.keymap.set(
 	"n",
@@ -102,11 +104,11 @@ keymap("n", "<leader>gg", ":tab G<CR>", opts)
 keymap("n", "<leader>H", ":set signcolumn=yes:9<CR>", opts)
 keymap("n", "<leader>J", ":set signcolumn=yes:2<CR>", opts)
 
-vim.keymap.set("n", "<leader>l", function()
+vim.keymap.set("n", "<leader>ll", function()
 	vim.opt_local.wrap = false
 end, opts)
 
-vim.keymap.set("n", "<leader>h", function()
+vim.keymap.set("n", "<leader>lk", function()
 	vim.opt_local.wrap = true
 end, opts)
 
