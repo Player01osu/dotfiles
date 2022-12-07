@@ -1,7 +1,7 @@
 
 # start clients
-alt + t ; {h,j,d,p,s,n}
-	{alacritty -o font.size=7.5 --class btop -e btop,firefox-developer-edition &,ripcord &,alacritty --class pulsemixer -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &}
+alt + t ; {h,j,d,p,s,n,a}
+	{alacritty -o font.size=7.5 --class btop -e btop,firefox-developer-edition &,ripcord &,alacritty --class pulsemixer -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &,screenanki}
 
 # restart clients
 alt + r ; {p,s,d,m}
