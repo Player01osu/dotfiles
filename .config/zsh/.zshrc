@@ -151,6 +151,6 @@ alias zathura="devour zathura"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-. /usr/share/z/z.sh
-
+#. /usr/share/z/z.sh
+eval "$(zoxide init zsh)"
 source /home/bruh/.config/broot/launcher/bash/br
