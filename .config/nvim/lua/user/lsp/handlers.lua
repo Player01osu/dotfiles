@@ -60,7 +60,7 @@ local function lsp_highlight_document(client)
 	end
 end
 
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local opts = { noremap = true, silent = true, buffer = args.buf }
 		vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -75,16 +75,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set("n", "<leader>fk", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 		vim.keymap.set("n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
 		vim.keymap.set("n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-		vim.keymap.set("n", "<leader>ft", '<cmd>Telescope diagnostics<CR>', opts)
-		vim.keymap.set(
-			"n",
-			"gl",
-			'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
-			opts
-		)
+		vim.keymap.set("n", "<leader>ft", "<cmd>Telescope diagnostics<CR>", opts)
+		vim.keymap.set("n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
 		vim.keymap.set("n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 		vim.keymap.set("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-		vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]]
+		vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]])
 	end,
 })
 
@@ -96,12 +91,12 @@ M.on_attach = function(client, bufnr)
 	lsp_highlight_document(client)
 end
 
-require("mason-lspconfig").setup_handlers {
+require("mason-lspconfig").setup_handlers({
 	-- The first entry (without a key) will be the default handler
 	-- and will be called for each installed server that doesn't have
 	-- a dedicated handler.
 	function(server_name) -- default handler (optional)
-		require("lspconfig")[server_name].setup {}
+		require("lspconfig")[server_name].setup({})
 	end,
 	-- Next, you can provide targeted overrides for specific servers.
 	-- For example, a handler override for the `rust_analyzer`:
@@ -121,15 +116,15 @@ require("mason-lspconfig").setup_handlers {
 				reload_workspace_from_cargo_toml = true,
 				autoSetHints = false,
 				inlay_hints = {
-				    auto = false,
+					auto = false,
 					show_parameter_hints = false,
 					parameter_hints_prefix = "",
 					other_hints_prefix = "",
 				},
 			},
 		})
-	end
-}
+	end,
+})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 

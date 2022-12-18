@@ -21,20 +21,42 @@ local diff = {
 	"diff",
 	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+	cond = hide_in_width,
 }
 
--- local mode = {
--- 	"mode",
--- 	fmt = function(str)
--- 		return  "--" .. str .. "--"
--- 	end,
--- }
 local mode = {
-  "mode",
-  icods_enabled = false,
-  icon = nil,
+	"mode",
+	icods_enabled = false,
+	icon = nil,
 }
+
+-- FIXME
+local filename = function()
+	local path = vim.fn.expand("%:p")
+	local trunc_len = 30
+	local function str_truncate(str, n)
+		if string.len(str) < n then
+			return str
+		end
+		return str_truncate(string.sub(str, 2), n)
+	end
+
+	local win_width = vim.fn.winwidth(0)
+
+	if win_width < 70 then
+		local new_trunc = trunc_len - 3 - (win_width / 4)
+		if path.len - new_trunc < 1 then
+			return ""
+		end
+		return "..." .. str_truncate(path, new_trunc)
+	end
+
+	if string.len(path) > trunc_len then
+		return "..." .. str_truncate(path, trunc_len - 3)
+	end
+
+	return path
+end
 
 local filetype = {
 	"filetype",
@@ -55,8 +77,8 @@ local location = {
 
 -- cool function for progress
 local progress = {
-  "progress",
-  icon = nil,
+	"progress",
+	icon = nil,
 }
 --local progress = function()
 --	local current_line = vim.fn.line(".")
@@ -77,7 +99,7 @@ lualine.setup({
 		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "kalker", "CommonLispInterpretter" },
 		always_divide_middle = true,
 	},
 	sections = {
@@ -85,7 +107,7 @@ lualine.setup({
 		lualine_b = { branch, diff },
 		lualine_c = { diagnostics },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { filetype },
+		lualine_x = { filename, filetype },
 		lualine_y = { progress },
 		lualine_z = { location },
 	},
