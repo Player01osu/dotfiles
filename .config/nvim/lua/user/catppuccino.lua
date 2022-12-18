@@ -55,7 +55,7 @@ require("catppuccin").setup({
 	},
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = false
+		additional_vim_regex_highlighting = false,
 	},
 	color_overrides = {},
 	custom_highlights = {},
@@ -71,4 +71,4 @@ require("catppuccin").setup({
 })
 
 -- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin")

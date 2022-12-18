@@ -42,6 +42,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/Rustup
 export READER="zathura"
 export RLWRAP_HOME="$XDG_DATA_HOME"/rlwrap
 export SHELL="zsh"
+
 #export TERM="screen-256color"                      # getting proper colors
 export UNCRUSTIFY_CONFIG="$HOME"/.config/uncrustify/uncrustify.cfg
 export VISUAL="nvim"
