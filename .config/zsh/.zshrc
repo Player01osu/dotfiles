@@ -67,6 +67,18 @@ lfcd () {
     fi
 }
 
+spotdl_pair () {
+    if [ -z $2 ]; then
+        echo Requires two arguments\; (yt url) and (spotify url)
+        return 1
+    fi
+    spotdl download "${1}|${2}"
+}
+
+rgh () {
+    rg $1 $HISTFILE
+}
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 
@@ -140,12 +152,12 @@ alias vim="nvim"
 alias weather="curl wttr.in/West+Bloomfield+Township\?m\&format=2"
 alias weather_report="curl wttr.in/West+Bloomfield+Township\?m"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
-alias wiki="nvim ~/Documents/wiki/index.wiki"
+alias wiki="nvim ~/Documents/org/index.norg"
 alias xinitrc="nvim ~/.xinitrc"
 alias xmon="xrandr --output HDMI-A-0 --primary --left-of eDP && sleep 1 && hsetroot -cover ~/Pictures/wallpapers/wp.jpg && krepeat"
 alias xmonsame="xrandr --auto && xrandr --output HDMI-A-0 --same-as eDP && sleep 1 && hsetroot -cover ~/Pictures/wallpapers/wp.jpg && krepeat"
-alias yt_mpv_360='mpv --ytdl-format=18 $1'
-alias yt_mpv_720='mpv --ytdl-format=22 $1'
+alias yt_mpv_360='mpv --ytdl-format=18'
+alias yt_mpv_720='mpv --ytdl-format=22'
 alias yta="yt-dlp -x --audio-format mp3"
 alias zathura="devour zathura"
 
