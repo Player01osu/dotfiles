@@ -26,7 +26,7 @@ M.goto_jump_file = function()
 	vim.cmd("e " .. files)
 end
 
-M.goto_jump = function()
+M.goto_jump = function(delete_mark)
 	local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
 	local line = unpack(vim.api.nvim_buf_get_lines(0, row - 1, row, true))
 
@@ -44,7 +44,10 @@ M.goto_jump = function()
 	end
 
 	local cmd = string.format("e %s | call cursor(%s,%s)", file, row_goto, col_goto + 1)
-	vim.cmd('bd')
+	if delete_mark then
+		vim.cmd('norm dd')
+	end
+	vim.cmd('w | bd')
 	vim.cmd(cmd)
 end
 
@@ -60,6 +63,9 @@ local optsb = { noremap = true, silent = true, buffer = 0 }
 local function keymaps()
 	bkeyset("n", "<CR>", function()
 		M.goto_jump()
+	end, optsb)
+	bkeyset("n", "<leader><CR>", function()
+		M.goto_jump(true)
 	end, optsb)
 end
 
