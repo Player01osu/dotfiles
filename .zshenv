@@ -42,8 +42,9 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/Rustup
 export READER="zathura"
 export RLWRAP_HOME="$XDG_DATA_HOME"/rlwrap
 export SHELL="zsh"
-
-#export TERM="screen-256color"                      # getting proper colors
+export TERMINFO="$XDG_DATA_HOME"/terminfo
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+export TERM="screen-256color"                      # getting proper colors
 export UNCRUSTIFY_CONFIG="$HOME"/.config/uncrustify/uncrustify.cfg
 export VISUAL="nvim"
 export WINEARCH=win32 # Only needed when executing the first command with that WINEPREFIX
