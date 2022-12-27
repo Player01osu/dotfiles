@@ -25,7 +25,6 @@ vim.keymap.set("n", "<C-N>", function()
 	vim.cmd("e " .. cur_dir)
 end, opts)
 
-keymap("n", "<C-X>", ":noh<CR>", opts)
 
 vim.keymap.set("n", "<leader>gq1", function()
 	vim.opt.textwidth = 100
@@ -61,6 +60,9 @@ keymap("n", "<leader>sf", ":Neoformat<CR> :w<CR>", opts)
 vim.keymap.set("n", "<leader>ef", function()
 	local cur_dir = vim.fn.expand("%:p:h") .. "/"
 	local fname = vim.fn.input("File: ", cur_dir, "file")
+	if cur_dir == fname or fname == "" then
+		return
+	end
 
 	vim.cmd("e " .. fname)
 end, opts)
