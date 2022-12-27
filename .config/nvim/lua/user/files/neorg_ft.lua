@@ -3,11 +3,28 @@ local lib = require("user.lib")
 local optsb = { noremap = true, silent = true, buffer = 0 }
 local bkeyset = vim.keymap.set
 
+M.hoppable = function(text_obj)
+	if string.find(text_obj, "neorg.links.+", 1, false) == nil then
+		return false
+	end
+	return true
+
+	--return text_obj == "neorg.links.file" or text_obj == "neorg.links.location.delimiter" or
+	--		text_obj == "neorg.links.file.delimiter" or text_obj == "neorg.links.description"
+end
+
 local function create_link()
 	local start_row, start_col, end_row, end_col = lib.visual_selection_range()
 	start_row = start_row - 1
 	start_col = start_col - 1
 	end_row = end_row - 1
+
+	if end_col > 2147483646 then
+		local line = vim.api.nvim_buf_get_lines(0, start_row, end_row + 1, true)
+		local len = string.len(unpack(line))
+		end_col = len
+	end
+
 	local text = vim.api.nvim_buf_get_text(0, start_row, start_col, end_row, end_col, {})
 	local string = string.format("{:%s:}", unpack(text))
 	vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, { string })
@@ -16,8 +33,8 @@ end
 M.normal_create_link = function()
 	local captures = vim.treesitter.get_captures_at_cursor()
 	for _, text_obj in ipairs(captures) do
-		if text_obj == "neorg.links.file" or text_obj == "neorg.links.location.delimiter" then
-			vim.cmd("Neorg keybind norg core.norg.esupports.hop.hop-link")
+		if M.hoppable(text_obj) then
+			vim.cmd("w | Neorg keybind norg core.norg.esupports.hop.hop-link")
 			return
 		end
 	end
