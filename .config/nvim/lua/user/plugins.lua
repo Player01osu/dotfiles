@@ -55,6 +55,10 @@ return packer.startup(function(use)
 	})
 
 	use({
+		"folke/neoconf.nvim",
+	})
+
+	use({
 		"preservim/vim-markdown",
 		ft = { "md", "markdown" }, -- Markdown folding and indent
 	})
@@ -70,6 +74,7 @@ return packer.startup(function(use)
 			require("neorg").setup({
 				load = {
 					["core.defaults"] = {},
+					["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
 					["core.norg.completion"] = {
 						config = {
 							engine = "nvim-cmp",
@@ -82,16 +87,26 @@ return packer.startup(function(use)
 							},
 						},
 					},
+					["core.export"] = {},
 					["core.keybinds"] = {
 						config = {
 							hook = function(keybinds)
+								keybinds.map_event_to_mode("norg", {
+									n = {
+										{ "<Tab>", "core.integrations.treesitter.next.link" },
+										{ "<S-Tab>", "core.integrations.treesitter.previous.link" },
+									},
+									},{
+										silent = true,
+										noremap = true,
+								})
 								-- Unmaps any Neorg key from the `norg` mode
-								keybinds.remap(
-									"norg",
-									"n",
-									"<CR>",
-									'<cmd>lua require("user.files.neorg_ft").normal_create_link()<cr>'
-								)
+								--keybinds.remap(
+								--	"norg",
+								--	"n",
+								--	"<CR>",
+								--	'<cmd>lua require("user.files.neorg_ft").normal_create_link()<cr>'
+								--)
 							end,
 						},
 					},
@@ -117,6 +132,8 @@ return packer.startup(function(use)
 	})
 
 	-- Colorscheme --
+	use '~/.config/nvim/lua/user/bbb'
+
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
@@ -136,13 +153,77 @@ return packer.startup(function(use)
 					DiagnosticVirtualTextHint = { bg = colors.none },
 				},
 			})
-			vim.api.nvim_command("colorscheme catppuccin")
+			--vim.api.nvim_command("colorscheme catppuccin")
 		end,
 	})
 
 	use({
 		"sainnhe/edge",
 	})
+
+	use({
+		'ramojus/mellifluous.nvim',
+		requires = { 'rktjmp/lush.nvim' },
+		config = function()
+			require'mellifluous'.setup({
+				      neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+      bg_contrast = 'hard', -- options: 'soft', 'medium', 'hard'
+				dim_inactive = false,
+				color_set = 'mellifluous',
+				styles = {
+					comments = 'NONE',
+					conditionals = 'NONE',
+					folds = 'NONE',
+					loops = 'NONE',
+					functions = 'NONE',
+					keywords = 'NONE',
+					strings = 'NONE',
+					variables = 'NONE',
+					numbers = 'NONE',
+					booleans = 'NONE',
+					properties = 'NONE',
+					types = 'NONE',
+					operators = 'NONE',
+				},
+				transparent_background = {
+					enabled = true,
+					floating_windows = true,
+					telescope = true,
+					file_tree = true,
+					cursor_line = false,
+					status_line = false,
+				},
+				plugins = {
+					cmp = true,
+					gitsigns = false,
+					indent_blankline = true,
+					nvim_tree = {
+						enabled = false,
+						show_root = false,
+					},
+					telescope = {
+						enabled = true,
+						nvchad_like = true,
+					},
+					startify = false,
+				},
+			}) -- optional, see configuration section.
+			--vim.cmd('colorscheme mellifluous')
+		end,
+	})
+	--use({"widatama/vim-phoenix",
+	--	config = function ()
+	--		vim.cmd('colorscheme phoenix')
+	--		vim.cmd([[
+	--		highlight Normal ctermbg=none
+	--		highlight NonText ctermbg=none
+	--		highlight Normal guibg=none
+	--		highlight NonText guibg=none
+	--		]])
+	--	end
+	--})
+	use({"rktjmp/lush.nvim", requires = {"rktjmp/shipwright.nvim"}})
+
 
 	--use "bluz71/vim-moonfly-colors"
 	--use "lukas-reineke/onedark.nvim"
@@ -239,6 +320,10 @@ return packer.startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = false
+		},
 	})
 
 	use({

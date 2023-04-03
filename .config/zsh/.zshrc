@@ -14,15 +14,24 @@ zmodload zsh/complist
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)		# Include hidden files.
 
-nsrc () {
-	nvim src/main* 2>/dev/null || nvim src/bin/main* 2>/dev/null || nvim src/
-}
-
 c () {
-	tmp="$(exa -aa1D| fzf --reverse)"
+	tmp="$(fd --max-depth 1 --hidden --follow --exclude ".git" --type=directory --no-ignore . | fzf)"
 	if [ $tmp ]; then
 		cd $tmp
 	fi
+}
+
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --max-depth 1 --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --max-depth 1 --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 #export KEYTIMEOUT=1
@@ -69,14 +78,45 @@ lfcd () {
 
 spotdl_pair () {
     if [ -z $2 ]; then
-        echo Requires two arguments\; (yt url) and (spotify url)
+        echo 'Requires two arguments; (yt url) and (spotify url)'
         return 1
     fi
     spotdl download "${1}|${2}"
 }
 
 rgh () {
-    rg $1 $HISTFILE
+    if [ -z $1 ]; then
+        echo 'rgh: Takes in string as argument'
+        return 1
+    fi
+
+    case $1 in
+        "-f")
+            if [ -z $2 ]; then
+                echo 'rgh: Expected an argument'
+                return 1
+            fi
+
+            cmd=$(rg -I $2 $HISTFILE | fzf --height 80% --tac)
+            if [ -z $cmd ]; then; return 0; fi
+            echo $cmd
+            echo $cmd >> $HISTFILE
+            zsh -c $cmd
+        ;;
+        *) rg -I $1 $HISTFILE
+    esac
+}
+
+yt_music () {
+    yt-dlp --extract-audio --audio-format flac --audio-quality 0 $1 --embed-metadata --embed-thumbnail --embed-chapters
+}
+
+fzf-hist () {
+    cmd=$(fzf --height 80% --tac < $HISTFILE)
+    if [ -z $cmd ]; then; return 0; fi
+    echo $cmd
+    echo $cmd >> $HISTFILE
+    zsh -c $cmd
 }
 
 # Edit line in vim with ctrl-e:
@@ -92,7 +132,7 @@ bindkey -s '^P' 'nvim /tmp/tmp.kalk\n'
 
 bindkey -s '^Y' 'nvim /tmp/tmp.sbcli\n'
 
-bindkey -s '^N' 'nvim .\n'
+bindkey -s '^N' 'nvim -c "Ex"\n'
 
 bindkey -s '^W' 'wiki\n'
 
@@ -104,13 +144,14 @@ PS1="%B%{$fg[cyan]%}%~%{$fg[magenta]%} ❯ %{$reset_color%}%b"
 PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
 
 alias Ex="nvim -c ':Ex'"
-alias animemnt="sshfs player01@192.168.1.87:Videos/not-anime ~/Videos/remote -C"
+#alias animemnt="sshfs player01@192.168.1.87:Videos/not-anime ~/Videos/remote -C"
+alias animemnt="doas mount 192.168.1.87:/srv/nfs/Videos/not-anime /mnt/Videos/not-anime && mount --bind /mnt/Videos/not-anime /home/bruh/Videos/not-anime-remote"
 alias bc="bc --mathlib"
 alias block="betterlockscreen -l blur"
 alias bluetooth="bluetoothctl"
 alias cbonsair="cbonsai --seed 119"
 alias codef="cd ~/Documents/code"
-alias discordgpu="LIBVA_DRIVER_NAME=i915 discord --enable-gpu-rasterization &"
+alias discordgpu="LIBVA_DRIVER_NAME=i915 discord --enable-gpu-rasterization && rm -rf ~/.pki"
 alias dwm-conf="cd ~/gitclone/suckless/dwm && nvim ~/gitclone/suckless/dwm/config.h"
 alias fortnite="osu"
 alias gbookmark="nvim ~/.local/share/bookmarks/bookmarks"
@@ -163,6 +204,7 @@ alias zathura="devour zathura"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-completion/completion.zsh 2>/dev/null
 #. /usr/share/z/z.sh
 eval "$(zoxide init zsh)"
 source /home/bruh/.config/broot/launcher/bash/br

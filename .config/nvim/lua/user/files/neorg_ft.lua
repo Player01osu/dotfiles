@@ -4,13 +4,13 @@ local optsb = { noremap = true, silent = true, buffer = 0 }
 local bkeyset = vim.keymap.set
 
 M.hoppable = function(text_obj)
-	if string.find(text_obj, "neorg.links.+", 1, false) == nil then
-		return false
+	if string.find(text_obj, "neorg.anchors.+", 1, false) ~= nil then
+		return true
 	end
-	return true
-
-	--return text_obj == "neorg.links.file" or text_obj == "neorg.links.location.delimiter" or
-	--		text_obj == "neorg.links.file.delimiter" or text_obj == "neorg.links.description"
+	if string.find(text_obj, "neorg.links.+", 1, false) ~= nil then
+		return true
+	end
+	return false
 end
 
 local function create_link()
@@ -44,9 +44,9 @@ M.normal_create_link = function()
 end
 
 local function keymaps()
-	bkeyset("n", "<leader><CR>", function()
-		M.normal_create_link()
-	end, optsb)
+	--bkeyset("n", "<leader><CR>", function()
+	--	M.normal_create_link()
+	--end, optsb)
 
 	bkeyset("n", "<leader>U", function()
 		local captures = vim.treesitter.get_captures_at_cursor()
@@ -55,23 +55,23 @@ local function keymaps()
 		end
 	end, optsb)
 
-	bkeyset("v", "<CR>", function()
-		vim.cmd(vim.api.nvim_replace_termcodes("norm <esc>", true, true, true))
-		create_link()
-	end, optsb)
+	--bkeyset("v", "<CR>", function()
+	--	vim.cmd(vim.api.nvim_replace_termcodes("norm <esc>", true, true, true))
+	--	create_link()
+	--end, optsb)
 end
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "norg" },
-	callback = function()
-		vim.schedule(function()
-			vim.opt_local.tabstop = 2
-			vim.opt_local.softtabstop = 2
-			vim.opt_local.shiftwidth = 2
-			vim.opt_local.expandtab = true
-			keymaps()
-		end)
-	end,
-})
+--vim.api.nvim_create_autocmd("FileType", {
+--	pattern = { "norg" },
+--	callback = function()
+--		vim.schedule(function()
+--			vim.opt_local.tabstop = 2
+--			vim.opt_local.softtabstop = 2
+--			vim.opt_local.shiftwidth = 2
+--			vim.opt_local.expandtab = true
+--			--keymaps()
+--		end)
+--	end,
+--})
 
 return M

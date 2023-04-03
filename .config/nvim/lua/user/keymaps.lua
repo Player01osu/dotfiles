@@ -20,9 +20,15 @@ keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
 vim.keymap.set("n", "<C-N>", function()
-	local cur_dir = vim.fn.expand("%:p:h") .. "/"
+	vim.cmd("Ex");
+end, opts)
 
-	vim.cmd("e " .. cur_dir)
+vim.keymap.set("n", "<leader>cn", function()
+	vim.cmd("cn");
+end, opts)
+
+vim.keymap.set("n", "<leader>cp", function()
+	vim.cmd("cp");
 end, opts)
 
 
@@ -57,14 +63,74 @@ keymap("n", "<leader>con", ":e ~/.config/nvim/init.lua<CR>", opts)
 keymap("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>", opts)
 
 keymap("n", "<leader>sf", ":Neoformat<CR> :w<CR>", opts)
+
+vim.keymap.set("n", "<leader><leader>cd", function()
+	local cur_dir = vim.fn.expand("%:p:h") .. "/"
+
+	vim.cmd("cd " .. cur_dir)
+end, opts)
+
 vim.keymap.set("n", "<leader>ef", function()
 	local cur_dir = vim.fn.expand("%:p:h") .. "/"
 	local fname = vim.fn.input("File: ", cur_dir, "file")
-	if cur_dir == fname or fname == "" then
+	if cur_dir == fname or fname == "" or fname == nil then
+		return
+	end
+
+	-- Create directories as needed
+	local utils = require("user.utils")
+	if not utils.exists(fname) then
+		local dirs = utils.split_string(fname, "/")
+		local build = ""
+		for idx, v in pairs(dirs) do
+			if idx > #dirs - 1 then
+				break
+			end
+
+			build = build .. "/" .. v
+			if not utils.isdir(build) then
+				os.execute("mkdir " .. build)
+			end
+		end
+	end
+
+	vim.cmd("e " .. fname)
+end, opts)
+
+vim.keymap.set("n", "<leader>eb", function()
+	local cur_buf = vim.fn.expand("%")
+	local fname = vim.fn.input("Buffer: ", "", "buffer")
+	if cur_buf == fname or fname == "" then
 		return
 	end
 
 	vim.cmd("e " .. fname)
+end, opts)
+
+
+
+-- This lowkey sucks
+vim.cmd([[
+fun OldFiles(A,L,P)
+return v:lua.require("user.utils").oldfiles(0,0,0)
+endfun
+]])
+
+vim.keymap.set("n", "<leader>eo", function()
+	local cur_file = vim.fn.expand("%:p")
+	local fname = vim.fn.input("Old File: ", "", "custom,OldFiles")
+
+	if cur_file == fname or fname == "" or fname == nil then
+		return
+	end
+
+	vim.cmd("e " .. fname);
+end)
+
+vim.keymap.set("n", "<leader>cb", function()
+	local fname = vim.fn.input("Close Buffer: ", "", "buffer")
+
+	vim.cmd("bd " .. fname)
 end, opts)
 
 vim.keymap.set("n", "<leader>sr", function()
@@ -79,9 +145,9 @@ vim.keymap.set("n", "<leader>sr", function()
 	vim.g.run = run_new
 end, opts)
 
-keymap("n", "<leader>ya", ":%y+<CR>", opts)
+keymap("n", "<leader>yaa", ":%y+<CR>", opts)
 keymap("n", "<leader>y", '"+y', opts)
-keymap("n", "<leader>Y", '"+Y', opts)
+keymap("n", "<leader>Y", '"+y$', opts)
 
 keymap("n", "<leader>d", '"+d', opts)
 keymap("n", "<leader>D", '"+D', opts)
@@ -168,22 +234,19 @@ vim.keymap.set("n", "<leader><leader>gm", function()
 	require("user.jumper").goto_jump_file()
 end, opts)
 
--- Switch and delete git worktrees
--- <c-d> - deletes that worktree
--- <c-f> - toggles forcing of the next deletion
-vim.keymap.set("n", "<leader>fs", function()
-	require("telescope").extensions.git_worktree.git_worktrees()
-end, opts)
-
--- Create new git worktree
-vim.keymap.set("n", "<leader>fc", function()
-	require("telescope").extensions.git_worktree.create_git_worktree()
-end, opts)
-
 -- insert mode
 keymap("i", "<C-P>", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", opts)
 
 keymap("i", "<C-J>", "<Esc>", opts)
+keymap("s", "<C-J>", "<Esc>", opts)
+
+vim.keymap.set("i", "<C-E>", function()
+	vim.cmd("exe \"normal \\<c-e>\"");
+end, opts)
+
+vim.keymap.set("i", "<C-Y>", function()
+	vim.cmd("exe \"normal \\<c-y>\"");
+end, opts)
 
 -- visual mode
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
