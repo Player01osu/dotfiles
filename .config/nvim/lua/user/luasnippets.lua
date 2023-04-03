@@ -26,6 +26,16 @@ local parse = require("luasnip.util.parser").parse_snippet
 local parse_snippet = require("luasnip.util.parser").parse_snippet
 
 ls.add_snippets("Nanki", {
+	s("b", {
+		t("<b>"),
+		i(1, ""),
+		t("</b>"),
+	}),
+	s("t", {
+		t([[<span style="color: rgb(151, 219, 255)">]]),
+		i(1, ""),
+		t([[</span>]]),
+	}),
 	s("cloze", {
 		t("{{c"),
 		i(1, "n"),
@@ -107,3 +117,8 @@ ls.add_snippets("kalker", {
 })
 
 
+ls.add_snippets("norg", {
+	s("f", {
+		t('{:'), i(1, "path"), t(':}'),
+	}),
+})
