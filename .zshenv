@@ -9,6 +9,8 @@ export XDG_STATE_HOME="$HOME"/.local/state
 
 export GOPATH="$XDG_DATA_HOME"/go
 
+export ROSWELL_HOME="$XDG_CONFIG_HOME"/roswell
+
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export ANDROID_USER_HOME=$ANDROID_HOME
 export ANDROID_EMULATOR_HOME=$ANDROID_HOME

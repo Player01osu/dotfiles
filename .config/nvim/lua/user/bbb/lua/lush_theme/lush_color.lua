@@ -125,6 +125,7 @@ local theme = lush(function()
     Folded       { bg = "NONE", fg = hsl("#ffff60").de(11) }, -- line used for closed folds
     FoldColumn   {  bg = "NONE", fg = "cyan2" }, -- 'foldcolumn'
     SignColumn   { }, -- column where |signs| are displayed
+	DiagnosticUnnecessary = {fg = "NONE", bg = "NONE"},
     -- Substitute   { }, -- |:substitute| replacement text highlighting
     -- MatchParen   { }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")

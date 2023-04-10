@@ -130,6 +130,10 @@ end)
 vim.keymap.set("n", "<leader>cb", function()
 	local fname = vim.fn.input("Close Buffer: ", "", "buffer")
 
+	if fname == "" or fname == nil then
+		return
+	end
+
 	vim.cmd("bd " .. fname)
 end, opts)
 
