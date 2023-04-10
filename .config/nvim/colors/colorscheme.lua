@@ -22,6 +22,7 @@ Title = {fg = "Cyan", bg = "NONE"},
 Todo = {fg = "Grey10", bg = "#E5E619"},
 Type = {fg = "#7EE27E", bg = "NONE", bold = true},
 TSVariableBuiltin = {link = "Type"},
+DiagnosticUnnecessary = {fg = "NONE", bg = "NONE"},
 Visual = {bg = "Grey32"},
 Whitespace = {fg = "Grey26"},
 -- PATCH_CLOSE
