@@ -18,8 +18,6 @@ set.conceallevel = 0
 set.cursorline = true
 set.guicursor = ""
 set.hlsearch = false
-set.laststatus = 3
-set.laststatus = 3
 set.linebreak = true
 set.nu = true
 set.number = true
@@ -32,6 +30,7 @@ set.splitbelow = false
 set.tabstop = 4
 set.termguicolors = true
 set.wrap = true
+
 
 -- Files --
 set.backup = false

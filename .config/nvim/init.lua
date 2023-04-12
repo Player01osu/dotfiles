@@ -15,12 +15,13 @@ require("user.lsp")
 require("user.lualine")
 require("user.luasnippets")
 require("user.mason")
-require("user.options")
 require("user.plugins")
 require("user.treesitter")
 require("user.vimwiki")
 
+require("user.options")
 vim.cmd("colorscheme colorscheme")
+vim.opt_global.laststatus = 3 -- Has to be after colorscheme for some reason
 require("user.jumper")
 --require("user.editfile")
 
