@@ -15,7 +15,7 @@ M.setup = function()
 
 	local config = {
 		-- disable virtual text
-		virtual_text = false,
+		virtual_text = true,
 		-- show signs
 		signs = {
 			active = signs,
@@ -87,7 +87,7 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.server_capabilities.document_formatting = false
 	end
-	lsp_keymaps(bufnr)
+	--lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end
 
@@ -104,12 +104,12 @@ require("mason-lspconfig").setup_handlers({
 		local rt = require("rust-tools")
 		rt.setup({
 			server = {
-				standalone = false,
+				standalone = true,
 				on_attach = function(_, bufnr)
 					-- Hover actions
 					vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
 					-- Code action groups
-					vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+					--vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
 				end,
 			},
 			tools = {

@@ -70,6 +70,33 @@ vim.keymap.set("n", "<leader><leader>cd", function()
 	vim.cmd("cd " .. cur_dir)
 end, opts)
 
+vim.keymap.set("n", "<leader><leader>ef", function()
+	local cur_dir = vim.fn.expand("%:p")
+	local fname = vim.fn.input("File: ", cur_dir, "file")
+	if cur_dir == fname or fname == "" or fname == nil then
+		return
+	end
+
+	-- Create directories as needed
+	local utils = require("user.utils")
+	if not utils.exists(fname) then
+		local dirs = utils.split_string(fname, "/")
+		local build = ""
+		for idx, v in pairs(dirs) do
+			if idx > #dirs - 1 then
+				break
+			end
+
+			build = build .. "/" .. v
+			if not utils.isdir(build) then
+				os.execute("mkdir -p " .. build)
+			end
+		end
+	end
+
+	vim.cmd("e " .. fname)
+end, opts)
+
 vim.keymap.set("n", "<leader>ef", function()
 	local cur_dir = vim.fn.expand("%:p:h") .. "/"
 	local fname = vim.fn.input("File: ", cur_dir, "file")
@@ -89,7 +116,7 @@ vim.keymap.set("n", "<leader>ef", function()
 
 			build = build .. "/" .. v
 			if not utils.isdir(build) then
-				os.execute("mkdir " .. build)
+				os.execute("mkdir -p " .. build)
 			end
 		end
 	end
@@ -104,9 +131,21 @@ vim.keymap.set("n", "<leader>eb", function()
 		return
 	end
 
-	vim.cmd("e " .. fname)
+	vim.cmd("b " .. fname)
 end, opts)
 
+vim.keymap.set("n", "<leader><leader>eb", function()
+	local cur_buf = vim.fn.expand("%")
+	vim.cmd([[ls]])
+	vim.cmd([[ls %a]])
+
+	local fname = vim.fn.input("Buffer: ", "", "buffer")
+	if cur_buf == fname or fname == "" then
+		return
+	end
+
+	vim.cmd("b " .. fname)
+end, opts)
 
 
 -- This lowkey sucks
