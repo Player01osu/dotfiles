@@ -166,6 +166,18 @@ vim.keymap.set("n", "<leader>eo", function()
 	vim.cmd("e " .. fname);
 end)
 
+vim.keymap.set("n", "<leader><leader>cb", function()
+	vim.cmd([[ls]])
+	vim.cmd([[ls %a]])
+	local fname = vim.fn.input("Close Buffer: ", "", "buffer")
+
+	if fname == "" or fname == nil then
+		return
+	end
+
+	vim.cmd("bd " .. fname)
+end, opts)
+
 vim.keymap.set("n", "<leader>cb", function()
 	local fname = vim.fn.input("Close Buffer: ", "", "buffer")
 
@@ -185,6 +197,7 @@ vim.keymap.set("n", "<leader>sr", function()
 
 	local run_new = vim.fn.input("Set run var: ", run, "file")
 
+	vim.opt.makeprg = run_new
 	vim.g.run = run_new
 end, opts)
 
@@ -205,6 +218,12 @@ keymap("n", "<leader>i", "zzi", opts)
 keymap("n", "<leader>gg", ":tab G<CR>", opts)
 keymap("n", "<leader>H", ":set signcolumn=yes:9<CR>", opts)
 keymap("n", "<leader>J", ":set signcolumn=yes:2<CR>", opts)
+
+keymap("n", "<M-.>", ":vert resize +1<CR>", opts)
+keymap("n", "<M-,>", ":vert resize -1<CR>", opts)
+
+keymap("n", "<M->>", ":resize +1<CR>", opts)
+keymap("n", "<M-lt>", ":resize -1<CR>", opts)
 
 vim.keymap.set("n", "<leader>ll", function()
 	vim.opt_local.wrap = false
