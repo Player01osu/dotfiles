@@ -173,6 +173,7 @@ alias nshuf="fd --max-depth=1 --type=file --extension=webp --extension=jpg --ext
 alias nshufa="fd --type=file --extension=webp --extension=jpg --extension=png --extension=jpeg --extension=gif | shuf | nsxiv -iat"
 alias nsxiv="devour nsxiv"
 alias nvimconf="nvim ~/.config/nvim/init.vim"
+alias nvide="neovide --multigrid"
 alias offnow="doas loginctl poweroff"
 alias offon="doas loginctl reboot"
 alias osu-dir="cd ~/.local/share/osu-wine/OSU/"

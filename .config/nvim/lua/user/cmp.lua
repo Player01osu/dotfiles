@@ -17,6 +17,13 @@ require("luasnip/loaders/from_vscode").lazy_load()
 --  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 --end
 
+
+-- Temporary fix to https://github.com/hrsh7th/nvim-cmp/issues/1251
+local abort = function()
+    cmp.abort()
+    cmp.core:reset()
+end
+
 --   פּ ﯟ   some other good icons
 local kind_icons = {
 	Text = "",
@@ -48,12 +55,17 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup({
+	completion = {
+		autocomplete = false,
+	},
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
-
+	--view = {
+	--	entries = "wildmenu" -- can be "custom", "wildmenu" or "native"
+	--},
 	mapping = {
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
@@ -61,11 +73,13 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		["<C-j>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		["<C-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
 
+        ["<C-e>"] = cmp.mapping(abort, { "i", "s" }),
+		--["<C-e>"] = cmp.mapping({
+		--	--i = cmp.mapping.abort(),
+		--	i = cmp.mapping(abort, { "i", "s" }),
+		--	c = cmp.mapping.close(),
+		--}),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
@@ -100,7 +114,7 @@ cmp.setup({
 	--  border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	--},
 	experimental = {
-		ghost_text = false,
+		ghost_text = true,
 	},
 })
 

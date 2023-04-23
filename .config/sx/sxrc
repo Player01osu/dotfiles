@@ -6,4 +6,6 @@
 exec mpdup &
 xrdb -merge ~/.config/X11/.Xresources
 exec dwm
+
+exec ~/.local/bin/autoendsh
 #exec leftwm

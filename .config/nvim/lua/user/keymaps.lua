@@ -77,6 +77,10 @@ vim.keymap.set("n", "<leader><leader>ef", function()
 		return
 	end
 
+
+	--[[ -- Replaced in favor of `:w ++p`
+		 --
+		 -- `:help :write` for more information
 	-- Create directories as needed
 	local utils = require("user.utils")
 	if not utils.exists(fname) then
@@ -93,6 +97,7 @@ vim.keymap.set("n", "<leader><leader>ef", function()
 			end
 		end
 	end
+	]]--
 
 	vim.cmd("e " .. fname)
 end, opts)
@@ -188,6 +193,25 @@ vim.keymap.set("n", "<leader>cb", function()
 	vim.cmd("bd " .. fname)
 end, opts)
 
+vim.keymap.set("n", "<leader><leader>sr", function()
+	local run = vim.g.run
+
+	if vim.g.run == nil then
+		run = ""
+	end
+
+	local run_new = vim.fn.input("Run command: ", run, "file")
+
+	if run_new == "" then
+		return
+	end
+
+	vim.opt.makeprg = run_new
+	vim.g.run = run_new
+
+	vim.cmd("w | make!");
+end, opts)
+
 vim.keymap.set("n", "<leader>sr", function()
 	local run = vim.g.run
 
@@ -195,7 +219,11 @@ vim.keymap.set("n", "<leader>sr", function()
 		run = ""
 	end
 
-	local run_new = vim.fn.input("Set run var: ", run, "file")
+	local run_new = vim.fn.input("Run command: ", run, "file")
+
+	if run_new == "" then
+		return
+	end
 
 	vim.opt.makeprg = run_new
 	vim.g.run = run_new
@@ -297,10 +325,10 @@ vim.keymap.set("n", "<leader><leader>gm", function()
 end, opts)
 
 -- insert mode
-keymap("i", "<C-P>", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", opts)
+--keymap("i", "<C-P>", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", opts)
 
-keymap("i", "<C-J>", "<Esc>", opts)
-keymap("s", "<C-J>", "<Esc>", opts)
+--keymap("i", "<C-J>", "<Esc>", opts)
+--keymap("s", "<C-J>", "<Esc>", opts)
 
 vim.keymap.set("i", "<C-E>", function()
 	vim.cmd("exe \"normal \\<c-e>\"");
