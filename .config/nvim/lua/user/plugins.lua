@@ -68,19 +68,24 @@ return packer.startup(function(use)
 	})
 
 	use({
+		"ActivityWatch/aw-watcher-vim",
+		run = ":AWStart",
+	})
+
+	use({
 		"nvim-neorg/neorg",
 		run = ":Neorg sync-parsers", -- This is the important bit!
 		config = function()
 			require("neorg").setup({
 				load = {
 					["core.defaults"] = {},
-					["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-					["core.norg.completion"] = {
+					["core.concealer"] = {}, -- Adds pretty icons to your documents
+					["core.completion"] = {
 						config = {
 							engine = "nvim-cmp",
 						},
 					},
-					["core.norg.dirman"] = {
+					["core.dirman"] = {
 						config = {
 							workspaces = {
 								home = "~/Documents/org",
@@ -211,24 +216,9 @@ return packer.startup(function(use)
 			--vim.cmd('colorscheme mellifluous')
 		end,
 	})
-	--use({"widatama/vim-phoenix",
-	--	config = function ()
-	--		vim.cmd('colorscheme phoenix')
-	--		vim.cmd([[
-	--		highlight Normal ctermbg=none
-	--		highlight NonText ctermbg=none
-	--		highlight Normal guibg=none
-	--		highlight NonText guibg=none
-	--		]])
-	--	end
-	--})
+
 	use({"rktjmp/lush.nvim", requires = {"rktjmp/shipwright.nvim"}})
 
-
-	--use "bluz71/vim-moonfly-colors"
-	--use "lukas-reineke/onedark.nvim"
-	--use "marko-cerovac/material.nvim"
-	--use "yonlu/omni.vim"
 
 	-- Indent Blankline --
 	use({
