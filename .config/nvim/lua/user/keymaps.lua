@@ -14,8 +14,6 @@ vim.g.mapleader = " "
 
 -- Normal --
 keymap("n", "<C-H>", ":bd<CR>", opts)
-keymap("n", "<C-L>", ":set wrap<CR>", opts)
-keymap("n", "<C-P>", ":set nowrap<CR>", opts)
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
@@ -326,6 +324,10 @@ end, opts)
 
 -- insert mode
 --keymap("i", "<C-P>", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", opts)
+keymap("i", "<C-G><C-H>", "<Esc>i", opts)
+keymap("i", "<C-G><C-L>", "<Esc>lli", opts)
+keymap("i", "<C-G><C-B>", "<Esc>lbi", opts)
+keymap("i", "<C-G><C-W>", "<Esc>lwi", opts)
 
 --keymap("i", "<C-J>", "<Esc>", opts)
 --keymap("s", "<C-J>", "<Esc>", opts)

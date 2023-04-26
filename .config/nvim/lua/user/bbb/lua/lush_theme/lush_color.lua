@@ -44,7 +44,7 @@ local theme = lush(function()
     -- to be slightly lighter than our normal background.
     --
     -- Set a highlight group from another highlight group
-    CursorLine { bg = "Grey20" }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorLine { bg = "Grey21" }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
 
     -- Or maybe lets style our visual selection to match Cusorlines background,
     -- and render text in Normal's foreground complement.
@@ -139,7 +139,7 @@ local theme = lush(function()
     -- PmenuSbar    { }, -- Popup menu: scrollbar.
     -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
     -- Question     { }, -- |hit-enter| prompt and yes/no questions
-    -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    QuickFixLine { bg = "gray31" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     -- SpecialKey   { }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     -- SpellBad     { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     -- SpellCap     { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -172,7 +172,7 @@ local theme = lush(function()
 
     Identifier     { }, -- (preferred) any variable name
 
-    Statement      { bg = "NONE", fg = hsl("#ffff60").de(35), gui = "bold" }, -- (preferred) any statement
+    Statement      { bg = "NONE", fg = hsl("#ffff60").de(12), gui = "bold" }, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
@@ -180,14 +180,14 @@ local theme = lush(function()
     -- Keyword        { }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
 
-    PreProc        { bg = "NONE", fg= hsl("#ffff60").de(40)}, -- (preferred) generic Preprocessor
+    PreProc        { bg = "NONE", fg= hsl("#ffff60").de(6)}, -- (preferred) generic Preprocessor
     --PreProc        { bg = "NONE", fg= hsl("#ff80ff").de(10)}, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type           { bg = "NONE", fg = hsl("#60ff60").de(37), gui = "bold" }, -- (preferred) int, long, char, etc.
+    Type           { bg = "NONE", fg = hsl("#60ff60").de(2), gui = "bold" }, -- (preferred) int, long, char, etc.
 	Function       { }, -- function name (also: methods for classes)
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
@@ -209,7 +209,7 @@ local theme = lush(function()
 
     -- Error          { }, -- (preferred) any erroneous construct
 
-    Todo           { bg = hsl("#ffff00").de(20), fg = "Grey10" }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo           { bg = hsl("#ffff00").de(6), fg = "Grey10" }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 	--lualine_a_command { bg = "NONE", fg = "NONE" },
 
