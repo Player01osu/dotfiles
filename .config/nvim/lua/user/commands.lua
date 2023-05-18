@@ -5,6 +5,7 @@ create_user_command("Erc", "e ~/.config/nvim/init.lua", {})
 create_user_command("R", "w | make!", {})
 create_user_command("Rv", "w | make!", {})
 create_user_command("Rh", "w | make!", {})
+create_user_command("Oil", "lua require(\"oil\").open()", {})
 
 --create_user_command("R", "lua Run_make()", {})
 --create_user_command("Rv", "vsp | lua Run_make()", {})

@@ -74,7 +74,7 @@ return packer.startup(function(use)
 
 	use({
 		"nvim-neorg/neorg",
-		run = ":Neorg sync-parsers", -- This is the important bit!
+		--run = ":Neorg sync-parsers", -- This is the important bit!
 		config = function()
 			require("neorg").setup({
 				load = {
@@ -98,12 +98,12 @@ return packer.startup(function(use)
 							hook = function(keybinds)
 								keybinds.map_event_to_mode("norg", {
 									n = {
-										{ "<Tab>", "core.integrations.treesitter.next.link" },
+										{ "<Tab>",   "core.integrations.treesitter.next.link" },
 										{ "<S-Tab>", "core.integrations.treesitter.previous.link" },
 									},
-									},{
-										silent = true,
-										noremap = true,
+								}, {
+									silent = true,
+									noremap = true,
 								})
 								-- Unmaps any Neorg key from the `norg` mode
 								--keybinds.remap(
@@ -121,10 +121,10 @@ return packer.startup(function(use)
 		requires = "nvim-lua/plenary.nvim",
 	})
 
-	use({
-		"lervag/vimtex",
-		ft = { "tex", "latex" },
-	})
+	--use({
+	--	"lervag/vimtex",
+	--	ft = { "tex", "latex" },
+	--})
 
 	-- Formatter --
 	use({
@@ -170,9 +170,9 @@ return packer.startup(function(use)
 		'ramojus/mellifluous.nvim',
 		requires = { 'rktjmp/lush.nvim' },
 		config = function()
-			require'mellifluous'.setup({
-				      neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
-      bg_contrast = 'hard', -- options: 'soft', 'medium', 'hard'
+			require 'mellifluous'.setup({
+				neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+				bg_contrast = 'hard', -- options: 'soft', 'medium', 'hard'
 				dim_inactive = false,
 				color_set = 'mellifluous',
 				styles = {
@@ -217,7 +217,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use({"rktjmp/lush.nvim", requires = {"rktjmp/shipwright.nvim"}})
+	use({ "rktjmp/lush.nvim", requires = { "rktjmp/shipwright.nvim" } })
 
 
 	-- Indent Blankline --
@@ -314,6 +314,15 @@ return packer.startup(function(use)
 			enable = true,
 			additional_vim_regex_highlighting = false
 		},
+	})
+
+	use({
+		"stevearc/oil.nvim",
+		config = function ()
+			require("oil").setup({
+				default_file_explorer = false,
+			})
+		end
 	})
 
 	use({
