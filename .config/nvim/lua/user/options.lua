@@ -61,9 +61,12 @@ vim.g.netrw_sort_by                 = "exten"
 vim.g.netrw_localcopydircmd         = "cp -r"
 vim.g.netrw_localrmdir              = "rm -r"
 vim.g.netrw_list_hide               = [[^\.\.\/ .*,^\.\/ .*0.*,^\.\/$,^\.\.\/$]]
+
+--vim.g.netrw_list_cmd = "ls"
+
 --vim.g.netrw_maxfilenamelen          = 80
 vim.g.netrw_dynamic_maxfilenamelen  = 100
---vim.g.netrw_liststyle               = 1
+vim.g.netrw_liststyle               = 1
 vim.g.vimtex_view_method            = "zathura"
 vim.g.vim_markdown_folding_disabled = 1
 
