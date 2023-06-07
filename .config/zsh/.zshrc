@@ -5,7 +5,7 @@ SAVEHIST=1000
 setopt autocd extendedglob nomatch
 unsetopt beep
 bindkey -v
-zstyle :compinstall filename '/home/bruh/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -133,10 +133,10 @@ bindkey -s '^P' 'nvim /tmp/tmp.kalk\n'
 bindkey -s '^Y' 'nvim /tmp/tmp.sbcli\n'
 
 bindkey -s '^N' 'nvim -c "Ex"\n'
-
-bindkey -s '^W' 'wiki\n'
-
-bindkey -s '^k' 'pulsemixer\n'
+#
+#bindkey -s '^W' 'wiki\n'
+#
+#bindkey -s '^k' 'pulsemixer\n'
 
 # Prompt ZSH
 autoload -U colors && colors
@@ -211,4 +211,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-completion/completion.zsh 2>/dev/null
 #. /usr/share/z/z.sh
 eval "$(zoxide init zsh)"
-source /home/bruh/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br

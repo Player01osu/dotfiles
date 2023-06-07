@@ -45,6 +45,8 @@ return packer.startup(function(use)
 		"wbthomason/packer.nvim",
 	})
 
+	use "ido-nvim/ido.nvim"
+
 	-- Markdown --
 	use({
 		"vimwiki/vimwiki",
