@@ -68,6 +68,9 @@ vim.keymap.set("n", "<leader><leader>cd", function()
 	vim.cmd("cd " .. cur_dir)
 end, opts)
 
+vim.keymap.set("n", "<leader>ei", function() require("ido").browse() end)
+vim.keymap.set("n", "<leader><leader>ei", function() require("ido").buffers() end)
+
 vim.keymap.set("n", "<leader><leader>ef", function()
 	local cur_dir = vim.fn.expand("%:p")
 	local fname = vim.fn.input("File: ", cur_dir, "file")

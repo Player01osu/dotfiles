@@ -31,6 +31,8 @@ export JDK_HOME=$STUDIO_JDK
 export JAVA_HOME=$STUDIO_JDK
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npmrc
+
 #export DISPLAY=:1.0
 export CARGO_HOME="$XDG_DATA_HOME"/Cargo
 export DATABASE_URL="postgres://localhost:5432/wordtugDatabase"
@@ -98,6 +100,10 @@ fi
 
 if [ -d "$HOME/Applications" ] ;
   then PATH="$HOME/Applications:$PATH"
+fi
+
+if [ -d "$HOME/.local/opt" ] ;
+  then PATH="$HOME/.local/opt:$PATH"
 fi
 
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
