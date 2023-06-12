@@ -9,8 +9,9 @@ set.hidden = true
 set.incsearch = true
 set.mouse = "nv"
 set.scrolloff = 5
-set.sidescrolloff = 12
 set.shell = "/bin/dash"
+set.sidescrolloff = 12
+set.smoothscroll = true
 
 -- Appearance --
 set.background = "dark"
