@@ -205,6 +205,7 @@ alias yt_mpv_360='mpv --ytdl-format=18'
 alias yt_mpv_720='mpv --ytdl-format=22'
 alias yta="yt-dlp -x --audio-format mp3"
 alias zathura="devour zathura"
+alias calibre=calibre --with-library "$XDG_DATA_HOME/Calibre Library"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
