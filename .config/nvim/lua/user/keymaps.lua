@@ -12,6 +12,9 @@ local keymap = vim.api.nvim_set_keymap
 -- Leader Key
 vim.g.mapleader = " "
 
+keymap("i", "<C-C>", "<Esc>", opts)
+keymap("v", "<C-C>", "<Esc>", opts)
+
 -- Normal --
 keymap("n", "<C-H>", ":bd<CR>", opts)
 keymap("n", "j", "gj", opts)
