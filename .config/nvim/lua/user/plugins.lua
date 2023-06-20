@@ -40,6 +40,8 @@ packer.init({
 })
 -- Install your plugins here
 return packer.startup(function(use)
+	use 'andweeb/presence.nvim'
+
 	-- Plugin manager --
 	use({
 		"wbthomason/packer.nvim",
