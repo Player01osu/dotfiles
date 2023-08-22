@@ -31,7 +31,11 @@ export JDK_HOME=$STUDIO_JDK
 export JAVA_HOME=$STUDIO_JDK
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 
+export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
+export CABAL_DIR="$XDG_DATA_HOME"/cabal
+
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npmrc
+export DISABLE_QT5_COMPAT=1
 
 #export DISPLAY=:1.0
 export CARGO_HOME="$XDG_DATA_HOME"/Cargo

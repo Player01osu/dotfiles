@@ -13,7 +13,7 @@ local keymap = vim.api.nvim_set_keymap
 vim.g.mapleader = " "
 
 keymap("i", "<C-C>", "<Esc>", opts)
-keymap("v", "<C-C>", "<Esc>", opts)
+keymap("i", "<C-C>", "<Esc>", opts)
 
 -- Normal --
 keymap("n", "<C-H>", ":bd<CR>", opts)
