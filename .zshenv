@@ -12,6 +12,7 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export GOPATH="$XDG_DATA_HOME"/go
 
 export ROSWELL_HOME="$XDG_CONFIG_HOME"/roswell
+export MATHEMATICA_USERBASE="$XDG_CONFIG_HOME"/mathematica
 
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export ANDROID_USER_HOME=$ANDROID_HOME
@@ -25,8 +26,10 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+export NIMBLE_DIR="$XDG_DATA_HOME"/nimble
+export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 
-export STUDIO_JDK=$XDG_CONFIG_HOME/java
+export STUDIO_JDK=/usr/lib/jvm/default-runtime
 export JDK_HOME=$STUDIO_JDK
 export JAVA_HOME=$STUDIO_JDK
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
@@ -109,6 +112,15 @@ fi
 if [ -d "$HOME/.local/opt" ] ;
   then PATH="$HOME/.local/opt:$PATH"
 fi
+
+if [ -d "$HOME/.nimble/bin" ] ;
+  then PATH="$HOME/.nimble/bin:$PATH"
+fi
+
+if [ -d "$XDG_DATA_HOME/nimble/bin" ] ;
+  then PATH="$XDG_DATA_HOME/nimble/bin:$PATH"
+fi
+
 
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 #

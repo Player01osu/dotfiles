@@ -1,5 +1,11 @@
 vim.filetype.add({
 	extension = {
+		ankift = "ankift",
+	},
+})
+
+vim.filetype.add({
+	extension = {
 		nanki = "Nanki",
 	},
 })

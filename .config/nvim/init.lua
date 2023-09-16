@@ -6,7 +6,6 @@ require("neoconf").setup({
 
 require("user.files")
 
-require("user.catppuccino")
 require("user.cmp")
 require("user.commands")
 require("user.indent")

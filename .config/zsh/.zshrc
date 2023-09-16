@@ -149,7 +149,9 @@ alias animemnt="doas mount 192.168.1.87:/srv/nfs/Videos/not-anime /mnt/Videos/no
 alias bc="bc --mathlib"
 alias block="betterlockscreen -l blur"
 alias bluetooth="bluetoothctl"
+alias calibre=calibre --with-library "$XDG_DATA_HOME/Calibre Library"
 alias cbonsair="cbonsai --seed 119"
+alias choosenim="choosenim --choosenimDir:${XDG_DATA_HOME}/choosenim"
 alias codef="cd ~/Documents/code"
 alias discordgpu="LIBVA_DRIVER_NAME=i915 discord --enable-gpu-rasterization && rm -rf ~/.pki"
 alias dpu='LIBVA_DRIVER_NAME=i915 devour discord --enable-gpu-rasterization && rm -rf ~/.pki'
@@ -158,11 +160,11 @@ alias fortnite="osu"
 alias gbookmark="nvim ~/.local/share/bookmarks/bookmarks"
 alias getweather="curl wttr.in/west+bloomfield+township\?m && cal && date"
 alias hsetwall="hsetroot -cover ~/Pictures/wallpapers/wp.jpg"
-alias l="exa -a1 --icons --sort=type"
+alias l="eza -a1 --icons --sort=type"
 alias lf="lfub"
 alias lfwp="lfub ~/Pictures/wallpapers/"
 alias locknow="loginctl suspend && betterlockscreen -l blur"
-alias ls="exa -a --icons --sort=type"
+alias ls="eza -a --icons --sort=type"
 alias man-keep="man -P 'less -X'"
 alias mocp="ncmpcpp"
 alias mongod="doas -u mongodb mongod --config /etc/mongodb.conf"
@@ -205,7 +207,6 @@ alias yt_mpv_360='mpv --ytdl-format=18'
 alias yt_mpv_720='mpv --ytdl-format=22'
 alias yta="yt-dlp -x --audio-format mp3"
 alias zathura="devour zathura"
-alias calibre=calibre --with-library "$XDG_DATA_HOME/Calibre Library"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
