@@ -62,6 +62,7 @@ vim.g.netrw_sort_by                 = "exten"
 vim.g.netrw_localcopydircmd         = "cp -r"
 vim.g.netrw_localrmdir              = "rm -r"
 vim.g.netrw_list_hide               = [[^\.\.\/ .*,^\.\/ .*0.*,^\.\/$,^\.\.\/$]]
+vim.g.loaded_python3_provider       = 0
 
 --vim.g.netrw_list_cmd = "ls"
 

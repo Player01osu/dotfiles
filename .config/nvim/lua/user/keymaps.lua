@@ -346,6 +346,7 @@ vim.keymap.set("i", "<C-Y>", function()
 	vim.cmd("exe \"normal \\<c-y>\"");
 end, opts)
 
+
 -- visual mode
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
@@ -376,7 +377,7 @@ vim.keymap.set({ "i", "s" }, "<c-r>", function()
 	end
 end, opts)
 
-vim.keymap.set({ "i", "s" }, "<c-t>", function()
+vim.keymap.set({ "i", "s" }, "<c-e>", function()
 	if ls.jumpable(-1) then
 		ls.jump(-1)
 	end

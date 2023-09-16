@@ -46,6 +46,9 @@ return packer.startup(function(use)
 	use({
 		"wbthomason/packer.nvim",
 	})
+	use({
+		"folke/neodev.nvim",
+	})
 
 	use "ido-nvim/ido.nvim"
 
@@ -71,10 +74,10 @@ return packer.startup(function(use)
 		"godlygeek/tabular",
 	})
 
-	use({
-		"ActivityWatch/aw-watcher-vim",
-		run = ":AWStart",
-	})
+	--use({
+	--	"ActivityWatch/aw-watcher-vim",
+	--	--run = ":AWStart",
+	--})
 
 	use({
 		"nvim-neorg/neorg",
@@ -131,9 +134,9 @@ return packer.startup(function(use)
 	--})
 
 	-- Formatter --
-	use({
-		"sbdchd/neoformat",
-	})
+	--use({
+	--	"sbdchd/neoformat",
+	--})
 
 	-- Lualine --
 	use({
@@ -141,85 +144,85 @@ return packer.startup(function(use)
 	})
 
 	-- Colorscheme --
-	use '~/.config/nvim/lua/user/bbb'
+	--use '~/.config/nvim/lua/user/bbb'
 
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-		config = function()
-			vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-			local colors = require("catppuccin.palettes").get_palette()
-			colors.none = "NONE"
-			require("catppuccin").setup({
-				custom_highlights = {
-					Comment = { fg = colors.overlay1 },
-					--LineNr = { fg = colors.overlay1 },
-					--CursorLine = { bg = colors.none },
-					--CursorLineNr = { fg = colors.lavender },
-					DiagnosticVirtualTextError = { bg = colors.none },
-					DiagnosticVirtualTextWarn = { bg = colors.none },
-					DiagnosticVirtualTextInfo = { bg = colors.none },
-					DiagnosticVirtualTextHint = { bg = colors.none },
-				},
-			})
-			--vim.api.nvim_command("colorscheme catppuccin")
-		end,
-	})
+	--use({
+	--	"catppuccin/nvim",
+	--	as = "catppuccin",
+	--	config = function()
+	--		vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+	--		local colors = require("catppuccin.palettes").get_palette()
+	--		colors.none = "NONE"
+	--		require("catppuccin").setup({
+	--			custom_highlights = {
+	--				Comment = { fg = colors.overlay1 },
+	--				--LineNr = { fg = colors.overlay1 },
+	--				--CursorLine = { bg = colors.none },
+	--				--CursorLineNr = { fg = colors.lavender },
+	--				DiagnosticVirtualTextError = { bg = colors.none },
+	--				DiagnosticVirtualTextWarn = { bg = colors.none },
+	--				DiagnosticVirtualTextInfo = { bg = colors.none },
+	--				DiagnosticVirtualTextHint = { bg = colors.none },
+	--			},
+	--		})
+	--		--vim.api.nvim_command("colorscheme catppuccin")
+	--	end,
+	--})
 
-	use({
-		"sainnhe/edge",
-	})
+	--use({
+	--	"sainnhe/edge",
+	--})
 
-	use({
-		'ramojus/mellifluous.nvim',
-		requires = { 'rktjmp/lush.nvim' },
-		config = function()
-			require 'mellifluous'.setup({
-				neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
-				bg_contrast = 'hard', -- options: 'soft', 'medium', 'hard'
-				dim_inactive = false,
-				color_set = 'mellifluous',
-				styles = {
-					comments = 'NONE',
-					conditionals = 'NONE',
-					folds = 'NONE',
-					loops = 'NONE',
-					functions = 'NONE',
-					keywords = 'NONE',
-					strings = 'NONE',
-					variables = 'NONE',
-					numbers = 'NONE',
-					booleans = 'NONE',
-					properties = 'NONE',
-					types = 'NONE',
-					operators = 'NONE',
-				},
-				transparent_background = {
-					enabled = true,
-					floating_windows = true,
-					telescope = true,
-					file_tree = true,
-					cursor_line = false,
-					status_line = false,
-				},
-				plugins = {
-					cmp = true,
-					gitsigns = false,
-					indent_blankline = true,
-					nvim_tree = {
-						enabled = false,
-						show_root = false,
-					},
-					telescope = {
-						enabled = true,
-						nvchad_like = true,
-					},
-					startify = false,
-				},
-			}) -- optional, see configuration section.
-			--vim.cmd('colorscheme mellifluous')
-		end,
-	})
+	--use({
+	--	'ramojus/mellifluous.nvim',
+	--	requires = { 'rktjmp/lush.nvim' },
+	--	config = function()
+	--		require 'mellifluous'.setup({
+	--			neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+	--			bg_contrast = 'hard', -- options: 'soft', 'medium', 'hard'
+	--			dim_inactive = false,
+	--			color_set = 'mellifluous',
+	--			styles = {
+	--				comments = 'NONE',
+	--				conditionals = 'NONE',
+	--				folds = 'NONE',
+	--				loops = 'NONE',
+	--				functions = 'NONE',
+	--				keywords = 'NONE',
+	--				strings = 'NONE',
+	--				variables = 'NONE',
+	--				numbers = 'NONE',
+	--				booleans = 'NONE',
+	--				properties = 'NONE',
+	--				types = 'NONE',
+	--				operators = 'NONE',
+	--			},
+	--			transparent_background = {
+	--				enabled = true,
+	--				floating_windows = true,
+	--				telescope = true,
+	--				file_tree = true,
+	--				cursor_line = false,
+	--				status_line = false,
+	--			},
+	--			plugins = {
+	--				cmp = true,
+	--				gitsigns = false,
+	--				indent_blankline = true,
+	--				nvim_tree = {
+	--					enabled = false,
+	--					show_root = false,
+	--				},
+	--				telescope = {
+	--					enabled = true,
+	--					nvchad_like = true,
+	--				},
+	--				startify = false,
+	--			},
+	--		}) -- optional, see configuration section.
+	--		--vim.cmd('colorscheme mellifluous')
+	--	end,
+	--})
 
 	use({ "rktjmp/lush.nvim", requires = { "rktjmp/shipwright.nvim" } })
 
