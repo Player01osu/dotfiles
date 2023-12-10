@@ -212,85 +212,43 @@ hi! link @lsp.type.type Type
 hi! link @lsp.type.typeParameter TypeDef
 hi! link @lsp.type.variable Identifier
 
-if &background ==# 'light'
-  " Default colors only used with a light background.
-  hi ColorColumn  guifg=NONE      guibg=LightRed     guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=LightRed     cterm=NONE
-  hi CursorColumn guifg=NONE      guibg=Grey90       guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=LightGrey    cterm=NONE
-  hi CursorLine   guifg=NONE      guibg=Grey90       guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=NONE         cterm=underline
-  hi CursorLineNr guifg=Brown     guibg=NONE         guisp=NONE     gui=bold      ctermfg=Brown       ctermbg=NONE         cterm=underline
-  hi DiffAdd      guifg=NONE      guibg=LightBlue    guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=LightBlue    cterm=NONE
-  hi DiffChange   guifg=NONE      guibg=LightMagenta guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=LightMagenta cterm=NONE
-  hi DiffDelete   guifg=Blue      guibg=LightCyan    guisp=NONE     gui=bold      ctermfg=Blue        ctermbg=LightCyan    cterm=NONE
-  hi Directory    guifg=Blue      guibg=NONE         guisp=NONE     gui=NONE      ctermfg=DarkBlue    ctermbg=NONE         cterm=NONE
-  hi FoldColumn   guifg=DarkBlue  guibg=Grey         guisp=NONE     gui=NONE      ctermfg=DarkBlue    ctermbg=Grey         cterm=NONE
-  hi Folded       guifg=DarkBlue  guibg=LightGrey    guisp=NONE     gui=NONE      ctermfg=DarkBlue    ctermbg=Grey         cterm=NONE
-  hi LineNr       guifg=Brown     guibg=NONE         guisp=NONE     gui=NONE      ctermfg=Brown       ctermbg=NONE         cterm=NONE
-  hi MatchParen   guifg=NONE      guibg=Cyan         guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=Cyan         cterm=NONE
-  hi MoreMsg      guifg=SeaGreen  guibg=NONE         guisp=NONE     gui=bold      ctermfg=DarkGreen   ctermbg=NONE         cterm=NONE
-  hi Pmenu        guifg=NONE      guibg=LightMagenta guisp=NONE     gui=NONE      ctermfg=Black       ctermbg=LightMagenta cterm=NONE
-  hi PmenuSel     guifg=NONE      guibg=Grey         guisp=NONE     gui=NONE      ctermfg=Black       ctermbg=LightGrey    cterm=NONE      blend=NONE
-  hi PmenuThumb   guifg=NONE      guibg=Black        guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=Black        cterm=NONE
-  hi Question     guifg=SeaGreen  guibg=NONE         guisp=NONE     gui=bold      ctermfg=DarkGreen   ctermbg=NONE         cterm=NONE
-  hi Search       guifg=NONE      guibg=Yellow       guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=Yellow       cterm=NONE
-  hi SignColumn   guifg=DarkBlue  guibg=Grey         guisp=NONE     gui=NONE      ctermfg=DarkBlue    ctermbg=Grey         cterm=NONE
-  hi SpecialKey   guifg=Blue      guibg=NONE         guisp=NONE     gui=NONE      ctermfg=DarkBlue    ctermbg=NONE         cterm=NONE
-  hi SpellBad     guifg=NONE      guibg=NONE         guisp=Red      gui=undercurl ctermfg=NONE        ctermbg=LightRed     cterm=NONE
-  hi SpellCap     guifg=NONE      guibg=NONE         guisp=Blue     gui=undercurl ctermfg=NONE        ctermbg=LightBlue    cterm=NONE
-  hi SpellLocal   guifg=NONE      guibg=NONE         guisp=DarkCyan gui=undercurl ctermfg=NONE        ctermbg=Cyan         cterm=NONE
-  hi SpellRare    guifg=NONE      guibg=NONE         guisp=Magenta  gui=undercurl ctermfg=NONE        ctermbg=LightMagenta cterm=NONE
-  hi TabLine      guifg=NONE      guibg=LightGrey    guisp=NONE     gui=underline ctermfg=black       ctermbg=LightGrey    cterm=underline
-  hi Title        guifg=Magenta   guibg=NONE         guisp=NONE     gui=bold      ctermfg=DarkMagenta ctermbg=NONE         cterm=NONE
-  hi Visual       guifg=NONE      guibg=LightGrey    guisp=NONE     gui=NONE      ctermfg=NONE        ctermbg=NONE         cterm=NONE
-  hi WarningMsg   guifg=Red       guibg=NONE         guisp=NONE     gui=NONE      ctermfg=DarkRed     ctermbg=NONE         cterm=NONE
-  hi Comment      guifg=Blue      guibg=NONE         guisp=NONE     gui=NONE      ctermfg=DarkBlue    ctermbg=NONE         cterm=NONE      term=bold
-  hi Constant     guifg=Magenta   guibg=NONE         guisp=NONE     gui=NONE      ctermfg=DarkRed     ctermbg=NONE         cterm=NONE      term=underline
-  hi Special      guifg=#6a5acd   guibg=NONE         guisp=NONE     gui=NONE      ctermfg=DarkMagenta ctermbg=NONE         cterm=NONE      term=bold
-  hi Identifier   guifg=DarkCyan  guibg=NONE         guisp=NONE     gui=NONE      ctermfg=DarkCyan    ctermbg=NONE         cterm=NONE      term=underline
-  hi Statement    guifg=Brown     guibg=NONE         guisp=NONE     gui=bold      ctermfg=Brown       ctermbg=NONE         cterm=NONE      term=bold
-  hi PreProc      guifg=#6a0dad   guibg=NONE         guisp=NONE     gui=NONE      ctermfg=DarkMagenta ctermbg=NONE         cterm=NONE      term=underline
-  hi Type         guifg=SeaGreen  guibg=NONE         guisp=NONE     gui=bold      ctermfg=DarkGreen   ctermbg=NONE         cterm=NONE      term=underline
-  hi Underlined   guifg=SlateBlue guibg=NONE         guisp=NONE     gui=underline ctermfg=DarkMagenta ctermbg=NONE         cterm=underline term=underline
-  hi Ignore       guifg=bg        guibg=NONE         guisp=NONE     gui=NONE      ctermfg=white       ctermbg=NONE         cterm=NONE      term=NONE
-else
-  " Default colors only used with a dark background.
-  hi ColorColumn  guifg=NONE     guibg=DarkRed     guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkRed     cterm=NONE
-  hi CursorColumn guifg=NONE     guibg=Grey40      guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkGrey    cterm=NONE
-  hi CursorLine   guifg=NONE     guibg=Grey40      guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=NONE        cterm=underline
-  hi CursorLineNr guifg=Yellow   guibg=NONE        guisp=NONE    gui=bold      ctermfg=Yellow       ctermbg=NONE        cterm=underline
-  hi DiffAdd      guifg=NONE     guibg=DarkBlue    guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkBlue    cterm=NONE
-  hi DiffChange   guifg=NONE     guibg=DarkMagenta guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkMagenta cterm=NONE
-  hi DiffDelete   guifg=Blue     guibg=DarkCyan    guisp=NONE    gui=bold      ctermfg=Blue         ctermbg=DarkCyan    cterm=NONE
-  hi Directory    guifg=Cyan     guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightCyan    ctermbg=NONE        cterm=NONE
-  hi FoldColumn   guifg=Cyan     guibg=Grey        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=DarkGrey    cterm=NONE
-  hi Folded       guifg=Cyan     guibg=DarkGrey    guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=DarkGrey    cterm=NONE
-  hi LineNr       guifg=Yellow   guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Yellow       ctermbg=NONE        cterm=NONE
-  hi MatchParen   guifg=NONE     guibg=DarkCyan    guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkCyan    cterm=NONE
-  hi MoreMsg      guifg=SeaGreen guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightGreen   ctermbg=NONE        cterm=NONE
-  hi Pmenu        guifg=NONE     guibg=Magenta     guisp=NONE    gui=NONE      ctermfg=Black        ctermbg=Magenta     cterm=NONE
-  hi PmenuSel     guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=NONE      ctermfg=DarkGrey     ctermbg=Black       cterm=NONE      blend=NONE
-  hi PmenuThumb   guifg=NONE     guibg=White       guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=White       cterm=NONE
-  hi Question     guifg=Green    guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightGreen   ctermbg=NONE        cterm=NONE
-  hi Search       guifg=Black    guibg=Yellow      guisp=NONE    gui=NONE      ctermfg=Black        ctermbg=Yellow      cterm=NONE
-  hi SignColumn   guifg=Cyan     guibg=Grey        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=DarkGrey    cterm=NONE
-  hi SpecialKey   guifg=Cyan     guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightBlue    ctermbg=NONE        cterm=NONE
-  hi SpellBad     guifg=NONE     guibg=NONE        guisp=Red     gui=undercurl ctermfg=NONE         ctermbg=Red         cterm=NONE
-  hi SpellCap     guifg=NONE     guibg=NONE        guisp=Blue    gui=undercurl ctermfg=NONE         ctermbg=Blue        cterm=NONE
-  hi SpellLocal   guifg=NONE     guibg=NONE        guisp=Cyan    gui=undercurl ctermfg=NONE         ctermbg=Cyan        cterm=NONE
-  hi SpellRare    guifg=NONE     guibg=NONE        guisp=Magenta gui=undercurl ctermfg=NONE         ctermbg=Magenta     cterm=NONE
-  hi TabLine      guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=underline ctermfg=white        ctermbg=DarkGrey    cterm=underline
-  hi Title        guifg=Magenta  guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightMagenta ctermbg=NONE        cterm=NONE
-  hi Visual       guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=NONE        cterm=NONE
-  hi WarningMsg   guifg=Red      guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightRed     ctermbg=NONE        cterm=NONE
-  hi Comment      guifg=#80a0ff  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=NONE        cterm=NONE      term=bold
-  hi Constant     guifg=#ffa0a0  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Magenta      ctermbg=NONE        cterm=NONE      term=underline
-  hi Special      guifg=Orange   guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightRed     ctermbg=NONE        cterm=NONE      term=bold
-  hi Identifier   guifg=#40ffff  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=NONE        cterm=bold      term=underline
-  hi Statement    guifg=#ffff60  guibg=NONE        guisp=NONE    gui=bold      ctermfg=Yellow       ctermbg=NONE        cterm=NONE      term=bold
-  hi PreProc      guifg=#ff80ff  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightBlue    ctermbg=NONE        cterm=NONE      term=underline
-  hi Type         guifg=#60ff60  guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightGreen   ctermbg=NONE        cterm=NONE      term=underline
-  hi Underlined   guifg=#80a0ff  guibg=NONE        guisp=NONE    gui=underline ctermfg=LightBlue    ctermbg=NONE        cterm=underline term=underline
-  hi Ignore       guifg=bg       guibg=NONE        guisp=NONE    gui=NONE      ctermfg=black        ctermbg=NONE        cterm=NONE      term=NONE
-endif
+hi ColorColumn  guifg=NONE     guibg=DarkRed     guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkRed     cterm=NONE
+hi CursorColumn guifg=NONE     guibg=Grey40      guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkGrey    cterm=NONE
+hi CursorLine   guifg=NONE     guibg=Grey40      guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=NONE        cterm=underline
+hi CursorLineNr guifg=Yellow   guibg=NONE        guisp=NONE    gui=bold      ctermfg=Yellow       ctermbg=NONE        cterm=underline
+hi DiffAdd      guifg=NONE     guibg=DarkBlue    guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkBlue    cterm=NONE
+hi DiffChange   guifg=NONE     guibg=DarkMagenta guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkMagenta cterm=NONE
+hi DiffDelete   guifg=Blue     guibg=DarkCyan    guisp=NONE    gui=bold      ctermfg=Blue         ctermbg=DarkCyan    cterm=NONE
+hi Directory    guifg=Cyan     guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightCyan    ctermbg=NONE        cterm=NONE
+hi FoldColumn   guifg=Cyan     guibg=Grey        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=DarkGrey    cterm=NONE
+hi Folded       guifg=Cyan     guibg=DarkGrey    guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=DarkGrey    cterm=NONE
+hi LineNr       guifg=Yellow   guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Yellow       ctermbg=NONE        cterm=NONE
+hi MatchParen   guifg=NONE     guibg=DarkCyan    guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkCyan    cterm=NONE
+hi MoreMsg      guifg=SeaGreen guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightGreen   ctermbg=NONE        cterm=NONE
+hi Pmenu        guifg=NONE     guibg=Magenta     guisp=NONE    gui=NONE      ctermfg=Black        ctermbg=Magenta     cterm=NONE
+hi PmenuSel     guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=NONE      ctermfg=DarkGrey     ctermbg=Black       cterm=NONE      blend=NONE
+hi PmenuThumb   guifg=NONE     guibg=White       guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=White       cterm=NONE
+hi Question     guifg=Green    guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightGreen   ctermbg=NONE        cterm=NONE
+hi Search       guifg=Black    guibg=Yellow      guisp=NONE    gui=NONE      ctermfg=Black        ctermbg=Yellow      cterm=NONE
+hi SignColumn   guifg=Cyan     guibg=Grey        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=DarkGrey    cterm=NONE
+hi SpecialKey   guifg=Cyan     guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightBlue    ctermbg=NONE        cterm=NONE
+hi SpellBad     guifg=NONE     guibg=NONE        guisp=Red     gui=undercurl ctermfg=NONE         ctermbg=Red         cterm=NONE
+hi SpellCap     guifg=NONE     guibg=NONE        guisp=Blue    gui=undercurl ctermfg=NONE         ctermbg=Blue        cterm=NONE
+hi SpellLocal   guifg=NONE     guibg=NONE        guisp=Cyan    gui=undercurl ctermfg=NONE         ctermbg=Cyan        cterm=NONE
+hi SpellRare    guifg=NONE     guibg=NONE        guisp=Magenta gui=undercurl ctermfg=NONE         ctermbg=Magenta     cterm=NONE
+hi TabLine      guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=underline ctermfg=white        ctermbg=DarkGrey    cterm=underline
+hi Title        guifg=Magenta  guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightMagenta ctermbg=NONE        cterm=NONE
+hi Visual       guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=NONE        cterm=NONE
+hi WarningMsg   guifg=Red      guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightRed     ctermbg=NONE        cterm=NONE
+hi Comment      guifg=#80a0ff  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=NONE        cterm=NONE      term=bold
+hi Constant     guifg=#ffa0a0  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Magenta      ctermbg=NONE        cterm=NONE      term=underline
+hi Special      guifg=Orange   guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightRed     ctermbg=NONE        cterm=NONE      term=bold
+hi Identifier   guifg=#40ffff  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=NONE        cterm=bold      term=underline
+hi Statement    guifg=#ffff60  guibg=NONE        guisp=NONE    gui=bold      ctermfg=Yellow       ctermbg=NONE        cterm=NONE      term=bold
+hi PreProc      guifg=#ff80ff  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightBlue    ctermbg=NONE        cterm=NONE      term=underline
+hi Type         guifg=#60ff60  guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightGreen   ctermbg=NONE        cterm=NONE      term=underline
+hi Underlined   guifg=#80a0ff  guibg=NONE        guisp=NONE    gui=underline ctermfg=LightBlue    ctermbg=NONE        cterm=underline term=underline
+hi Ignore       guifg=bg       guibg=NONE        guisp=NONE    gui=NONE      ctermfg=black        ctermbg=NONE        cterm=NONE      term=NONE
 ]])
 
 vim.cmd("set t_Co=256")
