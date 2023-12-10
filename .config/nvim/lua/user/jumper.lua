@@ -3,17 +3,17 @@ local files = os.getenv("XDG_CACHE_HOME") .. "/nvim/jumps"
 
 -- TODO Change jump location with diffing
 M.add_jump = function(row, col, file)
-	print(file)
 	local out = io.open(files, "a+")
 
 	if out == nil then
 		error("Error opening file")
 		return
 	end
-	local formatted = string.format("%s:%s %s\n", row, col, file)
+	local formatted = string.format("%s:%s:%s\n", file, row, col)
 	out:write(formatted)
-
 	out:close()
+
+	print("Jump added")
 end
 
 M.add_jump_under_cursor = function()
@@ -26,54 +26,40 @@ M.goto_jump_file = function()
 	vim.cmd("e " .. files)
 end
 
-M.goto_jump = function(delete_mark)
-	local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
-	local line = unpack(vim.api.nvim_buf_get_lines(0, row - 1, row, true))
-
-	local idx_cursor = string.find(line, ":")
-	local idx_file = string.find(line, " ")
-	local idx_comment = string.find(line, "--", 1, true)
-
-	local row_goto = string.sub(line, 1, idx_cursor - 1)
-	local col_goto = string.sub(line, idx_cursor + 1, idx_file)
-
-	local file = string.sub(line, idx_file + 1)
-
-	if idx_comment ~= nil then
-		file = string.sub(line, idx_file + 1, idx_comment - 1)
+M.goto_latest_jump = function()
+	local file_path = vim.fn.expand("%:p")
+	M.goto_jump_file()
+	vim.cmd.norm([[GgF]])
+	if file_path ~= "" then
+		vim.cmd.e(file_path)
+		vim.cmd.norm([[]])
 	end
-
-	local cmd = string.format("e %s | call cursor(%s,%s)", file, row_goto, col_goto + 1)
-	if delete_mark then
-		vim.cmd('norm dd')
-	end
-	vim.cmd('w | bd')
-	vim.cmd(cmd)
+	vim.cmd.bwipeout(files)
 end
 
-vim.filetype.add({
-	filename = {
-		[files] = "jumper",
-	},
-})
+local Job = require'plenary.job'
 
-local bkeyset = vim.keymap.set
-local optsb = { noremap = true, silent = true, buffer = 0 }
+M.remove_latest_jump = function()
+	Job:new({
+		command = 'sed',
+		args = { '$d', files },
+		on_exit = function(j, _)
+			local data = ""
+			for _, value in ipairs(j:result()) do
+				data = string.format("%s%s\n", data, value)
+			end
 
-local function keymaps()
-	bkeyset("n", "<CR>", function()
-		M.goto_jump()
-	end, optsb)
-	bkeyset("n", "<leader><CR>", function()
-		M.goto_jump(true)
-	end, optsb)
+			local out = io.open(files, "w")
+
+			if out == nil then
+				error("Error opening file")
+				return
+			end
+			out:write(data)
+			out:close()
+		end,
+		}):start() -- or sync()
+	print("Jump removed")
 end
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "jumper" },
-	callback = function()
-		keymaps()
-	end,
-})
 
 return M

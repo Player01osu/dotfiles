@@ -2,13 +2,18 @@ local set = vim.opt -- Helper binding
 
 -- Functionality --
 set.clipboard = ""
+set.complete = {".","w","b","u","t","i","kspell"}
 set.completeopt = { "preview", "menuone", "noselect", "noinsert" }
 set.confirm = true
 set.expandtab = true
+--set.grepprg = "grep -Irn $*" -- No ripgrep
+set.grepprg = "grep $*" -- No ripgrep
+--set.grepprg = "rg -rn $*"
 set.hidden = true
 set.incsearch = true
+set.path = "**"
 set.mouse = "nv"
-set.scrolloff = 5
+set.scrolloff = 4
 set.shell = "/bin/dash"
 set.sidescrolloff = 12
 set.smoothscroll = true
@@ -105,10 +110,24 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	callback = function()
 		os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
 		os.execute("pkill -SIGRTMIN+8 waybar")
+		os.execute("todo-backup")
+		os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
+		vim.cmd("e!")
 		vim.opt_local.cursorline = false
 		vim.opt_local.number = false
 		vim.opt_local.relativenumber = false
 		vim.opt_local.signcolumn = "yes:1"
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "FocusGained", "FocusLost" }, {
+	pattern = { "todo.wiki" },
+	callback = function()
+		if not vim.opt.modified._value then
+			os.execute("todo-backup")
+			os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
+			vim.cmd("e!")
+		end
 	end,
 })
 
@@ -117,10 +136,9 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	callback = function()
 		os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
 		os.execute("pkill -SIGRTMIN+8 waybar")
+		os.execute("curl --data-binary @/home/bruh/Documents/wiki/todo.wiki --request POST http://216.128.178.18/api/v1 &")
 	end,
 })
-
-
 
 -- Vimscript --
 vim.cmd([[
