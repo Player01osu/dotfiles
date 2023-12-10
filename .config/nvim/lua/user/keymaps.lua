@@ -12,16 +12,13 @@ local keymap = vim.api.nvim_set_keymap
 -- Leader Key
 vim.g.mapleader = " "
 
-keymap("i", "<C-C>", "<Esc>", opts)
-keymap("i", "<C-C>", "<Esc>", opts)
-
 -- Normal --
 keymap("n", "<C-H>", ":bd<CR>", opts)
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
 vim.keymap.set("n", "<C-N>", function()
-	vim.cmd("Ex");
+	vim.cmd("Oil");
 end, opts)
 
 vim.keymap.set("n", "<leader>cn", function()
@@ -63,8 +60,6 @@ keymap("n", "<leader>lo", ":LspStop<CR>", opts)
 keymap("n", "<leader>con", ":e ~/.config/nvim/init.lua<CR>", opts)
 keymap("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>", opts)
 
-keymap("n", "<leader>sf", ":Neoformat<CR> :w<CR>", opts)
-
 vim.keymap.set("n", "<leader><leader>cd", function()
 	local cur_dir = vim.fn.expand("%:p:h") .. "/"
 
@@ -81,28 +76,6 @@ vim.keymap.set("n", "<leader><leader>ef", function()
 		return
 	end
 
-
-	--[[ -- Replaced in favor of `:w ++p`
-		 --
-		 -- `:help :write` for more information
-	-- Create directories as needed
-	local utils = require("user.utils")
-	if not utils.exists(fname) then
-		local dirs = utils.split_string(fname, "/")
-		local build = ""
-		for idx, v in pairs(dirs) do
-			if idx > #dirs - 1 then
-				break
-			end
-
-			build = build .. "/" .. v
-			if not utils.isdir(build) then
-				os.execute("mkdir -p " .. build)
-			end
-		end
-	end
-	]]--
-
 	vim.cmd("e " .. fname)
 end, opts)
 
@@ -111,23 +84,6 @@ vim.keymap.set("n", "<leader>ef", function()
 	local fname = vim.fn.input("File: ", cur_dir, "file")
 	if cur_dir == fname or fname == "" or fname == nil then
 		return
-	end
-
-	-- Create directories as needed
-	local utils = require("user.utils")
-	if not utils.exists(fname) then
-		local dirs = utils.split_string(fname, "/")
-		local build = ""
-		for idx, v in pairs(dirs) do
-			if idx > #dirs - 1 then
-				break
-			end
-
-			build = build .. "/" .. v
-			if not utils.isdir(build) then
-				os.execute("mkdir -p " .. build)
-			end
-		end
 	end
 
 	vim.cmd("e " .. fname)
@@ -147,7 +103,6 @@ vim.keymap.set("n", "<leader><leader>eb", function()
 	local cur_buf = vim.fn.expand("%")
 	vim.cmd([[ls]])
 	vim.cmd([[ls %a]])
-
 	local fname = vim.fn.input("Buffer: ", "", "buffer")
 	if cur_buf == fname or fname == "" then
 		return
@@ -204,7 +159,7 @@ vim.keymap.set("n", "<leader><leader>sr", function()
 		run = ""
 	end
 
-	local run_new = vim.fn.input("Run command: ", run, "file")
+	local run_new = vim.fn.input("Run command: ", run, "shellcmd")
 
 	if run_new == "" then
 		return
@@ -223,7 +178,7 @@ vim.keymap.set("n", "<leader>sr", function()
 		run = ""
 	end
 
-	local run_new = vim.fn.input("Run command: ", run, "file")
+	local run_new = vim.fn.input("Run command: ", run, "shellcmd")
 
 	if run_new == "" then
 		return
@@ -325,6 +280,26 @@ vim.keymap.set("n", "<leader><leader>am", function()
 end, opts)
 
 vim.keymap.set("n", "<leader><leader>gm", function()
+	require("user.jumper").goto_jump_file()
+end, opts)
+
+vim.keymap.set("n", "<leader><leader>rm", function()
+	require("user.jumper").goto_latest_jump()
+end, opts)
+
+vim.keymap.set("n", "<A-a>", function()
+	require("user.jumper").add_jump_under_cursor()
+end, opts)
+
+vim.keymap.set("n", "<A-m>", function()
+	require("user.jumper").goto_latest_jump()
+end, opts)
+
+vim.keymap.set("n", "<A-d>", function()
+	require("user.jumper").remove_latest_jump()
+end, opts)
+
+vim.keymap.set("n", "<A-f>", function()
 	require("user.jumper").goto_jump_file()
 end, opts)
 

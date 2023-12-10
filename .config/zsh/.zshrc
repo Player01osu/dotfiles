@@ -1,7 +1,3 @@
-HISTFILE=~/.cache/zsh/history
-HISTSIZE=500
-
-SAVEHIST=1000
 setopt autocd extendedglob nomatch
 unsetopt beep
 bindkey -v
@@ -128,15 +124,13 @@ bindkey '^e' edit-command-line
 
 bindkey -s '^o' 'lfcd\n'
 
-bindkey -s '^P' 'nvim /tmp/tmp.kalk\n'
+kalk () {
+    nvim /tmp/tmp.kalk
+}
 
-bindkey -s '^Y' 'nvim /tmp/tmp.sbcli\n'
-
-bindkey -s '^N' 'nvim -c "Ex"\n'
-#
-#bindkey -s '^W' 'wiki\n'
-#
-#bindkey -s '^k' 'pulsemixer\n'
+skalk () {
+    nvim /tmp/tmp.sbcli
+}
 
 # Prompt ZSH
 autoload -U colors && colors

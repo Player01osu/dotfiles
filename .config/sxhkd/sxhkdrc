@@ -8,8 +8,8 @@ alt + r ; {p,s,d,m}
     {~/.local/bin/rpipe,~/.local/bin/rkd,rdblk,rpd}
 
 # run scripts
-alt + s ; {l,j}
-	{browser_link_copy,lecopy}
+alt + s ; {l,j,p}
+	{browser_link_copy,copypastelink,savepixiv}
 
 # mpd control
 XF86AudioPlay
