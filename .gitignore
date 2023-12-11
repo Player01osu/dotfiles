@@ -3,3 +3,14 @@
 .config/ncmpcpp/error.log
 .config/zsh/.zcompdump
 .config/nvim/spell/en.utf-8.add
+/.config/fcitx/cached_layout
+/.config/fcitx/clipboard/
+/.config/fcitx/conf/
+/.config/fcitx/data/
+/.config/fcitx/dbus/
+/.config/mpv/watch_later/
+/.config/nvim/lazy-lock.json
+/.config/pipewire/filter-chain.conf
+/.config/pipewire/filter-chain/
+/.config/pipewire/media-session.d/
+/.config/pipewire/pipewire-avb.conf
