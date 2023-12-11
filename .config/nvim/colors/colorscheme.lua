@@ -24,7 +24,7 @@ local colors = {
 	DiagnosticUnnecessary = {fg = "NONE", bg = "NONE"},
 	Visual = {bg = "Grey32"},
 	Whitespace = {fg = "Grey26"},
-	StatusLine = {fg="#CFCFCF", bg="#151515", bold = false},
+	StatusLine = {fg="NONE", bg="Grey14", bold = false},
 	StatusLineNC = {link="StatusLine"},
 	TabLine = {link="StatusLine"},
 }
