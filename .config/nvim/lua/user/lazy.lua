@@ -36,7 +36,6 @@ require("lazy").setup({
 	},
 	{
 		"nvim-neorg/neorg",
-		--run = ":Neorg sync-parsers", -- This is the important bit!
 		ft = { "norg" }, -- Markdown folding and indent
 		build = ":Neorg sync-parsers",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -84,55 +83,29 @@ require("lazy").setup({
 			})
 		end,
 	},
-	--{
-	--	"nvim-lualine/lualine.nvim",
-	--	enabled = false,
-	--},
 	-- LSP --
-	{
-		"neovim/nvim-lspconfig", -- enable LSP
-	},
+	"neovim/nvim-lspconfig", -- enable LSP
 
-	{
-		"williamboman/mason.nvim",
-	},
+	"williamboman/mason.nvim",
 
-	{
-		"williamboman/mason-lspconfig.nvim",
-	},
+	"williamboman/mason-lspconfig.nvim",
 
-	{
-		"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
-	},
+	"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
 
 	-- Completion plugins --
-	{
-		"hrsh7th/nvim-cmp", -- The completion plugin
-	},
+	"hrsh7th/nvim-cmp", -- The completion plugin
 
-	{
-		"hrsh7th/cmp-buffer", -- buffer completions
-	},
+	"hrsh7th/cmp-buffer", -- buffer completions
 
-	{
-		"hrsh7th/cmp-path", -- path completions
-	},
+	"hrsh7th/cmp-path", -- path completions
 
-	{
-		"hrsh7th/cmp-cmdline", -- cmdline completions
-	},
+	"hrsh7th/cmp-cmdline", -- cmdline completions
 
-	{
-		"saadparwaiz1/cmp_luasnip", -- snippet completions
-	},
+	"saadparwaiz1/cmp_luasnip", -- snippet completions
 
-	{
-		"hrsh7th/cmp-nvim-lsp",
-	},
+	"hrsh7th/cmp-nvim-lsp",
 
-	{
-		"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-	},
+	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 
 	{
 		"simrat39/rust-tools.nvim",
@@ -140,41 +113,34 @@ require("lazy").setup({
 	},
 
 	-- Snippets --
-	{
-		"L3MON4D3/LuaSnip", --snippet engine
-	},
-	{
-		"rafamadriz/friendly-snippets", -- a bunch of snippets to use
-	},
+	"L3MON4D3/LuaSnip", --snippet engine
+
+	"rafamadriz/friendly-snippets", -- a bunch of snippets to use
 
 	-- Telescope --
-	{
-		"nvim-telescope/telescope.nvim",
-	},
+	"nvim-telescope/telescope.nvim",
 
-	{
-		"nvim-lua/popup.nvim",
-	},
+	"nvim-lua/popup.nvim",
 
-	{
-		"nvim-lua/plenary.nvim",
-	},
+	"nvim-lua/plenary.nvim",
 
 	-- Git --
-	{
-		"tpope/vim-fugitive",
-	},
+	"tpope/vim-fugitive",
 
-	{
-		"kyazdani42/nvim-web-devicons",
-	},
+	"kyazdani42/nvim-web-devicons",
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		--highlight = {
-		--	enable = true,
-		--	additional_vim_regex_highlighting = false
-		--},
+		config = function ()
+			local configs = require("nvim-treesitter.configs")
+
+			configs.setup({
+				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "haskell", "rust"},
+				sync_install = false,
+				highlight = { enable = true },
+				indent = { enable = true },
+			})
+		end
 	},
 	{
 		"stevearc/oil.nvim",
@@ -186,24 +152,32 @@ require("lazy").setup({
 					"permissions",
 					"size",
 					"mtime",
-					"icon",
 				},
 				view_options = {
-					-- Show files and directories that start with "."
 					show_hidden = true,
 					is_always_hidden = function(name, _)
 						return name == ".." or name == "."
 					end,
 				},
 				keymaps = {
-					["gX"] = "actions.open_cmdline",
+					["gX"] = {
+						callback = function()
+							local oil = require("oil")
+							local file = oil.get_cursor_entry().name
+							local dir = oil.get_current_dir()
+
+							vim.cmd(string.format("!%s/%s", dir, file))
+						end,
+						desc = "Spawns file in shell"
+					},
 				},
 			})
 		end
 	},
 	{ "rktjmp/lush.nvim",
 		cmd = "Shipwrite",
-		requires = { "rktjmp/shipwright.nvim" } },
+		requires = { "rktjmp/shipwright.nvim" }
+	},
 	{
 		"nvim-treesitter/playground",
 		cmd = "TSPlaygroundToggle",
