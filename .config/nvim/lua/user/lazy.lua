@@ -195,6 +195,9 @@ require("lazy").setup({
 						return name == ".." or name == "."
 					end,
 				},
+				keymaps = {
+					["gX"] = "actions.open_cmdline",
+				},
 			})
 		end
 	},

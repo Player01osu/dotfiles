@@ -15,7 +15,6 @@ require("user.luasnippets")
 require("user.mason")
 require("user.treesitter")
 require("user.vimwiki")
--- require("user.lualine")
 
 require("user.options")
 require("user.jumper")
