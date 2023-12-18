@@ -11,6 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local prog_lang = {'haskell', 'c', 'cpp', 'lua', 'rust', 'python', 'python2', 'nim', 'asm', 'make', 'java', 'javascript', 'kotlin', 'ocaml', 'typescript', 'go', 'elixir', 'elm', 'forth', 'html', 'json', 'toml', 'lisp', 'nix', 'netrw', 'php', 'r', 'scala', 'sql', 'swift', 'tex', 'zig'}
+
 require("lazy").setup({
 	"folke/which-key.nvim",
 	{ "folke/neoconf.nvim", cmd = "Neoconf" },
@@ -23,7 +25,7 @@ require("lazy").setup({
 		end,
 	},
 	{
-		ft = {'haskell', 'c', 'cpp', 'lua', 'rust', 'python', 'python2', 'nim', 'asm', 'make', 'java', 'javascript', 'kotlin', 'ocaml', 'typescript', 'go', 'elixir', 'elm', 'forth', 'html', 'json', 'toml', 'lisp', 'nix', 'netrw', 'php', 'r', 'scala', 'sql', 'swift', 'tex', 'zig'},
+		ft = prog_lang,
 		'andweeb/presence.nvim',
 	},
 	{
