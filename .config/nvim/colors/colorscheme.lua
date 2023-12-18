@@ -36,8 +36,8 @@ vim.cmd("highlight clear")
 vim.cmd([[
 " General
 hi Conceal      guifg=LightGrey guibg=DarkGrey guisp=NONE gui=NONE         ctermfg=LightGrey ctermbg=DarkGrey cterm=NONE
-hi Cursor       guifg=bg        guibg=fg       guisp=NONE gui=NONE         ctermfg=bg        ctermbg=fg       cterm=NONE
-hi lCursor      guifg=bg        guibg=fg       guisp=NONE gui=NONE         ctermfg=bg        ctermbg=fg       cterm=NONE
+hi Cursor       guifg=bg        guibg=fg       guisp=NONE gui=NONE         ctermfg=NONE      ctermbg=NONE     cterm=NONE
+hi lCursor      guifg=bg        guibg=fg       guisp=NONE gui=NONE         ctermfg=NONE      ctermbg=NONE     cterm=NONE
 hi DiffText     guifg=NONE      guibg=Red      guisp=NONE gui=bold         ctermfg=NONE      ctermbg=Red      cterm=bold
 hi ErrorMsg     guifg=White     guibg=Red      guisp=NONE gui=NONE         ctermfg=White     ctermbg=DarkRed  cterm=NONE
 hi IncSearch    guifg=NONE      guibg=NONE     guisp=NONE gui=reverse      ctermfg=NONE      ctermbg=NONE     cterm=reverse
@@ -206,6 +206,7 @@ hi! link @lsp.type.type Type
 hi! link @lsp.type.typeParameter TypeDef
 hi! link @lsp.type.variable Identifier
 
+" Default colors only used with a dark background.
 hi ColorColumn  guifg=NONE     guibg=DarkRed     guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkRed     cterm=NONE
 hi CursorColumn guifg=NONE     guibg=Grey40      guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkGrey    cterm=NONE
 hi CursorLine   guifg=NONE     guibg=Grey40      guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=NONE        cterm=underline
@@ -232,7 +233,7 @@ hi SpellLocal   guifg=NONE     guibg=NONE        guisp=Cyan    gui=undercurl cte
 hi SpellRare    guifg=NONE     guibg=NONE        guisp=Magenta gui=undercurl ctermfg=NONE         ctermbg=Magenta     cterm=NONE
 hi TabLine      guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=underline ctermfg=white        ctermbg=DarkGrey    cterm=underline
 hi Title        guifg=Magenta  guibg=NONE        guisp=NONE    gui=bold      ctermfg=LightMagenta ctermbg=NONE        cterm=NONE
-hi Visual       guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=NONE        cterm=NONE
+hi Visual       guifg=NONE     guibg=DarkGrey    guisp=NONE    gui=NONE      ctermfg=NONE         ctermbg=DarkGrey    cterm=NONE
 hi WarningMsg   guifg=Red      guibg=NONE        guisp=NONE    gui=NONE      ctermfg=LightRed     ctermbg=NONE        cterm=NONE
 hi Comment      guifg=#80a0ff  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Cyan         ctermbg=NONE        cterm=NONE      term=bold
 hi Constant     guifg=#ffa0a0  guibg=NONE        guisp=NONE    gui=NONE      ctermfg=Magenta      ctermbg=NONE        cterm=NONE      term=underline
