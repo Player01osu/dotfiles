@@ -14,9 +14,21 @@ vim.opt.rtp:prepend(lazypath)
 local prog_lang = {'haskell', 'c', 'cpp', 'lua', 'rust', 'python', 'python2', 'nim', 'asm', 'make', 'java', 'javascript', 'kotlin', 'ocaml', 'typescript', 'go', 'elixir', 'elm', 'forth', 'html', 'json', 'toml', 'lisp', 'nix', 'netrw', 'php', 'r', 'scala', 'sql', 'swift', 'tex', 'zig'}
 
 require("lazy").setup({
-	"folke/which-key.nvim",
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 1000
+		end,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		}
+	},
 	{ "folke/neoconf.nvim", cmd = "Neoconf" },
-	"folke/neodev.nvim",
+	{ "folke/neodev.nvim", ft = { "lua" } },
 	{
 		"vimwiki/vimwiki",
 		branch = "dev", --ft = { "wiki" },
