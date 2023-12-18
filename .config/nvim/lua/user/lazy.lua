@@ -170,6 +170,21 @@ require("lazy").setup({
 						end,
 						desc = "Spawns file in shell"
 					},
+					["gp"] = {
+						callback = function()
+							local oil = require("oil")
+							local file = oil.get_cursor_entry().name
+							local dir = oil.get_current_dir()
+							local path = string.format("%s/%s", dir, file)
+
+							local permission = vim.fn.input("Set permission: ")
+							if permission == nil or permission == "" then
+								return
+							end
+
+							os.execute(string.format("chmod %s '%s'", permission, path))
+						end
+					},
 				},
 			})
 		end
