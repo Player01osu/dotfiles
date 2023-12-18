@@ -26,7 +26,6 @@ set.guicursor = ""
 set.hlsearch = false
 set.linebreak = true
 set.nu = true
-set.number = true
 set.relativenumber = true
 set.shiftwidth = 4
 set.showtabline = 0
