@@ -12,10 +12,12 @@ window:
     dynamic_padding:  true
     decoration: none
 font:
+  normal:
+    family: JetBrains Mono
   #normal:
   #  family: Menlo for Powerline
-  normal:
-    family: JetBrains Mono Nerd Font
+  #normal:
+  #  family: JetBrains Mono Nerd Font
   #italic:
   #  family: JetBrains Mono Nerd Font #Iosevka Nerd Font
   #bold:
