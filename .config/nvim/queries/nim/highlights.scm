@@ -1,1 +1,0 @@
-/home/bruh/Downloads/git/tree-sitter-nim/queries/highlights.scm
