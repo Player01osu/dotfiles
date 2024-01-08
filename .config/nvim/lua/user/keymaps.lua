@@ -202,7 +202,11 @@ keymap("n", "<leader>A", "zzA", opts)
 keymap("n", "<leader>I", "zzI", opts)
 keymap("n", "<leader>a", "zza", opts)
 keymap("n", "<leader>i", "zzi", opts)
-keymap("n", "<leader>gg", ":tab G<CR>", opts)
+--keymap("n", "<leader>gg", ":Neogit<CR>", opts)
+vim.keymap.set("n", "<leader>gg", function()
+	vim.cmd.G()
+	vim.cmd.only()
+end, opts)
 keymap("n", "<leader>H", ":set signcolumn=yes:9<CR>", opts)
 keymap("n", "<leader>J", ":set signcolumn=yes:2<CR>", opts)
 
@@ -222,8 +226,8 @@ end, opts)
 
 vim.keymap.set("n", "<leader>sd", function()
 	local fname = vim.fn.input("File: ", "~/Documents/dump/", "file")
-	vim.cmd("w " .. fname)
-	vim.cmd("e " .. fname)
+	vim.cmd.w(fname)
+	vim.cmd.e(fname)
 end, opts)
 vim.keymap.set("n", "<leader>tmp", function()
 	local charset = {}
@@ -288,11 +292,14 @@ vim.keymap.set("n", "<leader><leader>rm", function()
 end, opts)
 
 vim.keymap.set("n", "<A-a>", function()
-	require("user.jumper").add_jump_under_cursor()
+	vim.cmd.norm("mT");
+	print("Mark added")
+	--require("user.jumper").add_jump_under_cursor()
 end, opts)
 
 vim.keymap.set("n", "<A-m>", function()
-	require("user.jumper").goto_latest_jump()
+	vim.cmd.norm("`T");
+	--require("user.jumper").goto_latest_jump()
 end, opts)
 
 vim.keymap.set("n", "<A-d>", function()

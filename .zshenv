@@ -11,6 +11,8 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 
 export GOPATH="$XDG_DATA_HOME"/go
 
+export GHCUP_USE_XDG_DIRS=true
+
 export ROSWELL_HOME="$XDG_CONFIG_HOME"/roswell
 export MATHEMATICA_USERBASE="$XDG_CONFIG_HOME"/mathematica
 

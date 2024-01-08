@@ -52,8 +52,10 @@ super + shift + ctrl + u
     removebookmark
 
 # Anime selection dmenu
+#super + a
+#    dani
 super + a
-    dani
+    aniki
 
 # scroll left
 super + alt + h

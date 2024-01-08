@@ -14,19 +14,19 @@ vim.opt.rtp:prepend(lazypath)
 local prog_lang = {'haskell', 'c', 'cpp', 'lua', 'rust', 'python', 'python2', 'nim', 'asm', 'make', 'java', 'javascript', 'kotlin', 'ocaml', 'typescript', 'go', 'elixir', 'elm', 'forth', 'html', 'json', 'toml', 'lisp', 'nix', 'netrw', 'php', 'r', 'scala', 'sql', 'swift', 'tex', 'zig'}
 
 require("lazy").setup({
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 1000
-		end,
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		}
-	},
+	--{
+	--	"folke/which-key.nvim",
+	--	event = "VeryLazy",
+	--	init = function()
+	--		vim.o.timeout = true
+	--		vim.o.timeoutlen = 1000
+	--	end,
+	--	opts = {
+	--		-- your configuration comes here
+	--		-- or leave it empty to use the default settings
+	--		-- refer to the configuration section below
+	--	}
+	--},
 	{ "folke/neoconf.nvim", cmd = "Neoconf" },
 	{ "folke/neodev.nvim", ft = { "lua" } },
 	{
@@ -39,6 +39,7 @@ require("lazy").setup({
 	{
 		ft = prog_lang,
 		'andweeb/presence.nvim',
+		enable = false
 	},
 	{
 		"preservim/vim-markdown",
@@ -139,7 +140,21 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 
 	-- Git --
-	"tpope/vim-fugitive",
+	{
+		"tpope/vim-fugitive",
+		cmd = {"G", "Gw"},
+	},
+--	{
+--		"NeogitOrg/neogit",
+--		dependencies = {
+--			"nvim-lua/plenary.nvim",         -- required
+--			"sindrets/diffview.nvim",        -- optional - Diff integration
+--
+--			-- Only one of these is needed, not both.
+--			"nvim-telescope/telescope.nvim", -- optional
+--		},
+--		config = true
+--	},
 
 	"kyazdani42/nvim-web-devicons",
 	{
@@ -159,13 +174,30 @@ require("lazy").setup({
 	{
 		"stevearc/oil.nvim",
 		config = function ()
+			local permission_hlgroups = {
+				['-'] = 'NonText',
+				['r'] = 'DiagnosticSignWarn',
+				['w'] = 'DiagnosticSignError',
+				['x'] = 'DiagnosticSignOk',
+			}
+
 			require("oil").setup({
 				default_file_explorer = true,
 				cleanup_delay_ms = 1000,
 				columns = {
-					"permissions",
-					"size",
-					"mtime",
+					{
+						'permissions',
+						highlight = function(permission_str)
+							local hls = {}
+							for i = 1, #permission_str do
+								local char = permission_str:sub(i, i)
+								table.insert(hls, { permission_hlgroups[char], i - 1, i })
+							end
+							return hls
+						end,
+					},
+					{ 'size', highlight = "Constant" },
+					{ "mtime", highlight = "Special" },
 				},
 				view_options = {
 					show_hidden = true,
@@ -173,6 +205,7 @@ require("lazy").setup({
 						return name == ".." or name == "."
 					end,
 				},
+				constrain_cursor = "name",
 				keymaps = {
 					["gX"] = {
 						callback = function()
