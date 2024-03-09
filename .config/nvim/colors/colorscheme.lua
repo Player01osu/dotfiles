@@ -250,6 +250,10 @@ hi Ignore       guifg=bg       guibg=NONE        guisp=NONE    gui=NONE      cte
 vim.cmd("set t_Co=256")
 vim.cmd("let g:colors_name='my_theme'")
 
+vim.api.nvim_set_hl(0, "@type.builtin", { link = "Type" })
+vim.api.nvim_set_hl(0, "@keyword.operator", { link = "Statement" })
+vim.api.nvim_set_hl(0, "@module.rust", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@lsp.type.namespace.rust", { link = "Identifier" })
 -- apply highlight groups
 for group, attrs in pairs(colors) do
   vim.api.nvim_set_hl(0, group, attrs)
