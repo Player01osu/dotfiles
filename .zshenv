@@ -2,6 +2,7 @@
 ### EXPORT
 #export LC_ALL
 #export MOZ_ENABLE_WAYLAND=1
+export DEBUGINFOD_URLS="https://debuginfod.artixlinux.org"
 export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CONFIG_HOME="$HOME"/.config
