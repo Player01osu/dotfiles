@@ -18,6 +18,12 @@ set.shell = "/bin/dash"
 set.sidescrolloff = 12
 set.smoothscroll = true
 
+--set.autoindent = true
+--set.smartindent = false
+--set.cindent = false
+--vim.cmd.set('indentexpr=nvim_treesitter#indent()')
+
+
 -- Appearance --
 set.background = "dark"
 set.conceallevel = 0
