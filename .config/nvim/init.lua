@@ -46,4 +46,3 @@ if vim.g.neovide then
     require "user.neovide"
 	--vim.o.guifont = "JetBrains Mono Nerd Font:h14"
 end
-
