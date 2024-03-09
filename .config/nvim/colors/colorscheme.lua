@@ -21,6 +21,7 @@ local colors = {
 	Todo = {fg = "Grey10", bg = "#F7F708"},
 	Type = {fg = "#62FD62", bg = "NONE", bold = true},
 	TSVariableBuiltin = {link = "Type"},
+	TSTypeBuiltin = {link = "Type"},
 	DiagnosticUnnecessary = {fg = "NONE", bg = "NONE"},
 	Visual = {bg = "Grey32"},
 	Whitespace = {fg = "Grey26"},
