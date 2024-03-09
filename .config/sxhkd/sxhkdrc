@@ -3,6 +3,9 @@
 alt + t ; {h,j,d,p,s,f,z}
 	{alacritty -o font.size=7.0 --class btop -e btop,firefox-developer-edition &,ripcord &,alacritty --class pulsemixer -e pulsemixer,steam &,toggle_fcitx,boomer}
 
+# anki tools
+alt + l ; {a,s,o,f,r}
+    {screen-anki, screen-anki -s, screen-anki-occlude, screen-anki -f, screen-anki -r}
 
 # restart clients
 alt + r ; {p,s,d,m}
