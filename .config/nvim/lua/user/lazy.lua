@@ -39,7 +39,7 @@ require("lazy").setup({
 	{
 		ft = prog_lang,
 		'andweeb/presence.nvim',
-		enable = false
+		enabled = false
 	},
 	{
 		"preservim/vim-markdown",
@@ -124,7 +124,8 @@ require("lazy").setup({
 
 	{
 		"simrat39/rust-tools.nvim",
-		ft = {"rust"}
+		ft = {"rust"},
+		enabled = true
 	},
 
 	-- Snippets --
