@@ -139,6 +139,7 @@ PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
 
 #alias animemnt="sshfs player01@192.168.1.87:Videos/not-anime ~/Videos/remote -C"
 alias Ex="nvim -c ':Ex'"
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias animemnt="doas mount 192.168.1.87:/srv/nfs/Videos/not-anime /mnt/Videos/not-anime && mount --bind /mnt/Videos/not-anime /home/bruh/Videos/not-anime-remote"
 alias bc="bc --mathlib"
 alias block="betterlockscreen -l blur"
