@@ -113,6 +113,10 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "todo.wiki" },
 	callback = function()
+		if os.execute("wget -q --spider http://216.128.178.18/api/v1") ~= 0 then
+			return
+		end
+
 		os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
 		os.execute("pkill -SIGRTMIN+8 waybar")
 		os.execute("todo-backup")
@@ -129,6 +133,9 @@ vim.api.nvim_create_autocmd({ "FocusGained", "FocusLost" }, {
 	pattern = { "todo.wiki" },
 	callback = function()
 		if not vim.opt.modified._value then
+			if os.execute("wget -q --spider http://216.128.178.18/api/v1") ~= 0 then
+				return
+			end
 			os.execute("todo-backup")
 			os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
 			vim.cmd("e!")
@@ -139,6 +146,9 @@ vim.api.nvim_create_autocmd({ "FocusGained", "FocusLost" }, {
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = { "todo.wiki" },
 	callback = function()
+		if os.execute("wget -q --spider http://216.128.178.18/api/v1") ~= 0 then
+			return
+		end
 		os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
 		os.execute("pkill -SIGRTMIN+8 waybar")
 		os.execute("curl --data-binary @/home/bruh/Documents/wiki/todo.wiki --request POST http://216.128.178.18/api/v1 &")
