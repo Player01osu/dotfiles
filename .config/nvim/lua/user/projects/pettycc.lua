@@ -1,7 +1,7 @@
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = {
-		vim.fn.expand("~") .. "/Documents/code/c/pettycc/*.c",
-		vim.fn.expand("~") .. "/Documents/code/c/pettycc/*.h"
+		"*pettycc/**.c",
+		"*pettycc/**.h",
 	},
 	callback = function()
 		vim.opt_local.tabstop = 4
