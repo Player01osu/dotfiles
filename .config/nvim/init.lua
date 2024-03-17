@@ -19,6 +19,7 @@ require("user.vimwiki")
 require("user.options")
 require("user.jumper")
 require("user.indent")
+require("user.projects")
 vim.cmd.colorscheme("colorscheme")
 vim.opt_global.laststatus = 3 -- Has to be after colorscheme for some reason
 
