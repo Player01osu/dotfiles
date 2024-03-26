@@ -237,7 +237,13 @@ require("lazy").setup({
 			})
 		end
 	},
-	{ "rktjmp/lush.nvim",
+	{
+		"siadat/shell.nvim",
+		opts = {},
+	},
+
+	{
+		"rktjmp/lush.nvim",
 		cmd = "Shipwrite",
 		requires = { "rktjmp/shipwright.nvim" }
 	},
