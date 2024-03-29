@@ -129,13 +129,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
-	pattern = { "fugitive:///*" },
-	callback = function()
-		vim.opt.winfixbuf = false
-	end
-})
-
 vim.api.nvim_create_autocmd({ "FocusGained", "FocusLost" }, {
 	pattern = { "todo.wiki" },
 	callback = function()
