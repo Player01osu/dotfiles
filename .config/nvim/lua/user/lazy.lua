@@ -52,8 +52,7 @@ require("lazy").setup({
 	{
 		"nvim-neorg/neorg",
 		ft = { "norg" }, -- Markdown folding and indent
-		build = ":Neorg sync-parsers",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "vhyrro/luarocks.nvim" },
 		config = function()
 			require("neorg").setup({
 				load = {
