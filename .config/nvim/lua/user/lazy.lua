@@ -139,6 +139,16 @@ require("lazy").setup({
 
 	"nvim-lua/plenary.nvim",
 
+	{
+		"vhyrro/luarocks.nvim",
+		opts = {
+			luarocks_build_args = {
+				"--with-lua-include=/usr/include",
+			},
+		},
+		enabled = true,
+	},
+
 	-- Git --
 	{
 		"tpope/vim-fugitive",
