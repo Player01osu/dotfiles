@@ -109,7 +109,10 @@ require("lazy").setup({
 	-- Completion plugins --
 	"hrsh7th/nvim-cmp", -- The completion plugin
 
-	"hrsh7th/cmp-buffer", -- buffer completions
+	{
+		"hrsh7th/cmp-buffer", -- buffer completions
+		enabled = false,
+	},
 
 	"hrsh7th/cmp-path", -- path completions
 
