@@ -8,6 +8,7 @@ set.confirm = true
 set.expandtab = true
 --set.grepprg = "grep -Irn $*" -- No ripgrep
 set.grepprg = "grep $*" -- No ripgrep
+set.grepformat = "%f:%l:%m"
 --set.grepprg = "rg -rn $*"
 set.hidden = true
 set.incsearch = true
