@@ -1,6 +1,7 @@
 local media_dir = os.getenv("HOME") .. "/Documents/other/japanese/minesite/media/"
+local mp = require 'mp'
 
-function print_table(table)
+local function print_table(table)
 	for k, v in pairs(table) do
 		if type(v) == "table" then
 			print_table(v)
@@ -9,7 +10,7 @@ function print_table(table)
 	end
 end
 
-function random_string_n(len)
+local function random_string_n(len)
 	local charset = {}
 	do -- [0-9a-zA-Z]
 		for c = 48, 57 do
@@ -32,7 +33,8 @@ function random_string_n(len)
 	end
 	return randomString(len)
 end
-function screenshot_me()
+
+local function screenshot_me()
 	local utils = require 'mp.utils'
 	local file_name = random_string_n(64);
 
