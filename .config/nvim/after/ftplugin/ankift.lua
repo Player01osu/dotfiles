@@ -12,5 +12,5 @@ vim.keymap.set("n", "<leader><leader>i", function()
 	Job:new({
 		command = 'nsxiv',
 		args = { image_path .. "/" .. filename },
-		}):start() -- or sync()
+	}):start() -- or sync()
 end, opts)
