@@ -10,7 +10,7 @@ local keymap = vim.api.nvim_set_keymap
 -- command_mode = "c",
 
 -- Leader Key
-vim.g.mapleader = " "
+vim.g.mapleader = ","
 
 -- Normal --
 keymap("n", "<C-H>", ":bd<CR>", opts)
