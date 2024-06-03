@@ -9,9 +9,10 @@ M.setup = function()
 		{ name = "DiagnosticSignInfo", text = "" },
 	}
 
-	for _, sign in ipairs(signs) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-	end
+	-- TODO: Use `vim.diagnostic.config()` instead of `vim.fn.sign_define()`
+	--for _, sign in ipairs(signs) do
+	--	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+	--end
 
 	local config = {
 		-- disable virtual text
@@ -101,28 +102,28 @@ require("mason-lspconfig").setup_handlers({
 	-- Next, you can provide targeted overrides for specific servers.
 	-- For example, a handler override for the `rust_analyzer`:
 	["rust_analyzer"] = function()
-		local rt = require("rust-tools")
-		rt.setup({
-			server = {
-				standalone = true,
-				on_attach = function(_, bufnr)
-					-- Hover actions
-					vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-					-- Code action groups
-					--vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-				end,
-			},
-			tools = {
-				reload_workspace_from_cargo_toml = true,
-				autoSetHints = false,
-				inlay_hints = {
-					auto = false,
-					show_parameter_hints = false,
-					parameter_hints_prefix = "",
-					other_hints_prefix = "",
-				},
-			},
-		})
+		--local rt = require("rust-tools")
+		--rt.setup({
+		--	server = {
+		--		standalone = true,
+		--		on_attach = function(_, bufnr)
+		--			-- Hover actions
+		--			vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+		--			-- Code action groups
+		--			--vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+		--		end,
+		--	},
+		--	tools = {
+		--		reload_workspace_from_cargo_toml = true,
+		--		autoSetHints = false,
+		--		inlay_hints = {
+		--			auto = false,
+		--			show_parameter_hints = false,
+		--			parameter_hints_prefix = "",
+		--			other_hints_prefix = "",
+		--		},
+		--	},
+		--})
 	end,
 })
 

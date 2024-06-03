@@ -98,7 +98,14 @@ require("lazy").setup({
 		end,
 	},
 	-- LSP --
-	"neovim/nvim-lspconfig", -- enable LSP
+	{
+		"neovim/nvim-lspconfig", -- enable LSP
+		--opts = {
+		--	setup = function ()
+		--		return true
+		--	end,
+		--}
+	},
 
 	"williamboman/mason.nvim",
 
@@ -125,9 +132,9 @@ require("lazy").setup({
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 
 	{
-		"simrat39/rust-tools.nvim",
-		ft = {"rust"},
-		enabled = true
+		'mrcjkb/rustaceanvim',
+		version = '^4', -- Recommended
+		lazy = false, -- This plugin is already lazy
 	},
 
 	-- Snippets --
@@ -157,17 +164,6 @@ require("lazy").setup({
 		"tpope/vim-fugitive",
 		cmd = {"G", "Gw"},
 	},
---	{
---		"NeogitOrg/neogit",
---		dependencies = {
---			"nvim-lua/plenary.nvim",         -- required
---			"sindrets/diffview.nvim",        -- optional - Diff integration
---
---			-- Only one of these is needed, not both.
---			"nvim-telescope/telescope.nvim", -- optional
---		},
---		config = true
---	},
 
 	"kyazdani42/nvim-web-devicons",
 	{
