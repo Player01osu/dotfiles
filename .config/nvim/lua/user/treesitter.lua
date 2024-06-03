@@ -4,7 +4,29 @@ if not status_ok then
 end
 
 configs.setup({
-	ensure_installed = {"rust", "haskell", "c", "html", "javascript", "odin", "lua"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	ensure_installed = {
+		"rust",
+		"haskell",
+		"c",
+		"cpp",
+		"html",
+		"javascript",
+		"java",
+		"odin",
+		"lua",
+		"gitcommit",
+		"gitignore",
+		"ocaml",
+		"bash",
+		"commonlisp",
+		"scheme",
+		"toml",
+		"yaml",
+		"norg",
+		"norg_meta",
+		"markdown",
+		"markdown_inline",
+	},
 	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	autopairs = {
