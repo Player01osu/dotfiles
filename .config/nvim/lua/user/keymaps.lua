@@ -41,6 +41,12 @@ vim.keymap.set("n", "<leader>gq8", function()
 	vim.opt.textwidth = 0
 end, opts)
 
+vim.keymap.set("n", "<leader>t", "dawbvawpp", {
+	desc = "Transpose word",
+	noremap = true,
+	silent = true
+})
+
 vim.keymap.set("n", "<leader>cj", function()
 	if cmd_bid == nil or vim.fn.bufexists(cmd_bid) == 0 then
 		vim.cmd("term zsh")
@@ -228,6 +234,8 @@ vim.keymap.set("n", "<leader>sd", function()
 	vim.cmd.w(fname)
 	vim.cmd.e(fname)
 end, opts)
+
+--[[ Make this a command :bruh:
 vim.keymap.set("n", "<leader>tmp", function()
 	local charset = {}
 	do -- [0-9a-zA-Z]
@@ -253,6 +261,8 @@ vim.keymap.set("n", "<leader>tmp", function()
 	local cmd = "e /tmp/tmp-" .. randomString(15) .. ".txt"
 	vim.cmd(cmd)
 end, opts)
+]]
+   --
 
 vim.keymap.set("n", "<leader>ff", function()
 	require("telescope.builtin").find_files()
