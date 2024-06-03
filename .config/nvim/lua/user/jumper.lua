@@ -37,9 +37,9 @@ M.goto_latest_jump = function()
 	vim.cmd.bwipeout(files)
 end
 
-local Job = require'plenary.job'
-
 M.remove_latest_jump = function()
+	local Job = require'plenary.job'
+
 	Job:new({
 		command = 'sed',
 		args = { '$d', files },
