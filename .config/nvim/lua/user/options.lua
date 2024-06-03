@@ -58,9 +58,6 @@ set.updatetime = 60
 --vim.g.moonflyTransparent        = 1
 --]]
 -- Globals --
-vim.g.edge_better_performance       = 1
-vim.g.edge_style                    = "neon"
-vim.g.edge_transparent_background   = 1
 vim.g.markdown_syntax_conceal       = 0
 vim.g.netrw_banner                  = 0
 vim.g.netrw_browse_split            = 0
@@ -109,34 +106,44 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	[[if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]],
 })
 
+local function buf_modified()
+	return vim.opt.modified._value
+end
+
+local function has_connection()
+	return os.execute("wget -q --spider http://216.128.178.18/api/v1") == 0
+end
+
 -- Autocomands for todo list
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "todo.wiki" },
 	callback = function()
-		if os.execute("wget -q --spider http://216.128.178.18/api/v1") ~= 0 then
-			return
-		end
-
-		os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
-		os.execute("pkill -SIGRTMIN+8 waybar")
-		os.execute("todo-backup")
-		os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
-		vim.cmd("e!")
+		local Job = require'plenary.job'
 		vim.opt_local.cursorline = false
 		vim.opt_local.number = false
 		vim.opt_local.relativenumber = false
 		vim.opt_local.signcolumn = "yes:1"
+
+		Job:new({
+			command = "todo-backup",
+			detached = true,
+			skip_validation = true,
+		}):start()
+
+		if not buf_modified() and has_connection() then
+			os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
+			os.execute("pkill -SIGRTMIN+8 waybar")
+			os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
+			vim.cmd("e!")
+		end
 	end,
 })
 
 vim.api.nvim_create_autocmd({ "FocusGained", "FocusLost" }, {
 	pattern = { "todo.wiki" },
 	callback = function()
-		if not vim.opt.modified._value then
-			if os.execute("wget -q --spider http://216.128.178.18/api/v1") ~= 0 then
-				return
-			end
-			os.execute("todo-backup")
+		os.execute("todo-backup")
+		if not buf_modified() and has_connection() then
 			os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
 			vim.cmd("e!")
 		end
@@ -149,8 +156,14 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 		os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
 		os.execute("pkill -SIGRTMIN+8 waybar")
 
-		if os.execute("wget -q --spider http://216.128.178.18/api/v1") == 0 then
-			os.execute("curl --data-binary @/home/bruh/Documents/wiki/todo.wiki --request POST http://216.128.178.18/api/v1 &")
+		if has_connection() then
+			local Job = require'plenary.job'
+			Job:new({
+				command = "curl",
+				args = { "--data-binary", "@/home/bruh/Documents/wiki/todo.wiki", "--request", "POST", "http://216.128.178.18/api/v1" },
+				detached = true,
+				skip_validation = true,
+			}):start() -- or sync()
 		end
 	end,
 })
