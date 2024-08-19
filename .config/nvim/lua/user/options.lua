@@ -42,6 +42,7 @@ set.tabstop = 4
 set.termguicolors = true
 set.wrap = true
 
+vim.cmd("au FileType * set fo-=c fo-=r fo-=o") -- Disable comment continuation on newline
 
 -- Files --
 set.backup = false
