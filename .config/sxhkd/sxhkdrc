@@ -38,10 +38,6 @@ XF86Launch1
     toggle_touch
 
 
-# yuri download macro
-super + alt + b
-    yuridl.sh
-
 # Bookmarks
 super + u
     bookmarks
@@ -87,3 +83,6 @@ alt + u ; {m,n}
 
 super + shift + a
     anki_audio
+
+super + shift + e
+    emoji-type
