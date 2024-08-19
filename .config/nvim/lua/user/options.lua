@@ -111,8 +111,11 @@ local function buf_modified()
 	return vim.opt.modified._value
 end
 
+local enable_todo_server = false
+
 local function has_connection()
-	return os.execute("wget -q --spider http://216.128.178.18/api/v1") == 0
+	--return os.execute("wget -q --spider http://216.128.178.18/api/v1") == 0
+	return false
 end
 
 -- Autocomands for todo list
@@ -131,11 +134,13 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 			skip_validation = true,
 		}):start()
 
-		if not buf_modified() and has_connection() then
-			os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
-			os.execute("pkill -SIGRTMIN+8 waybar")
-			os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
-			vim.cmd("e!")
+		if enable_todo_server then
+			if not buf_modified() and has_connection() then
+				os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
+				os.execute("pkill -SIGRTMIN+8 waybar")
+				os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
+				vim.cmd("e!")
+			end
 		end
 	end,
 })
@@ -144,9 +149,11 @@ vim.api.nvim_create_autocmd({ "FocusGained", "FocusLost" }, {
 	pattern = { "todo.wiki" },
 	callback = function()
 		os.execute("todo-backup")
-		if not buf_modified() and has_connection() then
-			os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
-			vim.cmd("e!")
+		if enable_todo_server then
+			if not buf_modified() and has_connection() then
+				os.execute("curl http://216.128.178.18/api/v1 -s > /home/bruh/Documents/wiki/todo.wiki")
+				vim.cmd("e!")
+			end
 		end
 	end,
 })
@@ -157,7 +164,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 		os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
 		os.execute("pkill -SIGRTMIN+8 waybar")
 
-		if has_connection() then
+		if enable_todo_server and has_connection() then
 			local Job = require'plenary.job'
 			Job:new({
 				command = "curl",
