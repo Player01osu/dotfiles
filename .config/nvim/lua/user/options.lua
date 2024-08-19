@@ -161,8 +161,11 @@ vim.api.nvim_create_autocmd({ "FocusGained", "FocusLost" }, {
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = { "todo.wiki" },
 	callback = function()
-		os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
-		os.execute("pkill -SIGRTMIN+8 waybar")
+		if os.getenv("XDG_SESSION_TYPE") == "wayland" then
+			os.execute("pkill -SIGRTMIN+1 waybar")
+		else
+			os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
+		end
 
 		if enable_todo_server and has_connection() then
 			local Job = require'plenary.job'

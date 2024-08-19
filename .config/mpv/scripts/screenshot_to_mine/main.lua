@@ -48,7 +48,11 @@ local function screenshot_me()
 
 	os.execute(string.format([[magick convert -resize 1280x720 "%s" "%s"]], old_location, old_location))
 	os.execute(string.format([[mv "%s" "%s"]], old_location, new_location))
-	os.execute(string.format([[echo "%s" | xclip -i -selection clipboard]], screenshot_name))
+	if os.getenv("XDG_SESSION_TYPE") == "wayland" then
+		os.execute(string.format([[echo "%s" | wl-copy]], screenshot_name))
+	else
+		os.execute(string.format([[echo "%s" | xclip -i -selection clipboard]], screenshot_name))
+	end
 end
 
 mp.add_key_binding("ctrl+shift+s", screenshot_me)
