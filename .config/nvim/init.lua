@@ -1,24 +1,16 @@
 vim.loader.enable()
 
---require("neoconf").setup({
---  -- override any of the default settings here
---})
-
 require("user.files")
 
 require("user.lazy")
-require("user.cmp")
 require("user.commands")
 require("user.keymaps")
-require("user.lsp")
 require("user.luasnippets")
-require("user.mason")
 require("user.treesitter")
 require("user.vimwiki")
 
 require("user.options")
 require("user.jumper")
-require("user.indent")
 require("user.projects")
 vim.cmd.colorscheme("colorscheme")
 vim.opt_global.laststatus = 3 -- Has to be after colorscheme for some reason

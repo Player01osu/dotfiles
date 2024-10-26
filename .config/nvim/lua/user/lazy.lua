@@ -14,32 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 local prog_lang = {'haskell', 'c', 'cpp', 'lua', 'rust', 'python', 'python2', 'nim', 'asm', 'make', 'java', 'javascript', 'kotlin', 'ocaml', 'typescript', 'go', 'elixir', 'elm', 'forth', 'html', 'json', 'toml', 'lisp', 'nix', 'netrw', 'php', 'r', 'scala', 'sql', 'swift', 'tex', 'zig'}
 
 require("lazy").setup({
-	--{
-	--	"folke/which-key.nvim",
-	--	event = "VeryLazy",
-	--	init = function()
-	--		vim.o.timeout = true
-	--		vim.o.timeoutlen = 1000
-	--	end,
-	--	opts = {
-	--		-- your configuration comes here
-	--		-- or leave it empty to use the default settings
-	--		-- refer to the configuration section below
-	--	}
-	--},
-	{ "folke/neoconf.nvim", cmd = "Neoconf" },
-	{ "folke/neodev.nvim", ft = { "lua" } },
 	{
 		"vimwiki/vimwiki",
 		branch = "dev", --ft = { "wiki" },
 		config = function()
 			vim.g["vimwiki_global_ext"] = 0
 		end,
-	},
-	{
-		ft = prog_lang,
-		'andweeb/presence.nvim',
-		enabled = false
 	},
 	{
 		"preservim/vim-markdown",
@@ -49,6 +29,7 @@ require("lazy").setup({
 		"godlygeek/tabular",
 		cmd = "Tabularize",
 	},
+	--[[
 	{
 		"nvim-neorg/neorg",
 		ft = { "norg" }, -- Markdown folding and indent
@@ -97,21 +78,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	-- LSP --
-	{
-		"neovim/nvim-lspconfig", -- enable LSP
-		--opts = {
-		--	setup = function ()
-		--		return true
-		--	end,
-		--}
-	},
-
-	"williamboman/mason.nvim",
-
-	"williamboman/mason-lspconfig.nvim",
-
-	"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
+	--]]
 
 	-- Completion plugins --
 	"hrsh7th/nvim-cmp", -- The completion plugin
@@ -126,17 +93,6 @@ require("lazy").setup({
 	"hrsh7th/cmp-cmdline", -- cmdline completions
 
 	"saadparwaiz1/cmp_luasnip", -- snippet completions
-
-	"hrsh7th/cmp-nvim-lsp",
-
-	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-
-	{
-		'mrcjkb/rustaceanvim',
-		version = '^4', -- Recommended
-		lazy = false, -- This plugin is already lazy
-		enabled = false
-	},
 
 	-- Snippets --
 	"L3MON4D3/LuaSnip", --snippet engine
@@ -174,7 +130,7 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "haskell", "rust"},
+				ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "elixir", "haskell", "rust"},
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -246,16 +202,13 @@ require("lazy").setup({
 			})
 		end
 	},
-	{
-		"siadat/shell.nvim",
-		opts = {},
-	},
 
 	{
 		"rktjmp/lush.nvim",
 		cmd = "Shipwrite",
 		requires = { "rktjmp/shipwright.nvim" }
 	},
+
 	{
 		"nvim-treesitter/playground",
 		cmd = "TSPlaygroundToggle",

@@ -6,9 +6,8 @@ set.complete = {".","w","b","u","t","i","kspell"}
 set.completeopt = { "preview", "menuone", "noselect", "noinsert" }
 set.confirm = true
 set.expandtab = true
---set.grepprg = "grep -Irn $*" -- No ripgrep
-set.grepprg = "grep $*" -- No ripgrep
-set.grepformat = "%f:%l:%m" -- Default acts with assumption that `rg` is used
+set.grepprg = "grep $*"        -- No ripgrep
+set.grepformat = "%f:%l:%m"    -- Default acts with assumption that `rg` is used
 set.hidden = true
 set.incsearch = true
 set.path = "**"
@@ -22,7 +21,6 @@ set.smoothscroll = true
 --set.smartindent = false
 --set.cindent = false
 --vim.cmd.set('indentexpr=nvim_treesitter#indent()')
-
 
 -- Appearance --
 set.background = "dark"
@@ -42,7 +40,16 @@ set.tabstop = 4
 set.termguicolors = true
 set.wrap = true
 
-vim.cmd("au FileType * set fo-=c fo-=r fo-=o") -- Disable comment continuation on newline
+vim.opt.list = true
+vim.opt.listchars = {
+	tab = "⟩ ",
+	trail = "+",
+	space = "·",
+	nbsp = "␣",
+}
+
+-- Disable comment continuation on newline
+vim.cmd("au FileType * set fo-=c fo-=r fo-=o")
 
 -- Files --
 set.backup = false
@@ -51,13 +58,6 @@ set.undodir = os.getenv("XDG_CACHE_HOME") .. "/nvim/undodir"
 set.undofile = true
 set.updatetime = 60
 
---[[
---vim.g.netrw_winsize             = 20
---vim.g.markdown_minlines         = 98
---vim.g.material_terminal_italics = 1
---vim.g.material_style            = "deep ocean"
---vim.g.moonflyTransparent        = 1
---]]
 -- Globals --
 vim.g.markdown_syntax_conceal       = 0
 vim.g.netrw_banner                  = 0
@@ -71,10 +71,6 @@ vim.g.netrw_localcopydircmd         = "cp -r"
 vim.g.netrw_localrmdir              = "rm -r"
 vim.g.netrw_list_hide               = [[^\.\.\/ .*,^\.\/ .*0.*,^\.\/$,^\.\.\/$]]
 vim.g.loaded_python3_provider       = 0
-
---vim.g.netrw_list_cmd = "ls"
-
---vim.g.netrw_maxfilenamelen          = 80
 vim.g.netrw_dynamic_maxfilenamelen  = 100
 vim.g.netrw_liststyle               = 1
 vim.g.vimtex_view_method            = "zathura"
