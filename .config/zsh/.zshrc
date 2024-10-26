@@ -137,60 +137,36 @@ autoload -U colors && colors
 PS1="%B%{$fg[cyan]%}%~%{$fg[magenta]%} ❯ %{$reset_color%}%b"
 PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
 
-#alias animemnt="sshfs player01@192.168.1.87:Videos/not-anime ~/Videos/remote -C"
-alias Ex="nvim -c ':Ex'"
 alias adb='HOME="$XDG_DATA_HOME"/android adb'
-alias animemnt="doas mount 192.168.1.87:/srv/nfs/Videos/not-anime /mnt/Videos/not-anime && mount --bind /mnt/Videos/not-anime /home/bruh/Videos/not-anime-remote"
 alias bc="bc --mathlib"
-alias block="betterlockscreen -l blur"
-alias bluetooth="bluetoothctl"
 alias calibre=calibre --with-library "$XDG_DATA_HOME/Calibre Library"
 alias cbonsair="cbonsai --seed 119"
 alias choosenim="choosenim --choosenimDir:${XDG_DATA_HOME}/choosenim"
-alias codef="cd ~/Documents/code"
-alias discordgpu="LIBVA_DRIVER_NAME=i915 discord --enable-gpu-rasterization && rm -rf ~/.pki"
-alias dpu='LIBVA_DRIVER_NAME=i915 devour discord --enable-gpu-rasterization && rm -rf ~/.pki'
-alias dwm-conf="cd ~/gitclone/suckless/dwm && nvim ~/gitclone/suckless/dwm/config.h"
 alias fortnite="osu"
 alias gbookmark="nvim ~/.local/share/bookmarks/bookmarks"
 alias getweather="curl wttr.in/west+bloomfield+township\?m && cal && date"
 alias hsetwall="hsetroot -cover ~/Pictures/wallpapers/wp.jpg"
-alias l="eza -a1 --icons --sort=type"
-alias lf="lfub"
-alias lfwp="lfub ~/Pictures/wallpapers/"
+#alias l="eza -a1 --icons --sort=type"
 alias locknow="loginctl suspend && betterlockscreen -l blur"
-alias ls="eza -a --icons --sort=type"
+#alias ls="eza -a --icons --sort=type"
 alias man-keep="man -P 'less -X'"
-alias mocp="ncmpcpp"
 alias mongod="doas -u mongodb mongod --config /etc/mongodb.conf"
-alias mupdf="devour mupdf"
 alias n="nsxiv . -t"
-alias nano="nvim"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
 alias norg="nvim ~/Documents/org/index.norg"
 alias nshuf="fd --max-depth=1 --type=file --extension=webp --extension=jpg --extension=png --extension=jpeg --extension=gif | shuf | nsxiv -iat"
 alias nshufa="fd --type=file --extension=webp --extension=jpg --extension=png --extension=jpeg --extension=gif | shuf | nsxiv -iat"
-alias nsxiv="devour nsxiv"
 alias nvide="neovide --multigrid"
-alias nvimconf="nvim ~/.config/nvim/init.vim"
 alias octave="octave -q"
 alias offnow="doas loginctl poweroff"
 alias offon="doas loginctl reboot"
-alias osu-dir="cd ~/.local/share/osu-wine/OSU/"
 alias pm="pulsemixer"
 alias poweroff="doas loginctl poweroff"
 alias reboot="doas loginctl reboot"
-alias rs="rsync -urvP"
 alias sbcl="rlwrap sbcl --noinform --userinit $XDG_CONFIG_HOME/sbcl/sbclrc"
-alias skool="cd ~/Documents/wiki/school/"
-alias src="source ~/.config/zsh/.zshrc"
 alias startx="startx $XINITRC"
-alias sudo="doas"
-alias svim="sudoedit"
 alias todo="nvim ~/Documents/wiki/todo.wiki"
 alias uncrustify="uncrustify -c ~/.config/uncrustify/uncrustify.cfg"
-alias vi="nvim"
-alias vim="nvim"
 alias weather="curl wttr.in/West+Bloomfield+Township\?m\&format=2"
 alias weather_report="curl wttr.in/West+Bloomfield+Township\?m"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
@@ -201,11 +177,12 @@ alias xmonsame="xrandr --auto && xrandr --output HDMI-A-0 --same-as eDP && sleep
 alias yt_mpv_360='mpv --ytdl-format=18'
 alias yt_mpv_720='mpv --ytdl-format=22'
 alias yta="yt-dlp -x --audio-format mp3"
-alias zathura="devour zathura"
+alias mysql-workbench=mysql-workbench --configdir="$XDG_DATA_HOME/mysql/workbench"
+alias f5fpc="HOME=${XDG_DATA_HOME} f5fpc"
 
-# Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source <(fzf --zsh)
 source /usr/share/zsh/plugins/zsh-completion/completion.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 #. /usr/share/z/z.sh
-eval "$(zoxide init zsh)"
-source $HOME/.config/broot/launcher/bash/br
+# eval "$(zoxide init zsh)"
+# source $HOME/.config/broot/launcher/bash/br
