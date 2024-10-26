@@ -13,7 +13,6 @@ local keymap = vim.api.nvim_set_keymap
 vim.g.mapleader = ","
 
 -- Normal --
-keymap("n", "<C-H>", ":bd<CR>", opts)
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
@@ -21,59 +20,7 @@ vim.keymap.set("n", "<C-N>", function()
 	vim.cmd("Oil");
 end, opts)
 
-vim.keymap.set("n", "<leader>cn", function()
-	vim.cmd("cn");
-end, opts)
-
-vim.keymap.set("n", "<leader>cp", function()
-	vim.cmd("cp");
-end, opts)
-
-
-vim.keymap.set("n", "<leader>gq1", function()
-	vim.opt.textwidth = 100
-	vim.cmd("norm gqj")
-	vim.opt.textwidth = 0
-end, opts)
-vim.keymap.set("n", "<leader>gq8", function()
-	vim.opt.textwidth = 80
-	vim.cmd("norm gqj")
-	vim.opt.textwidth = 0
-end, opts)
-
-vim.keymap.set("n", "<leader>t", "dawbvawpp", {
-	desc = "Transpose word",
-	noremap = true,
-	silent = true
-})
-
-vim.keymap.set("n", "<leader>cj", function()
-	if cmd_bid == nil or vim.fn.bufexists(cmd_bid) == 0 then
-		vim.cmd("term zsh")
-		vim.cmd("startinsert")
-		cmd_bid = vim.fn.bufnr()
-
-		vim.g.cid = cmd_bid
-		return
-	end
-	vim.cmd("b " .. cmd_bid)
-	vim.cmd("startinsert")
-end, opts)
-
-keymap("n", "<leader>li", ":LspStart<CR>", opts)
-keymap("n", "<leader>lo", ":LspStop<CR>", opts)
-
 keymap("n", "<leader>con", ":e ~/.config/nvim/init.lua<CR>", opts)
-keymap("n", "<leader>so", ":so ~/.config/nvim/init.lua<CR>", opts)
-
-vim.keymap.set("n", "<leader><leader>cd", function()
-	local cur_dir = vim.fn.expand("%:p:h") .. "/"
-
-	vim.cmd("cd " .. cur_dir)
-end, opts)
-
-vim.keymap.set("n", "<leader>ei", function() require("ido").browse() end)
-vim.keymap.set("n", "<leader><leader>ei", function() require("ido").buffers() end)
 
 vim.keymap.set("n", "<leader><leader>ef", function()
 	local cur_dir = vim.fn.expand("%:p")
@@ -93,69 +40,6 @@ vim.keymap.set("n", "<leader>ef", function()
 	end
 
 	vim.cmd("e " .. fname)
-end, opts)
-
-vim.keymap.set("n", "<leader>eb", function()
-	local cur_buf = vim.fn.expand("%")
-	local fname = vim.fn.input("Buffer: ", "", "buffer")
-	if cur_buf == fname or fname == "" then
-		return
-	end
-
-	vim.cmd("b " .. fname)
-end, opts)
-
-vim.keymap.set("n", "<leader><leader>eb", function()
-	local cur_buf = vim.fn.expand("%")
-	vim.cmd([[ls]])
-	vim.cmd([[ls %a]])
-	local fname = vim.fn.input("Buffer: ", "", "buffer")
-	if cur_buf == fname or fname == "" then
-		return
-	end
-
-	vim.cmd("b " .. fname)
-end, opts)
-
-
--- This lowkey sucks
-vim.cmd([[
-fun OldFiles(A,L,P)
-return v:lua.require("user.utils").oldfiles(0,0,0)
-endfun
-]])
-
-vim.keymap.set("n", "<leader>eo", function()
-	local cur_file = vim.fn.expand("%:p")
-	local fname = vim.fn.input("Old File: ", "", "custom,OldFiles")
-
-	if cur_file == fname or fname == "" or fname == nil then
-		return
-	end
-
-	vim.cmd("e " .. fname);
-end)
-
-vim.keymap.set("n", "<leader><leader>cb", function()
-	vim.cmd([[ls]])
-	vim.cmd([[ls %a]])
-	local fname = vim.fn.input("Close Buffer: ", "", "buffer")
-
-	if fname == "" or fname == nil then
-		return
-	end
-
-	vim.cmd("bd " .. fname)
-end, opts)
-
-vim.keymap.set("n", "<leader>cb", function()
-	local fname = vim.fn.input("Close Buffer: ", "", "buffer")
-
-	if fname == "" or fname == nil then
-		return
-	end
-
-	vim.cmd("bd " .. fname)
 end, opts)
 
 vim.keymap.set("n", "<leader><leader>sr", function()
@@ -204,14 +88,11 @@ keymap("n", "<leader>D", '"+D', opts)
 keymap("n", "<leader>p", '"+p', opts)
 keymap("n", "<leader>P", '"+P', opts)
 
-keymap("n", "<leader>A", "zzA", opts)
-keymap("n", "<leader>I", "zzI", opts)
-keymap("n", "<leader>a", "zza", opts)
-keymap("n", "<leader>i", "zzi", opts)
 vim.keymap.set("n", "<leader>gg", function()
 	vim.cmd.G()
 	vim.cmd.only()
 end, opts)
+
 keymap("n", "<leader>H", ":set signcolumn=yes:9<CR>", opts)
 keymap("n", "<leader>J", ":set signcolumn=yes:2<CR>", opts)
 
@@ -220,49 +101,6 @@ keymap("n", "<M-,>", ":vert resize -1<CR>", opts)
 
 keymap("n", "<M->>", ":resize +1<CR>", opts)
 keymap("n", "<M-lt>", ":resize -1<CR>", opts)
-
-vim.keymap.set("n", "<leader>ll", function()
-	vim.opt_local.wrap = false
-end, opts)
-
-vim.keymap.set("n", "<leader>lk", function()
-	vim.opt_local.wrap = true
-end, opts)
-
-vim.keymap.set("n", "<leader>sd", function()
-	local fname = vim.fn.input("File: ", "~/Documents/dump/", "file")
-	vim.cmd.w(fname)
-	vim.cmd.e(fname)
-end, opts)
-
---[[ Make this a command :bruh:
-vim.keymap.set("n", "<leader>tmp", function()
-	local charset = {}
-	do -- [0-9a-zA-Z]
-		for c = 48, 57 do
-			table.insert(charset, string.char(c))
-		end
-		for c = 65, 90 do
-			table.insert(charset, string.char(c))
-		end
-		for c = 97, 122 do
-			table.insert(charset, string.char(c))
-		end
-	end
-
-	local function randomString(length)
-		if not length or length <= 0 then
-			return ""
-		end
-		math.randomseed(os.clock() ^ 5)
-		return randomString(length - 1) .. charset[math.random(1, #charset)]
-	end
-
-	local cmd = "e /tmp/tmp-" .. randomString(15) .. ".txt"
-	vim.cmd(cmd)
-end, opts)
-]]
-   --
 
 vim.keymap.set("n", "<leader>ff", function()
 	require("telescope.builtin").find_files()
@@ -303,12 +141,10 @@ end, opts)
 vim.keymap.set("n", "<A-a>", function()
 	vim.cmd.norm("mT");
 	print("Mark added")
-	--require("user.jumper").add_jump_under_cursor()
 end, opts)
 
 vim.keymap.set("n", "<A-m>", function()
 	vim.cmd.norm("`T");
-	--require("user.jumper").goto_latest_jump()
 end, opts)
 
 vim.keymap.set("n", "<A-d>", function()
@@ -318,25 +154,6 @@ end, opts)
 vim.keymap.set("n", "<A-f>", function()
 	require("user.jumper").goto_jump_file()
 end, opts)
-
--- insert mode
---keymap("i", "<C-P>", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", opts)
-keymap("i", "<C-G><C-H>", "<Esc>i", opts)
-keymap("i", "<C-G><C-L>", "<Esc>lli", opts)
-keymap("i", "<C-G><C-B>", "<Esc>lbi", opts)
-keymap("i", "<C-G><C-W>", "<Esc>lwi", opts)
-
---keymap("i", "<C-J>", "<Esc>", opts)
---keymap("s", "<C-J>", "<Esc>", opts)
-
-vim.keymap.set("i", "<C-E>", function()
-	vim.cmd("exe \"normal \\<c-e>\"");
-end, opts)
-
-vim.keymap.set("i", "<C-Y>", function()
-	vim.cmd("exe \"normal \\<c-y>\"");
-end, opts)
-
 
 -- visual mode
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
@@ -352,12 +169,8 @@ keymap("v", "<leader>p", '"+p', opts)
 keymap("v", "<leader>kal", "!kalker<CR>", opts)
 keymap("v", "<leader>lal", "!sbcl --noinform<CR>", opts)
 keymap("v", "<leader>Kal", "<Esc>`>a<CR><Esc>`<i<CR><Esc>!!kalker<CR>kJJ", opts)
---keymap("v", "<leader>kal", "!kalker<cr>", opts)
 keymap("v", "<leader>wcw", "!wc -w<cr>", opts)
 keymap("v", "<leader>wcc", "!wc -m<cr>", opts)
-
--- term mode
-keymap("t", "<C-J>", "<C-\\><C-N>", opts)
 
 -- Luasnips
 local ls = require("luasnip")
