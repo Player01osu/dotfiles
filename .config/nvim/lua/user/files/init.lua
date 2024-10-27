@@ -1,7 +1,0 @@
-require("user.files.anki")
-require("user.files.c")
-require("user.files.cl_interp")
-require("user.files.haskell")
-require("user.files.kalker")
-require("user.files.lua")
-require("user.files.neorg_ft")

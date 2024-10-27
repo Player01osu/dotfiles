@@ -1,12 +1,8 @@
 vim.loader.enable()
 
-require("user.files")
-
 require("user.lazy")
 require("user.commands")
 require("user.keymaps")
-require("user.luasnippets")
-require("user.treesitter")
 require("user.vimwiki")
 
 require("user.options")

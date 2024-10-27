@@ -1,21 +1,21 @@
 local set = vim.opt -- Helper binding
 
--- Functionality --
-set.clipboard = ""
-set.complete = {".","w","b","u","t","i","kspell"}
-set.completeopt = { "preview", "menuone", "noselect", "noinsert" }
-set.confirm = true
-set.expandtab = true
-set.grepprg = "grep $*"        -- No ripgrep
-set.grepformat = "%f:%l:%m"    -- Default acts with assumption that `rg` is used
-set.hidden = true
-set.incsearch = true
-set.path = "**"
-set.mouse = "nv"
-set.scrolloff = 4
-set.shell = "/bin/dash"
+-- Behavior --
+set.clipboard     = ""
+set.complete      = {".","w","b","u","t","i","kspell"}
+set.completeopt   = { "preview", "menuone", "noselect", "noinsert" }
+set.confirm       = true
+set.expandtab     = true
+set.grepprg       = "grep $*"        -- No ripgrep
+set.grepformat    = "%f:%l:%m"    -- Default acts with assumption that `rg` is used
+set.hidden        = true
+set.incsearch     = true
+set.path          = "**"
+set.mouse         = "nv"
+set.scrolloff     = 4
+set.shell         = "/bin/dash"
 set.sidescrolloff = 12
-set.smoothscroll = true
+set.smoothscroll  = true
 
 --set.autoindent = true
 --set.smartindent = false
@@ -23,39 +23,39 @@ set.smoothscroll = true
 --vim.cmd.set('indentexpr=nvim_treesitter#indent()')
 
 -- Appearance --
-set.background = "dark"
-set.conceallevel = 0
-set.cursorline = true
-set.guicursor = ""
-set.hlsearch = false
-set.linebreak = true
-set.nu = true
+set.background     = "dark"
+set.conceallevel   = 0
+set.cursorline     = true
+set.guicursor      = ""
+set.hlsearch       = false
+set.linebreak      = true
+set.nu             = true
 set.relativenumber = true
-set.shiftwidth = 4
-set.showtabline = 0
-set.signcolumn = "yes:2"
-set.smartcase = true
-set.splitbelow = false
-set.tabstop = 4
-set.termguicolors = true
-set.wrap = true
+set.shiftwidth     = 4
+set.showtabline    = 0
+set.signcolumn     = "yes:2"
+set.smartcase      = true
+set.splitbelow     = false
+set.tabstop        = 4
+set.termguicolors  = true
+set.wrap           = true
 
-vim.opt.list = true
+vim.opt.list      = true
 vim.opt.listchars = {
-	tab = "⟩ ",
+	tab   = "⟩ ",
 	trail = "+",
 	space = "·",
-	nbsp = "␣",
+	nbsp  = "␣",
 }
 
 -- Disable comment continuation on newline
 vim.cmd("au FileType * set fo-=c fo-=r fo-=o")
 
 -- Files --
-set.backup = false
-set.swapfile = false
-set.undodir = os.getenv("XDG_CACHE_HOME") .. "/nvim/undodir"
-set.undofile = true
+set.backup     = false
+set.swapfile   = false
+set.undodir    = os.getenv("XDG_CACHE_HOME") .. "/nvim/undodir"
+set.undofile   = true
 set.updatetime = 60
 
 -- Globals --
@@ -79,14 +79,10 @@ vim.g.vim_markdown_folding_disabled = 1
 -- File Specific --
 
 -- Autocommands --
-local on_text_file                  = function()
-	vim.opt_local.signcolumn = "yes:1"
-end
-
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*.latex", "*.tex", "*.txt", "*.md", "*.markdown", "*.wiki" },
 	callback = function()
-		on_text_file()
+		vim.opt_local.signcolumn = "yes:1"
 	end,
 })
 
@@ -178,4 +174,4 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 -- Vimscript --
 vim.cmd([[
   let g:vimwiki_list = [{'path':'~/Documents/wiki', 'path_html':'~/Documents/wiki_html/'}]
-  ]])
+]])

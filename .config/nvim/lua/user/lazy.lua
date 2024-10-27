@@ -29,34 +29,24 @@ require("lazy").setup({
 		cmd = "Tabularize",
 	},
 
-	-- Snippets --
-	{
-		"L3MON4D3/LuaSnip", --snippet engine
-		lazy = true,
-	},
-
-	"rafamadriz/friendly-snippets", -- a bunch of snippets to use
-
 	-- Telescope --
 	{
 		"nvim-telescope/telescope.nvim",
 		lazy = true,
+		config = function()
+			require("telescope").setup({
+				pickers = {
+					find_files = {
+						theme = "dropdown",
+					},
+				},
+			})
+		end,
 	},
 
 	"nvim-lua/popup.nvim",
 
 	"nvim-lua/plenary.nvim",
-
-	{
-		"vhyrro/luarocks.nvim",
-		opts = {
-			luarocks_build_args = {
-				"--with-lua-include=/usr/include",
-			},
-		},
-		priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-		enabled = false,
-	},
 
 	-- Git --
 	{
@@ -75,10 +65,48 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "elixir", "haskell", "rust"},
-				sync_install = false,
-				highlight = { enable = true },
-				indent = { enable = true },
+				ensure_installed = {
+					"asm",
+					"rust",
+					"haskell",
+					"go",
+					"latex",
+					"c",
+					"cpp",
+					"html",
+					"javascript",
+					"java",
+					"odin",
+					"lua",
+					"gitcommit",
+					"gitignore",
+					"ocaml",
+					"bash",
+					"python",
+					"hyprlang",
+					"commonlisp",
+					"scheme",
+					"toml",
+					"yaml",
+					"norg",
+					"markdown",
+					"markdown_inline",
+				},
+				sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+				ignore_install = { "" }, -- List of parsers to ignore installing
+				autopairs = {
+					enable = true,
+				},
+				highlight = {
+					enable = true, -- false will disable the whole extension
+					--disable = { "tex", "latex" },
+					additional_vim_regex_highlighting = false,
+				},
+				indent = { enable = true, disable = { "yaml" } },
+				context_commentstring = {
+					enable = true,
+					enable_autocmd = false,
+				},
 			})
 		end
 	},
