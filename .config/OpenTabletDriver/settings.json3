@@ -1,0 +1,74 @@
+{
+  "Revision": "0.7.0.0",
+  "Profiles": [
+    {
+      "Tablet": "Wacom CTL-472",
+      "OutputMode": {
+        "Path": "OpenTabletDriver.Desktop.Output.AbsoluteMode",
+        "Settings": [
+          {
+            "Property": "Input",
+            "Value": {
+              "Rotation": 0.0,
+              "Width": 128.0,
+              "Height": 72.0,
+              "XPosition": 64.0,
+              "YPosition": 36.0
+            }
+          },
+          {
+            "Property": "Output",
+            "Value": {
+              "Width": 1920.0,
+              "Height": 1080.0,
+              "XPosition": 960.0,
+              "YPosition": 540.0
+            }
+          },
+          {
+            "Property": "AreaClipping",
+            "Value": true
+          },
+          {
+            "Property": "AreaLimiting",
+            "Value": true
+          },
+          {
+            "Property": "LockToBounds",
+            "Value": true
+          },
+          {
+            "Property": "LockAspectRatio",
+            "Value": true
+          }
+        ],
+        "Enable": true
+      },
+      "Filters": [],
+      "Bindings": {
+        "TipActivationThreshold": 0.0,
+        "TipButton": {
+          "Path": "OpenTabletDriver.Desktop.Binding.MouseBinding",
+          "Settings": [
+            {
+              "Property": "Button",
+              "Value": "Left"
+            }
+          ],
+          "Enable": true
+        },
+        "EraserActivationThreshold": 0.0,
+        "EraserButton": null,
+        "PenButtons": [
+          null,
+          null
+        ],
+        "AuxButtons": [],
+        "MouseButtons": [],
+        "MouseScrollUp": null,
+        "MouseScrollDown": null
+      }
+    }
+  ],
+  "Tools": []
+}

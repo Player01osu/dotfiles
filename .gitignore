@@ -14,3 +14,14 @@
 /.config/pipewire/filter-chain/
 /.config/pipewire/media-session.d/
 /.config/pipewire/pipewire-avb.conf
+/.config/OpenTabletDriver/Logs
+/.config/OpenTabletDriver/daemon.log
+/.config/emacs/autosave
+/.config/emacs/url/cache
+/.config/emacs/games
+/.config/btop/btop.log
+/.config/obs-studio/logs
+/.config/obs-studio/profiler_data
+/.config/quicklisp/dists
+/.config/quicklisp/local-projects
+eln-cache
