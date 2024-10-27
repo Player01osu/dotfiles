@@ -84,7 +84,7 @@ require("lazy").setup({
 	},
 	{
 		"stevearc/oil.nvim",
-		lazy = true,
+		lazy = false,
 		config = function ()
 			local permission_hlgroups = {
 				['-'] = 'NonText',
