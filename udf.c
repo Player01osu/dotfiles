@@ -53,7 +53,6 @@ const char *links[][4] = {
 	{ c(".config/pipewire"),            CONFIG "/pipewire",           0,       ON },
 	{ c(".config/qmk"),                 CONFIG "/qmk",                0,       ON },
 	{ c(".config/qt5ct"),               CONFIG "/qt5ct",              0,       ON },
-	{ c(".config/quicklisp"),           CONFIG "/quicklisp",          0,       ON },
 	{ c(".config/sbcl"),                CONFIG "/sbcl",               0,       ON },
 	{ c(".config/sbclrc"),              CONFIG "/sbclrc",             0,       ON },
 	{ c(".config/swayimg"),             CONFIG "/swayimg",            0,       ON },
