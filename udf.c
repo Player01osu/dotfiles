@@ -12,6 +12,9 @@ exit
 #define ON   (void *) 69
 #define OFF  (void *) 0
 
+/*********************************************************************************************/
+/*********************************************************************************************/
+
 /******************/
 /* Configurations */
 /******************/
@@ -19,23 +22,30 @@ exit
 /* Sudo program */
 const char *sudo = "/usr/bin/doas";
 
+/* Replace old links if exist */
+const int replace_old_link = 1;
+
 /* Set the path and link location of files */
 const char *links[][4] = {
         /* Config                        Link location                Sudo     Enabled  */
 	{ c(".config/fcitx"),           CONFIG "/fcitx",              0,       ON },
-	{ c(".config/lf"),              CONFIG "/lf",                 0,       0  },
-	{ c(".config/mpd"),             CONFIG "/mpd",                0,       0  },
-	{ c(".config/mpv"),             CONFIG "/mpv",                0,       0  },
-	{ c(".config/ncmpcpp"),         CONFIG "/ncmpcpp",            0,       0  },
-	{ c(".config/nvim"),            CONFIG "/nvim",               0,       0  },
-	{ c(".config/pipewire"),        CONFIG "/pipewire",           0,       0  },
-	{ c(".config/sx"),              CONFIG "/sx",                 0,       0  },
-	{ c(".config/sxhkd")            CONFIG "/sxhkd",              0,       0  },
-	{ c(".config/zsh"),             CONFIG "/zsh",                0,       0  },
-	{ c(".config/alacritty.toml"),  CONFIG "/alacritty.toml",     0,       0  },
-	{ c(".config/picom.conf"),      CONFIG "/picom.conf",         0,       0  },
-	{ c(".zshenv"),                 "/etc/zsh/zshenv",            ON,      0  },
+	{ c(".config/lf"),              CONFIG "/lf",                 0,       ON },
+	{ c(".config/mpd"),             CONFIG "/mpd",                0,       ON },
+	{ c(".config/mpv"),             CONFIG "/mpv",                0,       ON },
+	{ c(".config/ncmpcpp"),         CONFIG "/ncmpcpp",            0,       ON },
+	{ c(".config/nvim"),            CONFIG "/nvim",               0,       ON },
+	{ c(".config/pipewire"),        CONFIG "/pipewire",           0,       ON },
+	{ c(".config/sx"),              CONFIG "/sx",                 0,       ON },
+	{ c(".config/sxhkd"),           CONFIG "/sxhkd",              0,       ON },
+	{ c(".config/zsh"),             CONFIG "/zsh",                0,       ON },
+	{ c(".config/alacritty.toml"),  CONFIG "/alacritty.toml",     0,       ON },
+	{ c(".config/picom.conf"),      CONFIG "/picom.conf",         0,       ON },
+	{ c(".config/tofi"),            CONFIG "/tofi",               0,       ON },
+	{ c(".zshenv"),                 "/etc/zsh/zshenv",            ON,      ON },
 };
+
+/*********************************************************************************************/
+/*********************************************************************************************/
 
 /**********/
 /* Script */
@@ -50,6 +60,7 @@ const char *links[][4] = {
 #include <stdarg.h>
 #include <string.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 #define ARR_LEN(arr) (sizeof(arr) / sizeof(*arr))
 
@@ -78,8 +89,27 @@ static void concat(char *buf, ...)
 static int link_file(const char *from, const char *to)
 {
 	int  ret;
+	struct stat sb;
+
+	fprintf(stdout, "\"%s\" => \"%s\":\n", from, to);
+
+	ret = lstat(to, &sb);
+	if (ret == 0) {
+		if (sb.st_mode & S_IFLNK) {
+			if (replace_old_link) {
+				fprintf(stdout, "  Symlink already exists at \"%s\"; replacing link...\n", to);
+				if (remove(to) < 0) {
+					fprintf(stderr, "%s: Could not remove symlink \"%s\": %s\n", program_name, to, strerror(errno));
+					return -1;
+				}
+			} else {
+				fprintf(stdout, "  Symlink already exists at \"%s\"...\n", to);
+			}
+		}
+	}
 
 	ret = symlink(from, to);
+
 	if (ret && errno == EEXIST) {
 		fprintf(stdout, "  \"%s\" to \"%s\": File already exists; Continuing...\n", from, to);
 	} else if (ret) {
@@ -190,7 +220,7 @@ int main(int argc, char **argv)
 			from         = links[i][0];
 			to           = links[i][1];
 			require_root = links[i][2];
-			enabled      = links[i][4];
+			enabled      = links[i][3];
 
 			if (!enabled) continue;
 
