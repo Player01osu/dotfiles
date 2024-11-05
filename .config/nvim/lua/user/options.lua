@@ -151,7 +151,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "FocusLost" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	pattern = { "todo.wiki" },
+	pattern = { "todo.txt", "todo.wiki" },
 	callback = function()
 		if os.getenv("XDG_SESSION_TYPE") == "wayland" then
 			os.execute("pkill -SIGRTMIN+1 waybar")
