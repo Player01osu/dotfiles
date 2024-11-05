@@ -13,7 +13,9 @@
 	# characters not in the chosen font will fail to render.
 	#
 	# Otherwise, fonts are interpreted in Pango format.
-	font = "Sans"
+	#font = "/usr/share/fonts/noto/NotoSansMono-Regular.ttf"
+	#font = "/usr/share/fonts/noto/NotoSans-Regular.ttf"
+	font = "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc"
 
 	# Point size of text.
 	font-size = 20
@@ -244,13 +246,14 @@
 	# Sort results by number of usages in run and drun modes.
 	history = false
 
-	# Specify an alternate file to read and store history information
-	# from / to. This shouldn't normally be needed, and is intended to
-	# facilitate the creation of custom modes.
-	# history-file = /path/to/histfile
-
-	# Use fuzzy matching for searches.
-	fuzzy-match = false
+	# Select the matching algorithm used. If normal, substring matching is
+	# used, weighted to favour matches closer to the beginning of the
+	# string. If prefix, only substrings at the beginning of the string are
+	# matched. If fuzzy, searching is performed via a simple fuzzy matching
+	# algorithm.
+	#
+	# Supported values: normal, prefix, fuzzy
+    matching-algorithm = normal
 
 	# If true, require a match to allow a selection to be made. If false,
 	# making a selection with no matches will print input to stdout.
