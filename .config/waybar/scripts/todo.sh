@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "$(sed -n '6,6p' "$HOME/Documents/wiki/todo.wiki" | awk -F'] ' {' print $2'})"
+echo "$(sed -n '4,4p' "$HOME/Documents/notes/todo.txt" | awk -F'] ' {' print $2'})"
