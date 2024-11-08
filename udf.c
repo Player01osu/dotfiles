@@ -9,8 +9,8 @@ exit
 #define s(x) #x
 #define c(s) PWD "/" s
 #define d(x) s(x) "/"
-#define ON   (void *) 69
-#define OFF  (void *) 0
+#define O1   (void *) 69
+#define O0   (void *) 0
 
 /*********************************************************************************************/
 /*********************************************************************************************/
@@ -28,42 +28,42 @@ const int replace_old_link = 1;
 /* Set the path and link location of files */
 const char *links[][4] = {
         /* Config                            Link location                Sudo     Enabled  */
-	{ c(".config/activitywatch"),       CONFIG "/activitywatch",      0,       ON },
-	{ c(".config/alacritty.toml"),      CONFIG "/alacritty.toml",     0,       ON },
-	{ c(".config/aniki"),               CONFIG "/aniki",              0,       ON },
-	{ c(".config/btop"),                CONFIG "/btop",               0,       ON },
-	{ c(".config/dunst"),               CONFIG "/dunst",              0,       ON },
-	{ c(".config/emacs"),               CONFIG "/emacs",              0,       ON },
-	{ c(".config/fcitx"),               CONFIG "/fcitx",              0,       ON },
-	{ c(".config/gtk-2.0"),             CONFIG "/gtk-2.0",            0,       ON },
-	{ c(".config/gtk-3.0"),             CONFIG "/gtk-3.0",            0,       ON },
-	{ c(".config/gtk-4.0"),             CONFIG "/gtk-4.0",            0,       ON },
-	{ c(".config/hypr"),                CONFIG "/hypr",               0,       ON },
-	{ c(".config/kitty"),               CONFIG "/kitty",              0,       ON },
-	{ c(".config/lazygit"),             CONFIG "/lazygit",            0,       ON },
-	{ c(".config/lf"),                  CONFIG "/lf",                 0,       ON },
-	{ c(".config/mpd"),                 CONFIG "/mpd",                0,       ON },
-	{ c(".config/mpv"),                 CONFIG "/mpv",                0,       ON },
-	{ c(".config/ncmpcpp"),             CONFIG "/ncmpcpp",            0,       ON },
-	{ c(".config/nvim"),                CONFIG "/nvim",               0,       ON },
-	{ c(".config/obs-studio"),          CONFIG "/obs-studio",         0,       ON },
-	{ c(".config/OpenTabletDriver"),    CONFIG "/OpenTabletDriver",   0,       ON },
-	{ c(".config/pcmanfm"),             CONFIG "/pcmanfm",            0,       ON },
-	{ c(".config/picom.conf"),          CONFIG "/picom.conf",         0,       ON },
-	{ c(".config/pipewire"),            CONFIG "/pipewire",           0,       ON },
-	{ c(".config/qmk"),                 CONFIG "/qmk",                0,       ON },
-	{ c(".config/qt5ct"),               CONFIG "/qt5ct",              0,       ON },
-	{ c(".config/sbcl"),                CONFIG "/sbcl",               0,       ON },
-	{ c(".config/sbclrc"),              CONFIG "/sbclrc",             0,       ON },
-	{ c(".config/swayimg"),             CONFIG "/swayimg",            0,       ON },
-	{ c(".config/sx"),                  CONFIG "/sx",                 0,       ON },
-	{ c(".config/sxhkd"),               CONFIG "/sxhkd",              0,       ON },
-	{ c(".config/tofi"),                CONFIG "/tofi",               0,       ON },
-	{ c(".config/vifm"),                CONFIG "/vifm",               0,       ON },
-	{ c(".config/waybar"),              CONFIG "/waybar",             0,       ON },
-	{ c(".config/wezterm"),             CONFIG "/wezterm",            0,       ON },
-	{ c(".config/zsh"),                 CONFIG "/zsh",                0,       ON },
-	{ c(".zshenv"),                     "/etc/zsh/zshenv",            ON,      0  },
+	{ c(".config/activitywatch"),       CONFIG "/activitywatch",      0,        O0 },
+	{ c(".config/alacritty.toml"),      CONFIG "/alacritty.toml",     0,        O0 },
+	{ c(".config/aniki"),               CONFIG "/aniki",              0,        O0 },
+	{ c(".config/btop"),                CONFIG "/btop",               0,        O0 },
+	{ c(".config/dunst"),               CONFIG "/dunst",              0,        O0 },
+	{ c(".config/emacs"),               CONFIG "/emacs",              0,        O0 },
+	{ c(".config/fcitx"),               CONFIG "/fcitx",              0,        O0 },
+	{ c(".config/gtk-2.0"),             CONFIG "/gtk-2.0",            0,        O0 },
+	{ c(".config/gtk-3.0"),             CONFIG "/gtk-3.0",            0,        O0 },
+	{ c(".config/gtk-4.0"),             CONFIG "/gtk-4.0",            0,        O0 },
+	{ c(".config/hypr"),                CONFIG "/hypr",               0,        O0 },
+	{ c(".config/kitty"),               CONFIG "/kitty",              0,        O0 },
+	{ c(".config/lazygit"),             CONFIG "/lazygit",            0,        O0 },
+	{ c(".config/lf"),                  CONFIG "/lf",                 0,        O0 },
+	{ c(".config/mpd"),                 CONFIG "/mpd",                0,        O0 },
+	{ c(".config/mpv"),                 CONFIG "/mpv",                0,        O0 },
+	{ c(".config/ncmpcpp"),             CONFIG "/ncmpcpp",            0,        O0 },
+	{ c(".config/nvim"),                CONFIG "/nvim",               0,        O0 },
+	{ c(".config/obs-studio"),          CONFIG "/obs-studio",         0,        O0 },
+	{ c(".config/OpenTabletDriver"),    CONFIG "/OpenTabletDriver",   0,        O0 },
+	{ c(".config/pcmanfm"),             CONFIG "/pcmanfm",            0,        O0 },
+	{ c(".config/picom.conf"),          CONFIG "/picom.conf",         0,        O0 },
+	{ c(".config/pipewire"),            CONFIG "/pipewire",           0,        O0 },
+	{ c(".config/qmk"),                 CONFIG "/qmk",                0,        O0 },
+	{ c(".config/qt5ct"),               CONFIG "/qt5ct",              0,        O0 },
+	{ c(".config/sbcl"),                CONFIG "/sbcl",               0,        O0 },
+	{ c(".config/sbclrc"),              CONFIG "/sbclrc",             0,        O0 },
+	{ c(".config/swayimg"),             CONFIG "/swayimg",            0,        O0 },
+	{ c(".config/sx"),                  CONFIG "/sx",                 0,        O0 },
+	{ c(".config/sxhkd"),               CONFIG "/sxhkd",              0,        O0 },
+	{ c(".config/tofi"),                CONFIG "/tofi",               0,        O0 },
+	{ c(".config/vifm"),                CONFIG "/vifm",               0,        O0 },
+	{ c(".config/waybar"),              CONFIG "/waybar",             0,        O0 },
+	{ c(".config/wezterm"),             CONFIG "/wezterm",            0,        O0 },
+	{ c(".config/zsh"),                 CONFIG "/zsh",                0,        O0 },
+	{ c(".zshenv"),                     "/etc/zsh/zshenv",            ON,       O0 },
 };
 
 /*********************************************************************************************/
