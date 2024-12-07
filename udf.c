@@ -55,6 +55,7 @@ const char *links[][4] = {
 	{ c(".config/qt5ct"),               CONFIG "/qt5ct",              0,        O0 },
 	{ c(".config/sbcl"),                CONFIG "/sbcl",               0,        O0 },
 	{ c(".config/sbclrc"),              CONFIG "/sbclrc",             0,        O0 },
+	{ c(".config/sway"),                CONFIG "/sway",               0,        O0 },
 	{ c(".config/swayimg"),             CONFIG "/swayimg",            0,        O0 },
 	{ c(".config/sx"),                  CONFIG "/sx",                 0,        O0 },
 	{ c(".config/sxhkd"),               CONFIG "/sxhkd",              0,        O0 },
