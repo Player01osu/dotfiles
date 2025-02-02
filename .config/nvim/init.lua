@@ -3,7 +3,6 @@ vim.loader.enable()
 require("user.lazy")
 require("user.commands")
 require("user.keymaps")
-require("user.vimwiki")
 
 require("user.options")
 require("user.jumper")
