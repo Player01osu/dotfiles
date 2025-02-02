@@ -170,8 +170,3 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 		end
 	end,
 })
-
--- Vimscript --
-vim.cmd([[
-  let g:vimwiki_list = [{'path':'~/Documents/wiki', 'path_html':'~/Documents/wiki_html/'}]
-]])
