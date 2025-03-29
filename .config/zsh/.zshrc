@@ -10,6 +10,8 @@ zmodload zsh/complist
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)		# Include hidden files.
 
+export GPG_TTY=$(tty)
+
 c () {
 	tmp="$(fd --max-depth 1 --hidden --follow --exclude ".git" --type=directory --no-ignore . | fzf)"
 	if [ $tmp ]; then
