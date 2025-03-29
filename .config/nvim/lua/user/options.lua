@@ -75,6 +75,7 @@ vim.g.netrw_dynamic_maxfilenamelen  = 100
 vim.g.netrw_liststyle               = 1
 vim.g.vimtex_view_method            = "zathura"
 vim.g.vim_markdown_folding_disabled = 1
+vim.g.c_syntax_for_h                = 1
 
 -- File Specific --
 
