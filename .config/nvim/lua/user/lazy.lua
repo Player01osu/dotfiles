@@ -32,7 +32,7 @@ require("lazy").setup({
 	-- Telescope --
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = true,
+		-- lazy = true,
 		config = function()
 			require("telescope").setup({
 				pickers = {
