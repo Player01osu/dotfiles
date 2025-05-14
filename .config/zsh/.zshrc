@@ -1,7 +1,7 @@
 setopt autocd extendedglob nomatch
 unsetopt beep
 zstyle :compinstall filename "$HOME/.config/zsh/.zshrc"
-# bindkey -v
+bindkey -e
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -41,27 +41,6 @@ _fzf_compgen_dir() {
 # bindkey -M menuselect 'j' vi-down-line-or-history
 # bindkey -v '^?' backward-delete-char
 
-# Change cursor shape for different vi modes.
-# function zle-keymap-select {
-#   if [[ ${KEYMAP} == vicmd ]] ||
-#      [[ $1 = 'block' ]]; then
-#     echo -ne '\e[2 q'
-#   elif [[ ${KEYMAP} == main ]] ||
-#        [[ ${KEYMAP} == viins ]] ||
-#        [[ ${KEYMAP} = '' ]] ||
-#        [[ $1 = 'beam' ]]; then
-#     echo -ne '\e[2 q'
-#   fi
-# }
-# zle -N zle-keymap-select
-# zle-line-init() {
-#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-#     echo -ne "\e[2 q"
-# }
-# zle -N zle-line-init
-# echo -ne '\e[2 q' # Use beam shape cursor on startup.
-# preexec() { echo -ne '\e[2 q' ;} # Use beam shape cursor for each new prompt.
-
 spotdl_pair () {
     if [ -z $2 ]; then
         echo 'Requires two arguments; (yt url) and (spotify url)'
@@ -80,10 +59,9 @@ fzf-hist () {
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
+# bindkey '^m' edit-command-line
 
 source $HOME/.local/bin/proj-jump.sh
-
-bindkey '^e' edit-command-line
 
 kalk () {
     nvim /tmp/tmp.kalk
