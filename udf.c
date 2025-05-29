@@ -64,7 +64,8 @@ const char *links[][4] = {
 	{ c(".config/waybar"),              CONFIG "/waybar",             0,        O0 },
 	{ c(".config/wezterm"),             CONFIG "/wezterm",            0,        O0 },
 	{ c(".config/zsh"),                 CONFIG "/zsh",                0,        O0 },
-	{ c(".zshenv"),                     "/etc/zsh/zshenv",            ON,       O0 },
+	{ c(".zshenv"),                     CONFIG "/zsh/zshenv",         0,        O0 },
+	{ c(".zshenv"),                     "/etc/zsh/zshenv",            O1,       O0 },
 };
 
 /*********************************************************************************************/
