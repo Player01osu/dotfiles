@@ -1,7 +1,7 @@
 
 # start clients
-alt + t ; {h,j,d,p,s,f,z}
-	{alacritty -o font.size=7.0 --class btop -e btop,firefox-developer-edition &,ripcord &,alacritty --class pulsemixer -e pulsemixer,steam &,toggle_fcitx,boomer}
+alt + t ; {h,j,d,p,s,n,a,f,z}
+	{alacritty -o font.size=7.0 --class btop -e btop,firefox &,ripcord &,alacritty --class pulsemixer -e pulsemixer,steam &,LIBVA_DRIVER_NAME=i915 nuclear --enable-gpu-rasterization &,screen-anki,toggle_fcitx,boomer}
 
 # anki tools
 alt + l ; {a,s,o,f,r}
