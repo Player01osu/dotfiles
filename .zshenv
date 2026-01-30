@@ -8,7 +8,6 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_STATE_HOME="$HOME"/.local/state
 
-export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 
 export RENPY_PATH_TO_SAVES="$XDG_DATA_HOME"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
@@ -75,7 +74,8 @@ export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 export UNCRUSTIFY_CONFIG="$HOME"/.config/uncrustify/uncrustify.cfg
 export VISUAL="nvim"
-export WINEARCH=win32 # Only needed when executing the first command with that WINEPREFIX
+export WINEARCH=wow64 # Only needed when executing the first command with that WINEPREFIX
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default-wow64
 export XAUTHORITY="$HOME"/.config/X11/.Xauthority
 export XINITRC="$HOME"/.config/X11/.xinitrc
 export ZDOTDIR="$HOME"/.config/zsh
