@@ -42,6 +42,7 @@ const char *links[][4] = {
 	{ c(".config/kitty"),               CONFIG "/kitty",              0,        O0 },
 	{ c(".config/lazygit"),             CONFIG "/lazygit",            0,        O0 },
 	{ c(".config/lf"),                  CONFIG "/lf",                 0,        O0 },
+	{ c(".config/mako"),                CONFIG "/mako",               0,        O0 },
 	{ c(".config/mpd"),                 CONFIG "/mpd",                0,        O0 },
 	{ c(".config/mpv"),                 CONFIG "/mpv",                0,        O0 },
 	{ c(".config/ncmpcpp"),             CONFIG "/ncmpcpp",            0,        O0 },
