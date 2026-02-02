@@ -20,21 +20,15 @@
 
     "modules-left": [
         "hyprland/workspaces"
-        // "hyprland/mode"
     ],
     "modules-center": [
         "custom/todo"
     ],
     "modules-right": [
-        // "network",
-        // "memory",
-        // "cpu",
-        // "temperature",
-        //"custom/keyboard-layout",
         "mpd",
+        "mpris",
         "custom/yuri-size",
         "battery",
-        // "tray",
         "clock#date",
         "clock#time"
     ],
@@ -50,10 +44,9 @@
             "warning": 30,
             "critical": 15
         },
-        // Connected to AC
-        "format": "  {icon}  {capacity}%", // Icon: bolt
-        // Not connected to AC
-        "format-discharging": "{icon}  {capacity}%",
+        /*"format": "<span>  {icon}</span>  {capacity}%", */
+        "format-charging": " {capacity}%",
+        "format-discharging": "{capacity}%",
         "format-icons": [
             "", // Icon: battery-full
             "", // Icon: battery-three-quarters
@@ -71,18 +64,9 @@
     },
 
     "clock#date": {
-      "interval": 10,
-      "format": "  {:%e %b %Y}", // Icon: calendar-alt
+      "interval": 120,
+      "format": "{:%e %b %Y}", // Icon: calendar-alt
       "tooltip-format": "{:%e %B %Y}"
-    },
-
-    "cpu": {
-        "interval": 5,
-        "format": "  {usage}% ({load})", // Icon: microchip
-        "states": {
-          "warning": 70,
-          "critical": 90
-        }
     },
 
     "custom/keyboard-layout": {
@@ -102,14 +86,6 @@
             "warning": 70,
             "critical": 90
         }
-    },
-
-    "network": {
-        "interval": 5,
-        "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
-        "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}"
     },
 
     "hyprland/mode": {
@@ -139,23 +115,6 @@
         }
     },
 
-    //"pulseaudio": {
-    //    //"scroll-step": 1,
-    //    "format": "{icon}  {volume}%",
-    //    "format-bluetooth": "{icon}  {volume}%",
-    //    "format-muted": "",
-    //    "format-icons": {
-    //        "headphones": "",
-    //        "handsfree": "",
-    //        "headset": "",
-    //        "phone": "",
-    //        "portable": "",
-    //        "car": "",
-    //        "default": ["", ""]
-    //    },
-    //    "on-click": "pavucontrol"
-    //},
-
     "temperature": {
       "critical-threshold": 80,
       "interval": 5,
@@ -177,7 +136,7 @@
 
     "mpd": {
         //"format": " {artist} - {title}",
-        "format": " {artist} - {title}",
+        "format": "{artist} - {title}",
         "format-disconnected": "",
         "format-stopped": "",
         "format-paused": "",
@@ -186,15 +145,26 @@
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
 
+    "mpris": {
+        //"format": " {artist} - {title}",
+        "format": "",
+        "format-playing": "{artist} - {title}",
+        "format-disconnected": "",
+        "format-stopped": "",
+        "format-paused": ""
+        //"tooltip-format": "MPD (connected)",
+        //"tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
     "custom/yuri-size": {
-        "format": " {} ",
+        "format": "{}",
         "exec": "${XDG_CONFIG_HOME}/waybar/scripts/yuri_size.sh",
         "interval": 3600,
         "on-click": "swayimg -o random -g ~/Pictures/banger/"
     },
 
     "custom/todo": {
-        "format": " {}",
+        "format": "{}",
         "exec": "${XDG_CONFIG_HOME}/waybar/scripts/todo.sh",
         "on-click": "alacritty --class TODO -e todon",
         "signal": 1
