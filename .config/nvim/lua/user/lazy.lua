@@ -172,6 +172,26 @@ require("lazy").setup({
 							os.execute(string.format("chmod %s '%s'", permission, path))
 						end
 					},
+					["gC"] = {
+						callback = function()
+							require("oil").set_sort({ { "ctime", "asc" }})
+						end
+					},
+					["gv"] = {
+						callback = function()
+							require("oil").set_sort({ { "ctime", "desc" }})
+						end
+					},
+					["gM"] = {
+						callback = function()
+							require("oil").set_sort({ { "mtime", "asc" }})
+						end
+					},
+					["gm"] = {
+						callback = function()
+							require("oil").set_sort({ { "mtime", "desc" }})
+						end
+					}
 				},
 			})
 		end
