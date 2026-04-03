@@ -161,7 +161,7 @@
         "format": "{}",
         "exec": "${XDG_CONFIG_HOME}/waybar/scripts/yuri_size.sh",
         "interval": 3600,
-        "on-click": "swayimg -o random -g ~/Pictures/banger/"
+        "on-click": "open_yuri_gallery"
     },
 
     "custom/todo": {
