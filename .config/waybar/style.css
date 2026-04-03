@@ -56,11 +56,11 @@
  * -------------------------------------------------------------------------- */
 
 #battery.warning {
-    color: orange;
+    /* background: orange; */
 }
 
 #battery.critical {
-    color: red;
+    /* background: red; */
 }
 
 #mode {
