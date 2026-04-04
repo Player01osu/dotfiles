@@ -13,14 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"vimwiki/vimwiki",
-		branch = "dev",
-		ft = { "vimwiki" },
-		config = function()
-			vim.g["vimwiki_global_ext"] = 0
-		end,
-	},
-	{
 		"preservim/vim-markdown",
 		ft = { "md", "markdown" }, -- Markdown folding and indent
 	},
@@ -32,7 +24,6 @@ require("lazy").setup({
 	-- Telescope --
 	{
 		"nvim-telescope/telescope.nvim",
-		-- lazy = true,
 		config = function()
 			require("telescope").setup({
 				pickers = {
