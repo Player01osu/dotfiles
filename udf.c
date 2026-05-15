@@ -35,6 +35,7 @@ const char *links[][4] = {
 	{ c(".config/dunst"),               CONFIG "/dunst",              0,        O0 },
 	{ c(".config/emacs"),               CONFIG "/emacs",              0,        O0 },
 	{ c(".config/fcitx"),               CONFIG "/fcitx",              0,        O0 },
+	{ c(".config/fontconfig"),          CONFIG "/fontconfig",         0,        O0 },
 	{ c(".config/gtk-2.0"),             CONFIG "/gtk-2.0",            0,        O0 },
 	{ c(".config/gtk-3.0"),             CONFIG "/gtk-3.0",            0,        O0 },
 	{ c(".config/gtk-4.0"),             CONFIG "/gtk-4.0",            0,        O0 },
