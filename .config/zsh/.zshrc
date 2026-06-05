@@ -74,8 +74,16 @@ skalk () {
 
 # Prompt ZSH
 autoload -U colors && colors
-PS1="%B%{$fg[cyan]%}%~%{$fg[magenta]%} ❯ %{$reset_color%}%b"
-PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    # ssh connection
+    PS1="(%m@%n) %B%{$fg[cyan]%}%~%{$fg[magenta]%} ❯ %{$reset_color%}%b"
+    PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
+else
+    # Not ssh connection; display normal prompt
+    PS1="%B%{$fg[cyan]%}%~%{$fg[magenta]%} ❯ %{$reset_color%}%b"
+    PS2="%B%{$fg[magenta]%}❯ %{$reset_color%}%b"
+fi
 
 alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias bc="bc --mathlib"
