@@ -139,11 +139,11 @@ hl.config({
 --     output = "DP-1",
 -- }
 
-hl.device = {
+hl.device({
     name = "syna30d2:00-06cb:ce08-2",
     enabled = true,
     sensitivity = 0.7,
-}
+})
 
 -- Smart gaps: https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/#smart-gaps
 hl.workspace_rule({ workspace = "w[tv1]s[false]", gaps_out = 0, gaps_in = 0 })
