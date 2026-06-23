@@ -1,4 +1,11 @@
 hl.monitor({
+	output = "desc:InfoVision Optoelectronics (Kunshan) Co.Ltd China",
+	mode = "1920x1080",
+	position = "auto",
+	scale = 1.0,
+})
+
+hl.monitor({
 	output = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M27Q 21080B011574",
 	mode = "highrr",
 	position = "auto",
