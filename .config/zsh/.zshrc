@@ -89,8 +89,10 @@ alias adb='HOME="$XDG_DATA_HOME"/android adb'
 alias bc="bc --mathlib"
 alias calibre=calibre --with-library "$XDG_DATA_HOME/Calibre Library"
 alias choosenim="choosenim --choosenimDir:${XDG_DATA_HOME}/choosenim"
+alias f5fpc="HOME=${XDG_DATA_HOME} f5fpc"
 alias fortnite="osu"
 alias getweather="curl wttr.in/west+bloomfield+township\?m && cal && date"
+alias ls="ls --color=auto"
 alias man-keep="man -P 'less -X'"
 alias mongod="doas -u mongodb mongod --config /etc/mongodb.conf"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
@@ -104,7 +106,6 @@ alias sbcl="rlwrap sbcl --noinform --userinit $XDG_CONFIG_HOME/sbcl/sbclrc"
 alias weather="curl wttr.in/West+Bloomfield+Township\?m\&format=2"
 alias weather_report="curl wttr.in/West+Bloomfield+Township\?m"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
-alias f5fpc="HOME=${XDG_DATA_HOME} f5fpc"
 
 source <(fzf --zsh)
 [ -e '/usr/share/zsh/plugins/zsh-completion/completion.zsh' ] && source /usr/share/zsh/plugins/zsh-completion/completion.zsh 2>/dev/null
