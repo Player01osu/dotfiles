@@ -12,6 +12,7 @@ hl.monitor({
 	scale = 1.0,
 	bitdepth = 10,
 	cm = "srgb",
+	transform = 0, -- 2 => 180, 4 => hflip
 })
 
 hl.monitor({
