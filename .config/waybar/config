@@ -147,7 +147,7 @@
 
     "mpris": {
         //"format": " {artist} - {title}",
-        // "ignored-players": ["firefox"],
+        "player":"clementine",
         "format": "",
         "format-playing": "{artist} - {title}",
         "format-disconnected": "",
