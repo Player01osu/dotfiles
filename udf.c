@@ -42,6 +42,8 @@ const char *links[][4] = {
 	{ c(".config/hypr"),                        CONFIG "/hypr",                 0,        O0 },
 	{ c(".config/hypr/hyprpaper-laptop.conf"),  CONFIG "/hypr/hyprpaper.conf",  0,        O0 },
 	{ c(".config/hypr/hyprpaper-pc.conf"),      CONFIG "/hypr/hyprpaper.conf",  0,        O0 },
+	{ c(".config/hypr/hyprsunset-laptop.conf"), CONFIG "/hypr/hyprsunset.conf", 0,        O0 },
+	{ c(".config/hypr/hyprsunset-pc.conf"),     CONFIG "/hypr/hyprsunset.conf", 0,        O0 },
 	{ c(".config/kitty"),                       CONFIG "/kitty",                0,        O0 },
 	{ c(".config/lazygit"),                     CONFIG "/lazygit",              0,        O0 },
 	{ c(".config/lf"),                          CONFIG "/lf",                   0,        O0 },
