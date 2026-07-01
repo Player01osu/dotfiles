@@ -1,7 +1,7 @@
 {
     "name": "Untitled",
     "DesktopAudioDevice1": {
-        "prev_ver": 536936448,
+        "prev_ver": 536936450,
         "name": "Desktop Audio",
         "uuid": "325ce9bb-4d66-4c48-818c-7378ffa957e1",
         "id": "pulse_output_capture",
@@ -32,7 +32,7 @@
         "private_settings": {}
     },
     "AuxAudioDevice1": {
-        "prev_ver": 536936448,
+        "prev_ver": 536936450,
         "name": "Mic/Aux",
         "uuid": "e27f7936-996b-49b8-8d2f-7508ad977290",
         "id": "pulse_input_capture",
@@ -64,7 +64,7 @@
     },
     "sources": [
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "Screen Capture (XSHM)",
             "uuid": "99f861ea-f377-4ded-ba77-49ea18f2453e",
             "id": "xshm_input",
@@ -88,7 +88,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "Window Capture (Xcomposite)",
             "uuid": "1af939f8-052e-4d95-abea-2d88d09cd495",
             "id": "xcomposite_input",
@@ -112,7 +112,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "DroidCam OBS",
             "uuid": "ad59d5e9-c257-47e5-b28b-0f2aac44b925",
             "id": "droidcam_obs",
@@ -143,7 +143,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "Screen Capture (PipeWire)",
             "uuid": "db14c663-3b96-4bb3-b6b5-db9e9a3c21c3",
             "id": "pipewire-screen-capture-source",
@@ -169,7 +169,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "Video Capture Device (V4L2)",
             "uuid": "a90748e0-fedf-4b7e-84ea-1e1875b69c95",
             "id": "v4l2_input",
@@ -197,7 +197,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "Scene",
             "uuid": "25112908-2f0c-4e10-9a0f-345416e94579",
             "id": "scene",
@@ -286,7 +286,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "Scene 2",
             "uuid": "98e59c3a-c5b6-4f32-a9aa-bda68817c159",
             "id": "scene",
@@ -432,7 +432,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "Scene 3",
             "uuid": "334977d7-e96d-4c45-9569-cd1190f60c1b",
             "id": "scene",
