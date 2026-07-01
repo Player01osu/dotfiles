@@ -25,8 +25,8 @@ hl.monitor({
 
 hl.monitor({
 	output = "desc:Technical Concepts Ltd Fire TV",
-	-- mode = "1920x1080@60",
-	mode = "2560x1440@60",
+	mode = "1920x1080@30",
+	-- mode = "2560x1440@60",
 	position = "auto",
 	scale = 1.0,
 	bitdepth = 10,
