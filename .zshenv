@@ -94,7 +94,7 @@ export QT_IM_MODULE='fcitx'
 export SDL_IM_MODULE='fcitx'
 export XMODIFIERS='@im=fcitx'
 
-export PATH=/opt/wine-osu/bin:$CARGO_HOME/bin:$PATH
+export PATH=$CARGO_HOME/bin:$PATH
 #:/usr/lib/jvm/java-19-openjdk/bin
 
 ### PATH
