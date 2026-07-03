@@ -161,7 +161,9 @@
         "format": "{}",
         "exec": "${XDG_CONFIG_HOME}/waybar/scripts/yuri_size.sh",
         "interval": 3600,
-        "on-click": "open_yuri_gallery"
+        "on-click": "open_yuri_gallery",
+        "return-type": "json",
+        "tooltip": true
     },
 
     "custom/todo": {
