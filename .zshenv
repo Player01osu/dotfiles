@@ -8,9 +8,11 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_STATE_HOME="$HOME"/.local/state
 
-
 export RENPY_PATH_TO_SAVES="$XDG_DATA_HOME"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+
+keep_sync_path="${XDG_CONFIG_HOME}/zsh/keep_sync.txt"
+export KEEP_SYNC_HOST="$(cat $keep_sync_path || touch $keep_sync_path)"
 
 export GOPATH="$XDG_DATA_HOME"/go
 
