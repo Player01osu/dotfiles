@@ -31,6 +31,17 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "timer app",
+	match = {
+		title = "^Timer App$",
+	},
+	float = true,
+	center = true,
+	pin = true,
+	no_dim = true,
+})
+
+hl.window_rule({
 	name = "osu!stable",
 	match = {
 		class = "osu.exe"
