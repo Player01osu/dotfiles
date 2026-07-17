@@ -119,7 +119,6 @@ hl.window_rule({
 		class = "hyprfloat",
 	},
 	float = true,
-	stay_focused = true,
 })
 
 hl.window_rule({
@@ -127,7 +126,6 @@ hl.window_rule({
 		class = "swayimg",
 	},
 	float = true,
-	stay_focused = true,
 })
 
 hl.window_rule({
@@ -135,7 +133,6 @@ hl.window_rule({
 		class = "TESTING",
 	},
 	float = true,
-	stay_focused = true,
 })
 
 hl.window_rule({
@@ -143,7 +140,6 @@ hl.window_rule({
 		title = "TESTING",
 	},
 	float = true,
-	stay_focused = true,
 })
 
 hl.window_rule({
