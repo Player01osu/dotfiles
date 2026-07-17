@@ -18,6 +18,15 @@ for _, game_matches in ipairs(float_games) do
 		persistent_size = true,
 	})
 end
+
+hl.window_rule({
+	name = "private_windows",
+	match = {
+		class = "org.keepassxc.KeePassXC",
+	},
+	no_screen_share = true,
+})
+
 hl.window_rule({
 	name = "dmenu",
 	match = {
