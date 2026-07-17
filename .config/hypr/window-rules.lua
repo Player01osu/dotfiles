@@ -1,3 +1,23 @@
+
+local float_games = {
+	{ class = "^steam_app_888790$" },
+	{ class = "^kimihanecouples.exe$" },
+	{ class = "^bgi.exe$" },
+	{
+		class = "io.github.xiaoyifang.goldendict_ng",
+		title = "&Search Pane",
+	}
+}
+
+for _, game_matches in ipairs(float_games) do
+	hl.window_rule({
+		match = game_matches,
+		float = true,
+		center = true,
+		rounding = 0,
+		persistent_size = true,
+	})
+end
 hl.window_rule({
 	name = "dmenu",
 	match = {
