@@ -15,6 +15,7 @@ require("lazy").setup({
 	{
 		"preservim/vim-markdown",
 		ft = { "md", "markdown" }, -- Markdown folding and indent
+		enabled = false,
 	},
 	{
 		"godlygeek/tabular",
@@ -62,7 +63,7 @@ require("lazy").setup({
 					"haskell",
 					"go",
 					"latex",
-					"c",
+					-- "c",
 					"cpp",
 					"html",
 					"javascript",
