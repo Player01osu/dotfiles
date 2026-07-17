@@ -154,13 +154,23 @@ hl.window_rule({
 	stay_focused = true,
 })
 
+-- hl.window_rule({
+-- 	match = {
+-- 		class = "fcitx",
+-- 	},
+-- 	no_dim = true,
+-- 	float = true,
+-- 	no_initial_focus = true,
+-- })
+
 hl.window_rule({
 	match = {
-		class = "fcitx",
+		title = "^Fcitx5 Input Window$",
 	},
 	no_dim = true,
 	float = true,
 	no_initial_focus = true,
+	no_focus = true,
 })
 
 hl.window_rule({
