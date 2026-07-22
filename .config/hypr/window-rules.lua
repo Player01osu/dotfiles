@@ -71,12 +71,14 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	name = "osu!stable",
+	name = "osu!",
 	match = {
-		class = "osu.exe"
+		class = "^osu!\\.exe$",
 	},
-	fullscreen = true,
+	fullscreen = false,
 	immediate = true,
+	float = true,
+	rounding = 0,
 })
 
 hl.window_rule({
