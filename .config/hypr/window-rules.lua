@@ -161,6 +161,13 @@ hl.window_rule({
 	stay_focused = true,
 })
 
+hl.window_rule({
+	match = {
+		class = "^discord$",
+	},
+	no_screen_share = true,
+})
+
 -- hl.window_rule({
 -- 	match = {
 -- 		class = "fcitx",
