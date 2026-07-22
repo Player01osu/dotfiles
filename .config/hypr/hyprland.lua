@@ -29,6 +29,13 @@ hl.monitor({
 	-- mode = "2560x1440@60",
 	position = "auto",
 	scale = 1.0,
+})
+
+hl.monitor({
+	output = "desc:Acer Technologies Acer XFA240 0x0171C07D",
+	mode = "1920x1080@120",
+	position = "auto",
+	scale = 1.0,
 	bitdepth = 10,
 	cm = "wide",
 })
