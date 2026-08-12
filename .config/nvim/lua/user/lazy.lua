@@ -50,8 +50,11 @@ require("lazy").setup({
 		"kyazdani42/nvim-web-devicons",
 		lazy = true,
 	},
+
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
+		enabled = true,
 		build = ":TSUpdate",
 		config = function ()
 			local configs = require("nvim-treesitter.configs")
@@ -63,7 +66,7 @@ require("lazy").setup({
 					"haskell",
 					"go",
 					"latex",
-					-- "c",
+					"c",
 					"cpp",
 					"html",
 					"javascript",
@@ -85,16 +88,16 @@ require("lazy").setup({
 					"markdown_inline",
 				},
 				sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-				ignore_install = { "" }, -- List of parsers to ignore installing
+				ignore_install = { "latex" }, -- List of parsers to ignore installing
 				autopairs = {
 					enable = true,
 				},
 				highlight = {
 					enable = true, -- false will disable the whole extension
-					--disable = { "tex", "latex" },
+					-- disable = { 'markdown', 'markdown_inline' },
 					additional_vim_regex_highlighting = false,
 				},
-				indent = { enable = true, disable = { "yaml" } },
+				indent = { enable = true, disable = { "c", "yaml" } },
 				context_commentstring = {
 					enable = true,
 					enable_autocmd = false,
@@ -102,9 +105,11 @@ require("lazy").setup({
 			})
 		end
 	},
+
 	{
 		"stevearc/oil.nvim",
 		lazy = false,
+		enabled = true,
 		config = function ()
 			local permission_hlgroups = {
 				['-'] = 'NonText',
@@ -197,6 +202,7 @@ require("lazy").setup({
 
 	{
 		"nvim-treesitter/playground",
+		enabled = true,
 		cmd = "TSPlaygroundToggle",
 	},
 })
