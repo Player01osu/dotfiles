@@ -5,7 +5,8 @@ config.font = wezterm.font {
 	family = 'JetBrains Mono',
 	harfbuzz_features = {"calt=0", "clig=0", "liga=0"}
 }
-config.window_background_opacity = 0.81
+-- config.window_background_opacity = 0.81
+config.window_background_opacity = 1.00
 config.enable_wayland = true
 config.enable_tab_bar = false
 config.colors = {
