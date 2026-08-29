@@ -16,8 +16,8 @@ hl.monitor({
 })
 
 hl.monitor({
-	output = "desc:LG Electronics LG TV 0x01010101",
-	mode = "highrr",
+	output = "desc:LG Electronics LG TV",
+	mode = "1920x1080@60.00",
 	position = "auto",
 	scale = 1.0,
 
