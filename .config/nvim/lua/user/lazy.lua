@@ -57,51 +57,24 @@ require("lazy").setup({
 		enabled = true,
 		build = ":TSUpdate",
 		config = function ()
-			local configs = require("nvim-treesitter.configs")
-
-			configs.setup({
-				ensure_installed = {
-					"asm",
-					"rust",
-					"haskell",
-					"go",
-					"latex",
-					"c",
-					"cpp",
-					"html",
-					"javascript",
-					"java",
-					"odin",
-					"lua",
-					"gitcommit",
-					"gitignore",
-					"ocaml",
-					"bash",
-					"python",
-					"hyprlang",
-					"commonlisp",
-					"scheme",
-					"toml",
-					"yaml",
-					"norg",
-					"markdown",
-					"markdown_inline",
-				},
-				sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-				ignore_install = { "latex" }, -- List of parsers to ignore installing
-				autopairs = {
-					enable = true,
-				},
-				highlight = {
-					enable = true, -- false will disable the whole extension
-					-- disable = { 'markdown', 'markdown_inline' },
-					additional_vim_regex_highlighting = false,
-				},
-				indent = { enable = true, disable = { "c", "yaml" } },
-				context_commentstring = {
-					enable = true,
-					enable_autocmd = false,
-				},
+			vim.api.nvim_create_autocmd('FileType', {
+				pattern = { 'c', 'yaml' },
+				callback = function()
+					-- syntax highlighting, provided by Neovim
+					vim.treesitter.start()
+				end,
+			})
+			vim.api.nvim_create_autocmd('FileType', {
+				pattern = { 'rust', 'python', 'cpp', 'haskell', 'cs', 'lisp' },
+				callback = function()
+					-- syntax highlighting, provided by Neovim
+					vim.treesitter.start()
+					-- folds, provided by Neovim
+					-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+					-- vim.wo.foldmethod = 'expr'
+					-- indentation, provided by nvim-treesitter
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
 			})
 		end
 	},
