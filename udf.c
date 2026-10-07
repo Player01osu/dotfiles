@@ -1,11 +1,16 @@
 #if 0
 set -e
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	XDG_CONFIG_HOME="$HOME/.config"
+	echo $XDG_CONFIG_HOME
+fi
 cc -o udf udf.c -pedantic -DPWD="s($(pwd))" -DCONFIG="d(${XDG_CONFIG_HOME})" -DHOME="d(${HOME})"
 ./udf
 rm udf
 exit
 #endif
 
+/* Magic. don't touch these. */
 #define s(x) #x
 #define c(s) PWD "/" s
 #define d(x) s(x) "/"
