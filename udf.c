@@ -78,7 +78,7 @@ const char *links[][4] = {
 	{ c(".config/vifm"),                        CONFIG "/vifm",                 0,        O0 },
 	{ c(".config/waybar"),                      CONFIG "/waybar",               0,        O0 },
 	{ c(".config/wezterm"),                     CONFIG "/wezterm",              0,        O0 },
-	{ c(".config/zathura"),                     CONFIG "/zathura",              0,        O1 },
+	{ c(".config/zathura"),                     CONFIG "/zathura",              0,        O0 },
 	{ c(".config/zsh"),                         CONFIG "/zsh",                  0,        O0 },
 	{ c(".zshenv"),                             CONFIG "/zsh/zshenv",           0,        O0 },
 	{ c(".zshenv"),                             "/etc/zsh/zshenv",              O1,       O0 },
@@ -137,6 +137,7 @@ static int link_file(const char *from, const char *to)
 	if (ret == 0) {
 		if (sb.st_mode & S_IFLNK) {
 			if (replace_old_link) {
+				/* XXX: Check if it is link or not. If it isn't a link, prompt to either do nothing, backup and replace, or delete and replcae */
 				fprintf(stdout, "  Symlink already exists at \"%s\"; replacing link...\n", to);
 				if (remove(to) < 0) {
 					fprintf(stderr, "%s: Could not remove symlink \"%s\": %s\n", program_name, to, strerror(errno));
@@ -187,6 +188,32 @@ static void pop_path(char *buf, const char *path)
 	*p_buf = '\0';
 }
 
+static int path_eq(const char *a, const char *b)
+{
+	/* Are they both relative/absolute? */
+	if (*a != *b) return 0;
+
+	while (*a && *b) {
+		/* Skip '/' */
+		while (*a && *a == '/') ++a;
+		while (*b && *b == '/') ++b;
+
+		while (1) {
+			/* Oops, end of string */
+			if (!*a || !*b) break;
+			/* Directory comparison done */
+			if (*a == '/' || *b == '/') break;
+			if (*a != *b) return 0;
+			++a;
+			++b;
+		}
+	}
+	while (*a && *a == '/') ++a;
+	while (*b && *b == '/') ++b;
+	/* Both should be at end of string if paths are the same */
+	return *a == '\0' && *b == '\0';
+}
+
 int main(int argc, char **argv)
 {
 	size_t i;
@@ -226,11 +253,27 @@ int main(int argc, char **argv)
 				return 1;
 			}
 
-			/* XXX: When there is sublink, the parent directory does not exist yet */
 			pop_path(to_buf, to);
 			if (!exists(to_buf)) {
-				fprintf(stderr, "%s: Could not stat dest file: \"%s\" for \"%s\"\n", program_name, to_buf, to);
-				return 1;
+				/* Check if parent directory will be linked */
+				/* Currently only supports one layer of parent linking */
+				int j;
+				int parent_link_exists;
+				parent_link_exists = 0;
+				for (j = 0; j < ARR_LEN(links); ++j) {
+					const char *parent_to;
+					const char *parent_enabled;
+					parent_to = links[j][1];
+					parent_enabled = links[j][3];
+					if (enabled && path_eq(to_buf, parent_to)) {
+						parent_link_exists = 1;
+						break;
+					}
+				}
+				if (!parent_link_exists) {
+					fprintf(stderr, "%s: Could not stat dest file: \"%s\" for \"%s\"\n", program_name, to_buf, to);
+					return 1;
+				}
 			}
 			if (require_root) {
 				root_once = 1;
