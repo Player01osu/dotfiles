@@ -16,8 +16,31 @@ hl.monitor({
 })
 
 hl.monitor({
+	output = "desc:Samsung Electric Company SAMSUNG",
+	mode = "1920x1080@24",
+	position = "auto",
+	scale = 1.0,
+	-- bitdepth = 10,
+	-- cm = "srgb",
+	-- transform = 0, -- 2 => 180, 4 => hflip
+})
+
+hl.monitor({
+	output = "desc:Toshiba America Info Systems Inc TOSHIBA-TV",
+	mode = "1920x1080@24",
+	-- mode = "1920x1080@24",
+	-- mode = "1280x720@60",
+	-- mode = "1280x1024@60",
+	position = "auto",
+	scale = 1.0,
+	-- bitdepth = 10,
+	-- cm = "srgb",
+	-- transform = 0, -- 2 => 180, 4 => hflip
+})
+
+hl.monitor({
 	output = "desc:LG Electronics LG TV",
-	mode = "1920x1080@60.00",
+	mode = "1920x1080@24",
 	position = "auto",
 	scale = 1.0,
 
