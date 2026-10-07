@@ -41,6 +41,7 @@ const char *links[][4] = {
 	{ c(".config/gtk-3.0"),                     CONFIG "/gtk-3.0",              0,        O0 },
 	{ c(".config/gtk-4.0"),                     CONFIG "/gtk-4.0",              0,        O0 },
 	{ c(".config/hypr"),                        CONFIG "/hypr",                 0,        O0 },
+	{ c(".config/hypr/hyprlock-laptop-0.conf"), CONFIG "/hypr/hyprlock.conf",   0,        O0 },
 	{ c(".config/hypr/hyprpaper-laptop.conf"),  CONFIG "/hypr/hyprpaper.conf",  0,        O0 },
 	{ c(".config/hypr/hyprpaper-pc.conf"),      CONFIG "/hypr/hyprpaper.conf",  0,        O0 },
 	{ c(".config/hypr/hyprsunset-laptop.conf"), CONFIG "/hypr/hyprsunset.conf", 0,        O0 },
