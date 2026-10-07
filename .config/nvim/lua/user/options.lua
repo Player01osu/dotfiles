@@ -155,7 +155,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = { "todo.txt", "todo.wiki" },
 	callback = function()
 		if os.getenv("XDG_SESSION_TYPE") == "wayland" then
-			os.execute("pkill -SIGRTMIN+1 waybar")
+			os.execute("pkill --quiet -SIGRTMIN+1 waybar &>/dev/null")
 		else
 			os.execute("kill -46 $(pidof ${STATUSBAR:-dwmblocks})")
 		end
